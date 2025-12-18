@@ -1,0 +1,514 @@
+openapi: 3.0.3
+info:
+  title: Social Network API (Proyecto Intramodular)
+  description: >
+    API specification for the final project (2nd year DAM).
+    A Twitter-like social network API handling Users, Posts, Follows, and Reactions.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/api/v1
+    description: Local Development Server
+
+paths:
+  # ----------------------------------------------------------------
+  # AUTHENTICATION
+  # ----------------------------------------------------------------
+  /auth/register:
+    post:
+      summary: Register a new user
+      operationId: registerUser
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRegisterInput'
+      responses:
+        '201':
+          description: User registered successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid input or email/alias already exists
+
+  /auth/login:
+    post:
+      summary: User login
+      operationId: loginUser
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginInput'
+      responses:
+        '200':
+          description: Login successful, returns JWT token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+        '401':
+          description: Invalid credentials
+
+  # ----------------------------------------------------------------
+  # USERS
+  # ----------------------------------------------------------------
+  /users:
+    post:
+      summary: Create a new user (Admin or alternative to Register)
+      operationId: createUser
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRegisterInput'
+      responses:
+        '201':
+          description: User created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+  /users/{user-id}:
+    get:
+      summary: Get user profile details
+      operationId: getUser
+      tags:
+        - Users
+      parameters:
+        - name: user-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: User details found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: User not found
+
+    put:
+      summary: Modify user profile
+      operationId: updateUser
+      tags:
+        - Users
+      parameters:
+        - name: user-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdateInput'
+      responses:
+        '200':
+          description: User updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+    delete:
+      summary: Delete a user
+      operationId: deleteUser
+      tags:
+        - Users
+      parameters:
+        - name: user-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: User deleted successfully
+
+  # ----------------------------------------------------------------
+  # FOLLOW SYSTEM
+  # ----------------------------------------------------------------
+  /users/{user-id}/followers:
+    get:
+      summary: Get list of followers for a user
+      operationId: getFollowers
+      tags:
+        - Social Graph
+      parameters:
+        - name: user-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of followers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+
+  /users/{user-id}/followed:
+    get:
+      summary: Get list of users followed by a specific user
+      operationId: getFollowed
+      tags:
+        - Social Graph
+      parameters:
+        - name: user-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of followed users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+
+  /users/{user-id}/follow:
+    post:
+      summary: Follow a user
+      description: The authenticated user follows the user specified in the path.
+      operationId: followUser
+      tags:
+        - Social Graph
+      parameters:
+        - name: user-id
+          in: path
+          description: ID of the user to follow
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successfully followed
+        '409':
+          description: Already following
+
+  /users/{user-id}/unfollow:
+    post:
+      summary: Unfollow a user
+      description: The authenticated user unfollows the user specified in the path.
+      operationId: unfollowUser
+      tags:
+        - Social Graph
+      parameters:
+        - name: user-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successfully unfollowed
+
+  # ----------------------------------------------------------------
+  # POSTS
+  # ----------------------------------------------------------------
+  /posts:
+    post:
+      summary: Create a new post
+      operationId: createPost
+      tags:
+        - Posts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostInput'
+      responses:
+        '201':
+          description: Post created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+
+    get:
+      summary: Get list of all posts (Timeline)
+      description: Usually filtered by followed users in a real implementation.
+      operationId: getTimeline
+      tags:
+        - Posts
+      responses:
+        '200':
+          description: List of posts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Post'
+
+  /posts/{post-id}:
+    get:
+      summary: Read a specific post
+      operationId: getPost
+      tags:
+        - Posts
+      parameters:
+        - name: post-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Post details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+        '404':
+          description: Post not found
+
+    delete:
+      summary: Delete a post
+      operationId: deletePost
+      tags:
+        - Posts
+      parameters:
+        - name: post-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Post deleted
+
+  /posts/{post-id}/replies:
+    get:
+      summary: Get replies for a specific post
+      operationId: getPostReplies
+      tags:
+        - Posts
+      parameters:
+        - name: post-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of replies
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Post'
+
+  # ----------------------------------------------------------------
+  # REACTIONS (LIKES)
+  # ----------------------------------------------------------------
+  /posts/{post-id}/like:
+    post:
+      summary: Like a post
+      operationId: likePost
+      tags:
+        - Reactions
+      parameters:
+        - name: post-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Post liked successfully
+
+  /posts/{post-id}/dislike:
+    post:
+      summary: Remove like from a post (Dislike)
+      operationId: dislikePost
+      tags:
+        - Reactions
+      parameters:
+        - name: post-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Like removed successfully
+
+  /posts/{post-id}/likes:
+    get:
+      summary: Get list of users who liked a post
+      operationId: getPostLikes
+      tags:
+        - Reactions
+      parameters:
+        - name: post-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+
+components:
+  schemas:
+    # -----------------------
+    # USER SCHEMAS
+    # -----------------------
+    User:
+      type: object
+      description: Public user information
+      properties:
+        id_usuario:
+          type: integer
+          example: 1
+        alias:
+          type: string
+          example: "dev_student"
+        nombre_visible:
+          type: string
+          example: "Alex Developer"
+        fecha_alta:
+          type: string
+          format: date
+          example: "2024-11-20"
+        correo_electronico:
+          type: string
+          format: email
+          example: "alex@example.com"
+        biografia:
+          type: string
+          example: "DAM student creating a social network."
+        fotografia_url:
+          type: string
+          example: "https://example.com/avatar.jpg"
+      # Note: 'contrasena' is intentionally excluded from the read model for security
+
+    UserRegisterInput:
+      type: object
+      required:
+        - alias
+        - correo_electronico
+        - contrasena
+      properties:
+        alias:
+          type: string
+          maxLength: 50
+        nombre_visible:
+          type: string
+          maxLength: 100
+        correo_electronico:
+          type: string
+          format: email
+          maxLength: 100
+        contrasena:
+          type: string
+          format: password
+          description: Raw password to be hashed by backend
+        biografia:
+          type: string
+        fotografia_url:
+          type: string
+
+    UserUpdateInput:
+      type: object
+      properties:
+        nombre_visible:
+          type: string
+        biografia:
+          type: string
+        fotografia_url:
+          type: string
+        contrasena:
+          type: string
+          format: password
+
+    LoginInput:
+      type: object
+      required:
+        - correo_electronico
+        - contrasena
+      properties:
+        correo_electronico:
+          type: string
+          format: email
+        contrasena:
+          type: string
+          format: password
+
+    # -----------------------
+    # POST SCHEMAS
+    # -----------------------
+    Post:
+      type: object
+      properties:
+        id_post:
+          type: integer
+          example: 101
+        contenido:
+          type: string
+          example: "This is my first post on the new platform!"
+        url_multimedia:
+          type: string
+          example: "https://example.com/image.png"
+        fecha_creacion:
+          type: string
+          format: date-time
+        id_autor:
+          type: integer
+          description: ID of the user who created the post
+          example: 1
+        id_post_padre:
+          type: integer
+          nullable: true
+          description: If set, this post is a reply to another post
+          example: null
+
+    PostInput:
+      type: object
+      required:
+        - contenido
+      properties:
+        contenido:
+          type: string
+        url_multimedia:
+          type: string
+        id_post_padre:
+          type: integer
+          nullable: true
+          description: Optional ID of the parent post for replies
