@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/corporativo1"
+    tools:context=".MainActivity4registro">
+
+    <EditText
+        android:id="@+id/ettcontrasenaOk"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="confirmar contraseña"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/ettcontrasena4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ettcontrasena4"
+        app:layout_constraintTop_toBottomOf="@+id/ettcontrasena4" />
+
+    <EditText
+        android:id="@+id/ettNombre4"
+        android:layout_width="282dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="nombre"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@+id/tv4"
+        app:layout_constraintStart_toStartOf="@+id/tv4"
+        app:layout_constraintTop_toBottomOf="@+id/tv4" />
+
+    <EditText
+        android:id="@+id/ett1ap4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="primer apellido"
+        app:layout_constraintEnd_toEndOf="@+id/ettNombre4"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/ettNombre4"
+        app:layout_constraintTop_toBottomOf="@+id/ettNombre4" />
+
+    <EditText
+        android:id="@+id/ett2ap4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="segundo apellido"
+        app:layout_constraintEnd_toEndOf="@+id/ett1ap4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ett1ap4"
+        app:layout_constraintTop_toBottomOf="@+id/ett1ap4" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb4"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="PingU - Formulario de registro"
+        app:titleTextColor="@color/white" />
+
+    <ImageView
+        android:id="@+id/iv4"
+        android:layout_width="228dp"
+        android:layout_height="99dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tb4"
+        app:srcCompat="@drawable/letrassinfondo" />
+
+    <TextView
+        android:id="@+id/tv4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prepárate...esto empieza contigo 😉"
+        app:layout_constraintEnd_toEndOf="@+id/iv4"
+        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintStart_toStartOf="@+id/iv4"
+        app:layout_constraintTop_toBottomOf="@+id/iv4" />
+
+    <Button
+        android:id="@+id/btn4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="46dp"
+        android:text="Desbloquear acceso 🔒"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ettcontrasenaOk" />
+
+    <EditText
+        android:id="@+id/ettCorreo4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="correo electrónico"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/ettcontrasena4"
+        app:layout_constraintEnd_toEndOf="@+id/ett2ap4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ett2ap4"
+        app:layout_constraintTop_toBottomOf="@+id/ettalias" />
+
+    <EditText
+        android:id="@+id/ettalias"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="nick_name"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@+id/ettcontrasena4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ettcontrasena4"
+        app:layout_constraintTop_toBottomOf="@+id/ett2ap4" />
+
+    <EditText
+        android:id="@+id/ettcontrasena4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="contraseña"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/ettCorreo4"
+        app:layout_constraintStart_toStartOf="@+id/ettCorreo4"
+        app:layout_constraintTop_toBottomOf="@+id/ettCorreo4" />
+</androidx.constraintlayout.widget.ConstraintLayout>

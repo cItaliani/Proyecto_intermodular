@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PingU · Board Mind</title>
+    <link rel="shortcut icon" href="PingUsf.ico" type="image/x-icon">
+    <link rel="stylesheet" href="muro.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <a href="perfil.html"><button class="button">Mi perfil</button></a>
+            <button onclick="mostrar('seguido')"class="button">Usuario seguidos</button>
+            <button onclick="mostrar('seguidores')"class="button">Mis seguidores</button>
+            <button onclick="mostrar('posts')"class="button">Mis post</button>
+            <a href="index.html" class="logout"><button class="logoutButton">Desconexión ⏻ </button></a>
+        </div>
+        <!-- Main content -->
+        <div class="main">
+            <div id="perfil" class="content-box">Contenido de Mi perfil</div>
+            <div id="seguido" class="content-box">Contenido de usuarios seguidos</div>
+            <div id="seguidores" class="content-box">Contenido de mis seguidores</div>
+            <div id="posts" class="content-box">Contenido de mis posts</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

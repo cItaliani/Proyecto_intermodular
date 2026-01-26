@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/corporativo1"
+    tools:context=".MainActivity" >
+
+    <CheckBox
+        android:id="@+id/chkCredenciales"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layoutDirection="rtl"
+        android:text="recordar credenciales"
+        app:layout_constraintEnd_toEndOf="@+id/chkPass"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ettContrasena"
+        app:layout_constraintTop_toBottomOf="@+id/chkPass" />
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="409dp"
+        android:layout_height="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/pinguletrassinfondo" />
+
+    <EditText
+        android:id="@+id/ettUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="usuario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivLogo" />
+
+    <EditText
+        android:id="@+id/ettContrasena"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="contraseña"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/ettUsuario"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/ettUsuario"
+        app:layout_constraintTop_toBottomOf="@+id/chkUsuario" />
+
+    <Button
+        android:id="@+id/btnDisfruta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="¿Ya eres de casa? Entra 🔑"
+        app:layout_constraintEnd_toEndOf="@+id/ettContrasena"
+        app:layout_constraintTop_toBottomOf="@+id/chkCredenciales" />
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="¿Has olvidado tu contraseña? Click aqui"
+        android:textColor="#062AF6"
+        app:layout_constraintEnd_toEndOf="@+id/ettContrasena"
+        app:layout_constraintStart_toStartOf="@+id/ettContrasena"
+        app:layout_constraintTop_toBottomOf="@+id/btnDisfruta" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="Riddler Company Creations"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imLogo"
+        android:layout_width="70dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/riddlercompanysinfondo" />
+
+    <Button
+        android:id="@+id/btnRegistro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="¿Primera vez por aquí? Súmate😎​"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="@+id/textView2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView2" />
+
+    <CheckBox
+        android:id="@+id/chkUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layoutDirection="rtl"
+        android:text="recordar usuario"
+        app:layout_constraintStart_toStartOf="@+id/ettContrasena"
+        app:layout_constraintTop_toBottomOf="@+id/ettUsuario" />
+
+    <CheckBox
+        android:id="@+id/chkPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layoutDirection="rtl"
+        android:text="mostrar contraseña"
+        app:layout_constraintStart_toStartOf="@+id/ettContrasena"
+        app:layout_constraintTop_toBottomOf="@+id/ettContrasena" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

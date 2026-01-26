@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/corporativo1"
+    tools:context=".MainActivity2perfil">
+
+    <TextView
+        android:id="@+id/txtNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Nombre:"
+        app:layout_constraintStart_toStartOf="@+id/btnCambiaFoto"
+        app:layout_constraintTop_toBottomOf="@+id/btnCambiaFoto" />
+
+    <TextView
+        android:id="@+id/txtTitulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="PERFIL DE USUARIO"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtMiembrotext"
+        android:layout_width="106dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="miembro desde:"
+        app:layout_constraintStart_toStartOf="@+id/txtTitulo"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitulo" />
+
+    <TextView
+        android:id="@+id/txtSeguidos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="seguidos:"
+        app:layout_constraintStart_toStartOf="@+id/txtSeguidores"
+        app:layout_constraintTop_toBottomOf="@+id/txtSeguidores" />
+
+    <TextView
+        android:id="@+id/txtSeguidores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="seguidores:"
+        app:layout_constraintStart_toStartOf="@+id/txtMiembrotext"
+        app:layout_constraintTop_toBottomOf="@+id/txtMiembrotext" />
+
+    <TextView
+        android:id="@+id/txtSeguidos_respuesta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="15"
+        app:layout_constraintStart_toStartOf="@+id/txtSeguidores_respuesta"
+        app:layout_constraintTop_toBottomOf="@+id/txtSeguidores_respuesta" />
+
+    <TextView
+        android:id="@+id/txtSeguidores_respuesta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="1000"
+        app:layout_constraintStart_toStartOf="@+id/txtMiembro_respuesta"
+        app:layout_constraintTop_toBottomOf="@+id/txtMiembrotext" />
+
+    <TextView
+        android:id="@+id/txtMiembro_respuesta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="4dp"
+        android:text="01/01/2026"
+        app:layout_constraintBottom_toBottomOf="@+id/txtMiembrotext"
+        app:layout_constraintStart_toEndOf="@+id/txtMiembrotext" />
+
+    <Button
+        android:id="@+id/btnCambiaFoto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="actualizar foto"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/txtInsignia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Insignia:"
+        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/btnCambiaFoto" />
+
+    <TextView
+        android:id="@+id/txtAlias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alias:"
+        app:layout_constraintStart_toStartOf="@+id/txtNombre"
+        app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
+
+    <TextView
+        android:id="@+id/txtCorreo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Correo electronico"
+        app:layout_constraintStart_toStartOf="@+id/txtAlias"
+        app:layout_constraintTop_toBottomOf="@+id/txtAlias" />
+
+    <TextView
+        android:id="@+id/txtNombre_respuesta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Carlos Alberto Piñeiro Italiani"
+        app:layout_constraintStart_toStartOf="@+id/txtAlias_respuesta"
+        app:layout_constraintTop_toTopOf="@+id/txtNombre" />
+
+    <TextView
+        android:id="@+id/txtAlias_respuesta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Atlas"
+        app:layout_constraintStart_toEndOf="@+id/txtCorreo"
+        app:layout_constraintTop_toBottomOf="@+id/txtNombre_respuesta" />
+
+    <TextView
+        android:id="@+id/txtCorreo_respuesta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="carlositaliani@gmail.com"
+        app:layout_constraintStart_toStartOf="@+id/txtAlias_respuesta"
+        app:layout_constraintTop_toBottomOf="@+id/txtAlias_respuesta" />
+
+    <TextView
+        android:id="@+id/txtBiografia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Biofrafia:"
+        app:layout_constraintStart_toStartOf="@+id/txtCorreo"
+        app:layout_constraintTop_toBottomOf="@+id/txtPass" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtBiografia"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/txtBiografia_respuesta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Soy el desarrollador de esta aplicación, una red social multiplataforma creada como parte de mi Trabajo de Fin de Grado del ciclo formativo de Desarrollo de Aplicaciones Multiplataforma (DAM). Este proyecto ha sido desarrollado de manera individual y representa la culminación de los conocimientos y competencias adquiridas a lo largo de mi formación.  La aplicación nace con el objetivo de ofrecer un espacio de interacción entre usuarios, fomentando la comunicación y el intercambio de contenido de forma sencilla, intuitiva y accesible desde diferentes plataformas. Durante su desarrollo se ha puesto especial énfasis en la experiencia de usuario, el diseño de la interfaz y la correcta estructuración del sistema para garantizar un funcionamiento estable y escalable.  Este proyecto me ha permitido aplicar de forma práctica conceptos clave como el desarrollo multiplataforma, la gestión de datos, la comunicación entre cliente y servidor y la planificación completa de un producto software, desde la idea inicial hasta su implementación final. Además, ha supuesto una oportunidad para reforzar habilidades como la resolución de problemas, la autonomía en el desarrollo y la mejora continua del código.  Esta aplicación no solo representa un proyecto académico, sino también un reflejo de mi interés por el desarrollo de software y mi motivación por seguir creciendo profesionalmente en el ámbito de la programación y las nuevas tecnologías." />
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/txtPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contraseña:"
+        app:layout_constraintStart_toStartOf="@+id/txtCorreo"
+        app:layout_constraintTop_toBottomOf="@+id/txtCorreo" />
+
+    <TextView
+        android:id="@+id/txtPass_respuesta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="******"
+        app:layout_constraintBottom_toBottomOf="@+id/txtPass"
+        app:layout_constraintStart_toStartOf="@+id/txtCorreo_respuesta"
+        app:layout_constraintTop_toBottomOf="@+id/txtCorreo_respuesta" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnCambiaFoto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/atlas" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnCambiaFoto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtInsignia"
+        app:srcCompat="@drawable/logoqsf" />
+
+    <TextView
+        android:id="@+id/lblDesconectar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="cerrar sesión"
+        android:textColor="#F8030A"
+        app:layout_constraintEnd_toEndOf="@+id/btnCambiaFoto"
+        app:layout_constraintStart_toStartOf="@+id/btnCambiaFoto"
+        app:layout_constraintTop_toBottomOf="@+id/btnCambiaFoto" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

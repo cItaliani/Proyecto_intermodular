@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="corporativo1">#04dc8c</color>
+    <color name="corporativo2">#0d191d</color>
+    <color name="corporativo3">#e4e2d9</color>
+    <color name="corporativo4">#388165</color>
+    <color name="corporativo5">#626464</color>
+    <color name="corporativo6">#16ab76</color>
+    <color name="corporativo7">#13a76c</color>
+    <color name="corporativo8">#2ce4ac</color>
+
+</resources>
