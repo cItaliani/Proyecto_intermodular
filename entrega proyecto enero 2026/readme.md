@@ -26,7 +26,7 @@ PingU by Riddler Company
 | 23/01/2026  | continuación de frontend para aplicación de escritorio                                         |
 | 24/01/2026  | continuación de frontend para aplicación de web                                                |
 | 25/01/2026  | continuación de frontend para aplicación de móvil                                              |
-|             |                                                                                                |
+| 28/01/2026  | subida del proyecyo androis completo hasta la fecha                                            |
 
 
 
