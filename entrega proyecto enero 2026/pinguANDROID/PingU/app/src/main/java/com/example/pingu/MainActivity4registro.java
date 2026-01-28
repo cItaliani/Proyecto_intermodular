@@ -77,7 +77,7 @@ public class MainActivity4registro extends AppCompatActivity {
                     Toast.makeText(MainActivity4registro.this, "Debes introducir tu segundo apellido", Toast.LENGTH_SHORT).show();
                 }
                 else if (ettalias.getText().toString().trim().isEmpty()) {
-                    Toast.makeText(MainActivity4registro.this, "Debes introducir tu primer nick", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity4registro.this, "Debes introducir tu nombre de usuario", Toast.LENGTH_SHORT).show();
                 }
                 else if (ettCorreo4.getText().toString().trim().isEmpty()) {
                     Toast.makeText(MainActivity4registro.this, "Debes introducir tu correo electrónico", Toast.LENGTH_SHORT).show();

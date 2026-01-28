@@ -120,7 +120,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:ems="10"
-        android:hint="nick_name"
+        android:hint="nombre de usuario"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="@+id/ettcontrasena4"
         app:layout_constraintHorizontal_bias="0.0"

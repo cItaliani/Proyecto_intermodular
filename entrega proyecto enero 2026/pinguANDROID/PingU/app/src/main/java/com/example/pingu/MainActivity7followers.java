@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 
+import androidx.activity.Api26Impl;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 
@@ -20,6 +21,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity7followers extends AppCompatActivity {
 Toolbar tb7;
+
 ActionBar actionBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
