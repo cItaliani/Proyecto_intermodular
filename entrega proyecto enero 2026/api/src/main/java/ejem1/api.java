@@ -154,7 +154,6 @@ public class api {
         }
     }
     // endregion
-
     // regiones en construccion
     // region SOCIAL GRAPH
     // endregion
@@ -163,12 +162,20 @@ public class api {
     // region REACTIONS
 @POST
 @Path("/posts/{post-id}/like")
-@
-
-
-
-
-
+@Consumes(MediaType.APPLICATION_JSON)
+public Response LikeAPost(@PathParam("post-id")int idPost){
+    try {
+        Class.forName("org.mariadb.jdbc.Driver");
+try (Connection conexion = DriverManager.getConnection(url,usuario, password)) {
+    PreparedStatement ps= conexion.prepareStatement(/* aqui va la consulta sql*/);
+    return Response.ok("has dado like").build();
+} catch (Exception e) {
+    return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("error ").build();
+}
+    } catch (Exception e) {
+        return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("no reconoce el Driver").build();
+    }
+}
     // endregion
 
 }
