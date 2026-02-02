@@ -28,7 +28,7 @@ PingU by Riddler Company
 | 25/01/2026  | continuación de frontend para aplicación de móvil                                              |
 | 28/01/2026  | subida del proyecto android completo hasta la fecha                                            |
 | 31/01/2026  | inicio de escritura de API                                                                     |
-
+| 02/02/2026  | actualizacion de la escritura de API                                                           |
 
 
 ## Autor
