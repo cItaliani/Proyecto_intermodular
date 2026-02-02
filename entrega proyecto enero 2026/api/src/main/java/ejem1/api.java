@@ -7,13 +7,16 @@ import java.sql.ResultSet;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status;
 
 @Path("/PingU")
 public class api {
@@ -36,6 +39,8 @@ public class api {
         }
     }
 
+    // regiones terminadas
+    // region USERS
     @POST
     @Path("/users")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -104,6 +109,66 @@ public class api {
         }
     }
 
+    @PUT
+    @Path("users/{user-id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response modifyUser(@PathParam("user-id") String idConsulta) {
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            try (Connection conexion = DriverManager.getConnection(url, usuario, password)) {
+                PreparedStatement ps = conexion.prepareStatement(
+                        "update usuario set nombre_visible = ?, correo_electronico=?, biografia=?, contrasena=?, fotografia_url=?");
+                ps.setString(1, "alias");
+                ps.setString(2, "nombre_visible");
+                ps.setString(3, "correo_electronico");
+                ps.setString(4, "biografia");
+                ps.setString(5, "contrasena");
+                ps.setString(6, "fotografia_url");
+                ps.executeUpdate();
+                return Response.ok("usuario actualizado correctamente").build();
+            } catch (Exception e) {
+                return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("error").build();
+            }
+        } catch (Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(" no reconoce el driver").build();
+        }
+    }
 
+    @DELETE
+    @Path("users/{user-id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response deleteUser(@PathParam("user-id") String idConsulta) {
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            try (Connection conexion = DriverManager.getConnection(url, usuario, password)) {
+                PreparedStatement ps = conexion
+                        .prepareStatement(String.format("delete from usuario where id=?", idConsulta));
+                ps.executeQuery();
+                return Response.ok("usuario eliminado correctamente").build();
+            } catch (Exception e) {
+                return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                        .entity("no se ha podido borrar el usuario").build();
+            }
+        } catch (Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("no reconoce el Driver").build();
+        }
+    }
+    // endregion
+
+    // regiones en construccion
+    // region SOCIAL GRAPH
+    // endregion
+    // region POSTS
+    // endregion
+    // region REACTIONS
+@POST
+@Path("/posts/{post-id}/like")
+@
+
+
+
+
+
+    // endregion
 
 }
