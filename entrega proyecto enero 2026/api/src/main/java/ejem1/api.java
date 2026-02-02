@@ -1,10 +1,19 @@
 package ejem1;
 
+import java.beans.ConstructorProperties;
+import java.net.http.HttpResponse.ResponseInfo;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.regex.Pattern;
+
+import javax.annotation.processing.Generated;
+
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -112,18 +121,21 @@ public class api {
     @PUT
     @Path("users/{user-id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response modifyUser(@PathParam("user-id") String idConsulta) {
+    public Response modifyUser(@PathParam("user-id") String idConsulta, String aliasParam, String nombreParam,
+            String correoParam, String biografiaParam, String contrasenaParam, String fotografiaParam) {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             try (Connection conexion = DriverManager.getConnection(url, usuario, password)) {
                 PreparedStatement ps = conexion.prepareStatement(
-                        "update usuario set nombre_visible = ?, correo_electronico=?, biografia=?, contrasena=?, fotografia_url=?");
-                ps.setString(1, "alias");
-                ps.setString(2, "nombre_visible");
-                ps.setString(3, "correo_electronico");
-                ps.setString(4, "biografia");
-                ps.setString(5, "contrasena");
-                ps.setString(6, "fotografia_url");
+                        String.format(
+                                "update usuario set nombre_visible = ?, correo_electronico=?, biografia=?, contrasena=?, fotografia_url=? where id_usuario = %s",
+                                idConsulta));
+                ps.setString(1, aliasParam);
+                ps.setString(2, nombreParam);
+                ps.setString(3, correoParam);
+                ps.setString(4, biografiaParam);
+                ps.setString(5, contrasenaParam);
+                ps.setString(6, fotografiaParam);
                 ps.executeUpdate();
                 return Response.ok("usuario actualizado correctamente").build();
             } catch (Exception e) {
@@ -153,6 +165,7 @@ public class api {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("no reconoce el Driver").build();
         }
     }
+
     // endregion
     // regiones en construccion
     // region SOCIAL GRAPH
@@ -160,22 +173,71 @@ public class api {
     // region POSTS
     // endregion
     // region REACTIONS
-@POST
-@Path("/posts/{post-id}/like")
-@Consumes(MediaType.APPLICATION_JSON)
-public Response LikeAPost(@PathParam("post-id")int idPost){
+    @POST
+    @Path("/posts/{post-id}/like")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response likeAPost(@PathParam("post-id") String idPost, String idUsuario) {
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            try (Connection conexion = DriverManager.getConnection(url, usuario, password)) {
+                PreparedStatement ps = conexion
+                        .prepareStatement("insert into reaccionar (id_usuario,id_post,fecha_Reaccion)values(?,?,?)");
+                ps.setString(1, idUsuario);
+                ps.setString(2, idPost);
+                ps.setDate(3, LocalDate.now());
+                ps.executeUpdate();
+                return Response.ok("has dado like").build();
+            } catch (Exception e) {
+                return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("error ").build();
+            }
+        } catch (Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("no reconoce el Driver").build();
+        }
+    }
+
+    @POST
+    @Path("/posts/{post-id}/unlike")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response unlikeAPost(@PathParam("post-id") String idPost, String idUsuario) {
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            try (Connection conexion = DriverManager.getConnection(url, usuario, password)) {
+                PreparedStatement ps = conexion
+                        .prepareStatement("delete from reacionar where id_post =? and id_usuario=?");
+                        ps.setString(1, idPost);
+                        ps.setString(2, idUsuario);
+                ps.executeQuery();
+                return Response.ok("registro unlike").build();
+            } catch (Exception e) {
+                return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("error").build();
+            }
+        } catch (Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("no reconoce el Driver").build();
+        }
+    }
+
+@GET
+@Path("/posts/{post-id}/likes ")
+@Produces(MediaType.APPLICATION_JSON)
+public Response listaLike(@PathParam ("id_post")String idPost){
+    ArrayList<String>lista= new ArrayList<String>();
     try {
         Class.forName("org.mariadb.jdbc.Driver");
-try (Connection conexion = DriverManager.getConnection(url,usuario, password)) {
-    PreparedStatement ps= conexion.prepareStatement(/* aqui va la consulta sql*/);
-    return Response.ok("has dado like").build();
-} catch (Exception e) {
-    return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("error ").build();
-}
+        try (Connection conexion = DriverManager.getConnection(url, usuario, password)) {
+            PreparedStatement ps = conexion.prepareStatement(String.format("SELECT count(*) where id_post = ? ",idPost));
+            ResultSet resultado=ps.executeQuery();
+            while (resultado.next()) {
+                if (lista.contains(resultado.getString(1))) {
+                    lista.add(resultado.getString(1));
+                }
+            }
+            return Response.ok(lista).build();
+        } catch (Exception e) {
+            Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("error").build();
+        }
     } catch (Exception e) {
-        return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("no reconoce el Driver").build();
+        Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("no reconoce el driver").build();
     }
 }
     // endregion
-
 }
