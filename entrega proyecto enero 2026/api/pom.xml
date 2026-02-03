@@ -23,6 +23,11 @@
     <!-- the RE ST AP I -->
 <!-- http s://mvnre pository .com/artifact/ jakarta .ws. rs/jak arta.ws.rs -ap i -->
 <dependency>
+    <groupId>org.mariadb.jdbc</groupId>
+    <artifactId>mariadb-java-client</artifactId>
+    <version>3.3.0</version>
+</dependency>
+<dependency>
 <groupId>jakarta.ws.rs</groupId>
 <artifactId>jakarta.ws.rs-api</artifactId>
 <version>3.0.0</version>
