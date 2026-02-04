@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 
@@ -19,6 +21,8 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity5muro extends AppCompatActivity {
 
     Toolbar tb5;
+    Button btnPublicar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,41 +34,51 @@ public class MainActivity5muro extends AppCompatActivity {
             return insets;
 
         });
-        tb5= findViewById(R.id.tb5);
+        tb5 = findViewById(R.id.tb5);
         setSupportActionBar(tb5);
-
-
+        btnPublicar = findViewById(R.id.btnPublicar);
+        btnPublicar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity5muro.this, MainActivity9formulario_post.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater=getMenuInflater();
-        menuInflater.inflate(R.menu.main_menu,menu);
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.main_menu, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected (@NonNull MenuItem item) {
-        int id=item.getItemId();
-        if (id==R.id.btnPerfil){
-            Intent intent=new Intent(MainActivity5muro.this, MainActivity2perfil.class);
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.btnPerfil) {
+            Intent intent = new Intent(MainActivity5muro.this, MainActivity2perfil.class);
             startActivity(intent);
             return true;
-        }else if (id==R.id.btnFollow){
+        } else if (id == R.id.btnFollow) {
             Intent intent = new Intent(MainActivity5muro.this, MainActivity8follows.class);
             startActivity(intent);
-        }else if (id==R.id.btnFollowers){
-           Intent intent = new Intent(MainActivity5muro.this, MainActivity7followers.class);
-           startActivity(intent);
+        } else if (id == R.id.btnFollowers) {
+            Intent intent = new Intent(MainActivity5muro.this, MainActivity7followers.class);
+            startActivity(intent);
 
-        }else if (id==R.id.btnPosts){
+        } else if (id == R.id.btnPosts) {
             Intent intent = new Intent(MainActivity5muro.this, MainActivity5muro.class);
             startActivity(intent);
             Toast.makeText(this, "actualizando el muro", Toast.LENGTH_SHORT).show();
-        }else if (id==R.id.btnHome){
+        } else if (id == R.id.btnHome) {
             Intent intent = new Intent(MainActivity5muro.this, MainActivity1Home.class);
             startActivity(intent);
-            };
+        }
+        ;
+
         return super.onOptionsItemSelected(item);
     }
+
+
 }
