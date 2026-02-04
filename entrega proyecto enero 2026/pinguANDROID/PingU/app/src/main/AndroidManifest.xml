@@ -12,8 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PingU"
         tools:targetApi="31" >
+
+
         <activity
             android:name=".MainActivity9formulario_post"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".MainActivity1Home"
