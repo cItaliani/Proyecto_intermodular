@@ -17,56 +17,59 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity9formulario_post extends AppCompatActivity {
-Toolbar tb9;
+    Toolbar tb9;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main_activity9from_post);
+        setContentView(R.layout.activity_main_activity9formulario_post);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        tb9=findViewById(R.id.tb9);
+
+        tb9 = findViewById(R.id.tb9);
         setSupportActionBar(tb9);
-
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater=getMenuInflater();
-        menuInflater.inflate(R.menu.menu_extend,menu);
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_extend, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected (@NonNull MenuItem item) {
-        int id=item.getItemId();
-        if (id==R.id.btnPerfil){
-            Intent intent=new Intent(MainActivity9formulario_post.this, MainActivity2perfil.class);
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.btnPerfil) {
+            Intent intent = new Intent(MainActivity9formulario_post.this, MainActivity2perfil.class);
             startActivity(intent);
             return true;
-        }else if (id==R.id.btnFollow){
+        } else if (id == R.id.btnFollow) {
             Intent intent = new Intent(MainActivity9formulario_post.this, MainActivity8follows.class);
             startActivity(intent);
             Toast.makeText(this, "actualizando seguidos", Toast.LENGTH_SHORT).show();
-        }else if (id==R.id.btnFollowers){
+        } else if (id == R.id.btnFollowers) {
             Intent intent = new Intent(MainActivity9formulario_post.this, MainActivity7followers.class);
             startActivity(intent);
-        }else if (id==R.id.btnPosts){
+        } else if (id == R.id.btnPosts) {
             Intent intent = new Intent(MainActivity9formulario_post.this, MainActivity5muro.class);
             startActivity(intent);
-        }else if (id==R.id.btnHome){
+        } else if (id == R.id.btnHome) {
             Intent intent = new Intent(MainActivity9formulario_post.this, MainActivity1Home.class);
             startActivity(intent);
-        }else if (id==R.id.cancelar){
-            Toast.makeText(this, "se ha cancelado a publicación", Toast.LENGTH_SHORT).show();
-        }else if (id==R.id.publicar){
-            Toast.makeText(this, "el post a sido publicado", Toast.LENGTH_SHORT).show();
-        };
+        } else if (id == R.id.cancelar) {
+            finish();
+        } else if (id == R.id.publicar) {
+            Toast.makeText(this, "se ha publicado tu post", Toast.LENGTH_SHORT).show();
+        }
+        ;
+        return super.
 
-        return super.onOptionsItemSelected(item);
+                onOptionsItemSelected(item);
     }
+
 }

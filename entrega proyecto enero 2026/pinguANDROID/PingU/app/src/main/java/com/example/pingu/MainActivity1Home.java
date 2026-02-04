@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 
@@ -18,6 +20,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity1Home extends AppCompatActivity {
 Toolbar tb1;
+Button btn2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +33,14 @@ Toolbar tb1;
         });
         tb1=findViewById(R.id.tb1);
         setSupportActionBar(tb1);
-
+        btn2= findViewById(R.id.button2);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity1Home.this, MainActivity9formulario_post.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
