@@ -41,22 +41,7 @@
                 android:layout_height="100dp"
                 android:layout_marginBottom="8dp">
 
-                <ImageView
-                    android:id="@+id/iv9"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:contentDescription="Imagen seleccionada" />
-
                 <!-- Icono de galería (visible cuando no hay imagen) -->
-                <ImageView
-                    android:id="@+id/iconGallery"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_gravity="center"
-                    android:src="@android:drawable/ic_menu_gallery"
-                    android:contentDescription="Añadir imagen"
-                    app:tint="@android:color/darker_gray" />
 
                 <!-- Texto "Añadir imagen" (visible cuando no hay imagen) -->
                 <TextView
