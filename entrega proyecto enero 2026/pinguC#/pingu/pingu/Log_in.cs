@@ -20,6 +20,7 @@ namespace pingu
         public Log_in()
         {
             InitializeComponent();
+            linkLabel1.TabStop = false;
         }
 
         private void btnLoging_Click(object sender, EventArgs e)
@@ -103,10 +104,7 @@ namespace pingu
 
         }
 
-        private void Log_in_Load(object sender, EventArgs e)
-        {
-
-        }
+  
 
 
 
@@ -115,6 +113,7 @@ namespace pingu
             if (chkUsuario.Checked)
             {
                 isUsuario = true;
+                chkCredenciales.Checked = false;
             }
             else if (!chkUsuario.Checked)
             {
@@ -127,6 +126,9 @@ namespace pingu
             if (chkCredenciales.Checked)
             {
                 isCredenciales = true;
+                chkUsuario.Checked = false;
+                
+                
             }
             else
             {
@@ -146,6 +148,7 @@ namespace pingu
             if (chkpass.Checked)
             {
                 txtpass.UseSystemPasswordChar = false;
+
             }
             else
             {
@@ -154,6 +157,64 @@ namespace pingu
         }
 
         private void txtpass_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                if (chkUsuario.Checked)
+                {
+                    chkUsuario.Checked = false;
+                }
+                else
+                {
+                    chkUsuario.Checked = true;  
+                }
+            }
+        }
+
+        private void chkpass_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                if (chkpass.Checked)
+                {
+                    chkpass.Checked = false;
+                }
+                else
+                {
+                    chkpass.Checked = true;
+                }
+            }
+        }
+
+        private void chkCredenciales_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                if (chkCredenciales.Checked)
+                {
+                    chkCredenciales.Checked = false;
+                }
+                else
+                {
+                    chkCredenciales.Checked = true;
+                    chkUsuario.Checked = false;
+             
+                }
+            }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Log_in_Load(object sender, EventArgs e)
         {
 
         }

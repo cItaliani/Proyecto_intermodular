@@ -57,7 +57,7 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(9, 10);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(120, 198);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -71,7 +71,7 @@
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(118, 13);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Información corporativa";
             // 
             // label2
@@ -81,7 +81,7 @@
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 13);
-            this.label2.TabIndex = 2;
+            this.label2.TabIndex = 0;
             this.label2.Text = "Actividad:";
             // 
             // label3
@@ -91,7 +91,7 @@
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 13);
-            this.label3.TabIndex = 3;
+            this.label3.TabIndex = 0;
             this.label3.Text = "Domicilio social:\r\n";
             // 
             // label4
@@ -101,7 +101,7 @@
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(275, 13);
-            this.label4.TabIndex = 4;
+            this.label4.TabIndex = 3;
             this.label4.Text = "Apartado de Correos 6060 C.P. 36280 Vigo - Pontevedra";
             // 
             // label5
@@ -111,7 +111,7 @@
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(112, 13);
-            this.label5.TabIndex = 5;
+            this.label5.TabIndex = 2;
             this.label5.Text = "Desarrollo de software";
             // 
             // label6
@@ -121,7 +121,7 @@
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(74, 13);
-            this.label6.TabIndex = 6;
+            this.label6.TabIndex = 0;
             this.label6.Text = "Razón social: ";
             // 
             // contextMenuStrip1
@@ -137,7 +137,7 @@
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(87, 13);
-            this.label7.TabIndex = 8;
+            this.label7.TabIndex = 1;
             this.label7.Text = "Riddler Company";
             // 
             // label8
@@ -147,7 +147,7 @@
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(218, 13);
-            this.label8.TabIndex = 9;
+            this.label8.TabIndex = 0;
             this.label8.Text = "© 2026 Riddler Company. All rights reserved.";
             // 
             // label9
@@ -157,7 +157,7 @@
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(256, 13);
-            this.label9.TabIndex = 10;
+            this.label9.TabIndex = 0;
             this.label9.Text = "Proyecto desarrollado como Trabajo de Fin de Grado";
             // 
             // label10
@@ -167,7 +167,7 @@
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(73, 13);
-            this.label10.TabIndex = 11;
+            this.label10.TabIndex = 0;
             this.label10.Text = "Colexio Vivas ";
             // 
             // label11
@@ -177,7 +177,7 @@
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(194, 13);
-            this.label11.TabIndex = 12;
+            this.label11.TabIndex = 4;
             this.label11.Text = "CS Diseño Aplicaciones Multiplataforma";
             // 
             // label12
@@ -187,7 +187,7 @@
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(45, 13);
-            this.label12.TabIndex = 13;
+            this.label12.TabIndex = 0;
             this.label12.Text = "Versión:";
             // 
             // label13
@@ -197,7 +197,7 @@
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(116, 13);
-            this.label13.TabIndex = 14;
+            this.label13.TabIndex = 5;
             this.label13.Text = "Aplicación de escritorio";
             // 
             // label14
@@ -207,7 +207,7 @@
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(72, 13);
-            this.label14.TabIndex = 15;
+            this.label14.TabIndex = 0;
             this.label14.Text = "Desarrollador:";
             // 
             // label15
@@ -217,7 +217,7 @@
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(140, 13);
-            this.label15.TabIndex = 16;
+            this.label15.TabIndex = 6;
             this.label15.Text = "Carlos Alberto Piñeiro Italiani";
             // 
             // label16
@@ -227,7 +227,7 @@
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(99, 13);
-            this.label16.TabIndex = 17;
+            this.label16.TabIndex = 0;
             this.label16.Text = "Nombre de usuario:";
             this.label16.Click += new System.EventHandler(this.label16_Click);
             // 
@@ -238,7 +238,7 @@
             this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(30, 13);
-            this.label17.TabIndex = 18;
+            this.label17.TabIndex = 7;
             this.label17.Text = "Atlas";
             // 
             // label18
@@ -248,7 +248,7 @@
             this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(167, 13);
-            this.label18.TabIndex = 19;
+            this.label18.TabIndex = 0;
             this.label18.Text = "informacion sobre el desarrollador:";
             // 
             // Riddler
@@ -277,11 +277,12 @@
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "Riddler";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Información Riddler Company";
+            this.Load += new System.EventHandler(this.Riddler_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -50,8 +50,8 @@
             this.txtPassRespuesta = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.btnLoging = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -60,7 +60,7 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(9, 10);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(112, 106);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -112,7 +112,7 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(81)))), ((int)(((byte)(155)))));
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(9, 120);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(112, 26);
             this.button1.TabIndex = 5;
@@ -163,7 +163,7 @@
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(524, 45);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(67, 80);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -254,15 +254,13 @@
             // 
             this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(228)))), ((int)(((byte)(140)))));
             this.textBox2.Location = new System.Drawing.Point(9, 167);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
             this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox2.Size = new System.Drawing.Size(583, 158);
             this.textBox2.TabIndex = 20;
             this.textBox2.Text = resources.GetString("textBox2.Text");
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label17
             // 
@@ -274,31 +272,33 @@
             this.label17.TabIndex = 21;
             this.label17.Text = "Biografía:";
             // 
-            // btnLoging
+            // btnGuardar
             // 
-            this.btnLoging.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(81)))), ((int)(((byte)(155)))));
-            this.btnLoging.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnLoging.ForeColor = System.Drawing.Color.White;
-            this.btnLoging.Location = new System.Drawing.Point(512, 328);
-            this.btnLoging.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnLoging.Name = "btnLoging";
-            this.btnLoging.Size = new System.Drawing.Size(79, 29);
-            this.btnLoging.TabIndex = 22;
-            this.btnLoging.Text = "Guardar";
-            this.btnLoging.UseVisualStyleBackColor = false;
+            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(81)))), ((int)(((byte)(155)))));
+            this.btnGuardar.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
+            this.btnGuardar.Location = new System.Drawing.Point(512, 328);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(79, 29);
+            this.btnGuardar.TabIndex = 22;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // button2
+            // btnCancel
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(81)))), ((int)(((byte)(155)))));
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(429, 328);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(79, 29);
-            this.button2.TabIndex = 23;
-            this.button2.Text = "Cancelar";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(81)))), ((int)(((byte)(155)))));
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Location = new System.Drawing.Point(429, 328);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(79, 29);
+            this.btnCancel.TabIndex = 23;
+            this.btnCancel.Text = "Cancelar";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // Perfil
             // 
@@ -306,8 +306,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(228)))), ((int)(((byte)(140)))));
             this.ClientSize = new System.Drawing.Size(600, 367);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.btnLoging);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.txtPassRespuesta);
@@ -331,7 +331,7 @@
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Perfil";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Perfil ";
@@ -366,7 +366,7 @@
         private System.Windows.Forms.Label txtPassRespuesta;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Button btnLoging;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

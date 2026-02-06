@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Registro));
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.segundoApellido = new System.Windows.Forms.TextBox();
+            this.primerApellido = new System.Windows.Forms.TextBox();
+            this.correo = new System.Windows.Forms.TextBox();
+            this.nick = new System.Windows.Forms.TextBox();
+            this.contrasenaOK = new System.Windows.Forms.TextBox();
+            this.contrasena = new System.Windows.Forms.TextBox();
             this.btnAcceso = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,165 +50,185 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtNombre
             // 
-            this.textBox1.Location = new System.Drawing.Point(111, 267);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(349, 22);
-            this.textBox1.TabIndex = 1;
+            this.txtNombre.Location = new System.Drawing.Point(83, 217);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(263, 20);
+            this.txtNombre.TabIndex = 1;
             // 
-            // textBox2
+            // segundoApellido
             // 
-            this.textBox2.Location = new System.Drawing.Point(305, 317);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(155, 22);
-            this.textBox2.TabIndex = 2;
+            this.segundoApellido.Location = new System.Drawing.Point(229, 258);
+            this.segundoApellido.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.segundoApellido.Name = "segundoApellido";
+            this.segundoApellido.Size = new System.Drawing.Size(117, 20);
+            this.segundoApellido.TabIndex = 3;
             // 
-            // textBox3
+            // primerApellido
             // 
-            this.textBox3.Location = new System.Drawing.Point(111, 317);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(155, 22);
-            this.textBox3.TabIndex = 3;
+            this.primerApellido.Location = new System.Drawing.Point(83, 258);
+            this.primerApellido.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.primerApellido.Name = "primerApellido";
+            this.primerApellido.Size = new System.Drawing.Size(117, 20);
+            this.primerApellido.TabIndex = 3;
             // 
-            // textBox4
+            // correo
             // 
-            this.textBox4.Location = new System.Drawing.Point(111, 435);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(349, 22);
-            this.textBox4.TabIndex = 4;
+            this.correo.Location = new System.Drawing.Point(83, 353);
+            this.correo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.correo.Name = "correo";
+            this.correo.Size = new System.Drawing.Size(263, 20);
+            this.correo.TabIndex = 5;
             // 
-            // textBox5
+            // nick
             // 
-            this.textBox5.Location = new System.Drawing.Point(111, 379);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(349, 22);
-            this.textBox5.TabIndex = 5;
+            this.nick.Location = new System.Drawing.Point(83, 308);
+            this.nick.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nick.Name = "nick";
+            this.nick.Size = new System.Drawing.Size(263, 20);
+            this.nick.TabIndex = 4;
             // 
-            // textBox6
+            // contrasenaOK
             // 
-            this.textBox6.Location = new System.Drawing.Point(111, 559);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.PasswordChar = '*';
-            this.textBox6.Size = new System.Drawing.Size(349, 22);
-            this.textBox6.TabIndex = 6;
+            this.contrasenaOK.Location = new System.Drawing.Point(83, 454);
+            this.contrasenaOK.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.contrasenaOK.Name = "contrasenaOK";
+            this.contrasenaOK.PasswordChar = '*';
+            this.contrasenaOK.Size = new System.Drawing.Size(263, 20);
+            this.contrasenaOK.TabIndex = 7;
+  
             // 
-            // textBox7
+            // contrasena
             // 
-            this.textBox7.Location = new System.Drawing.Point(111, 511);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.PasswordChar = '*';
-            this.textBox7.Size = new System.Drawing.Size(349, 22);
-            this.textBox7.TabIndex = 7;
+            this.contrasena.Location = new System.Drawing.Point(83, 415);
+            this.contrasena.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.contrasena.Name = "contrasena";
+            this.contrasena.PasswordChar = '*';
+            this.contrasena.Size = new System.Drawing.Size(263, 20);
+            this.contrasena.TabIndex = 6;
             // 
             // btnAcceso
             // 
             this.btnAcceso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(81)))), ((int)(((byte)(155)))));
-            this.btnAcceso.Location = new System.Drawing.Point(164, 617);
+            this.btnAcceso.Location = new System.Drawing.Point(123, 501);
+            this.btnAcceso.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAcceso.Name = "btnAcceso";
-            this.btnAcceso.Size = new System.Drawing.Size(209, 47);
+            this.btnAcceso.Size = new System.Drawing.Size(157, 38);
             this.btnAcceso.TabIndex = 8;
             this.btnAcceso.Text = "Desbloquear acceso🔒 ";
             this.btnAcceso.UseVisualStyleBackColor = false;
+            this.btnAcceso.Click += new System.EventHandler(this.btnAcceso_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(61, 23);
+            this.pictureBox1.Location = new System.Drawing.Point(46, 19);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(448, 152);
+            this.pictureBox1.Size = new System.Drawing.Size(336, 124);
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(111, 245);
+            this.label2.Location = new System.Drawing.Point(83, 199);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 16);
-            this.label2.TabIndex = 11;
+            this.label2.Size = new System.Drawing.Size(47, 13);
+            this.label2.TabIndex = 0;
             this.label2.Text = "Nombre:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(108, 299);
+            this.label3.Location = new System.Drawing.Point(81, 243);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(101, 16);
-            this.label3.TabIndex = 12;
+            this.label3.Size = new System.Drawing.Size(78, 13);
+            this.label3.TabIndex = 0;
             this.label3.Text = "Primer apellido:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(302, 298);
+            this.label4.Location = new System.Drawing.Point(226, 242);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(117, 16);
-            this.label4.TabIndex = 13;
+            this.label4.Size = new System.Drawing.Size(92, 13);
+            this.label4.TabIndex = 0;
             this.label4.Text = "Segundo apellido:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(111, 357);
+            this.label5.Location = new System.Drawing.Point(83, 290);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(125, 16);
-            this.label5.TabIndex = 14;
+            this.label5.Size = new System.Drawing.Size(99, 13);
+            this.label5.TabIndex = 0;
             this.label5.Text = "Nombre de usuario:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(114, 413);
+            this.label6.Location = new System.Drawing.Point(86, 336);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(120, 16);
-            this.label6.TabIndex = 15;
+            this.label6.Size = new System.Drawing.Size(96, 13);
+            this.label6.TabIndex = 0;
             this.label6.Text = "Correo electrónico:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(111, 492);
+            this.label7.Location = new System.Drawing.Point(83, 400);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(83, 16);
-            this.label7.TabIndex = 16;
+            this.label7.Size = new System.Drawing.Size(67, 13);
+            this.label7.TabIndex = 0;
             this.label7.Text = "Conrtraseña:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(114, 540);
+            this.label8.Location = new System.Drawing.Point(86, 439);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(134, 16);
-            this.label8.TabIndex = 17;
+            this.label8.Size = new System.Drawing.Size(108, 13);
+            this.label8.TabIndex = 0;
             this.label8.Text = "Repite la contraseña:";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(173, 178);
+            this.label9.Location = new System.Drawing.Point(130, 145);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(225, 16);
-            this.label9.TabIndex = 18;
+            this.label9.Size = new System.Drawing.Size(183, 13);
+            this.label9.TabIndex = 0;
             this.label9.Text = "Preparate... esto empieza contigo 😉 ";
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(184, 667);
+            this.linkLabel1.Location = new System.Drawing.Point(138, 542);
+            this.linkLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(174, 16);
-            this.linkLabel1.TabIndex = 19;
+            this.linkLabel1.Size = new System.Drawing.Size(139, 13);
+            this.linkLabel1.TabIndex = 9;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "volver a la pantalla de log in";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // Registro
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(228)))), ((int)(((byte)(140)))));
-            this.ClientSize = new System.Drawing.Size(568, 711);
+            this.ClientSize = new System.Drawing.Size(426, 578);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -220,15 +240,16 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnAcceso);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.contrasena);
+            this.Controls.Add(this.contrasenaOK);
+            this.Controls.Add(this.nick);
+            this.Controls.Add(this.correo);
+            this.Controls.Add(this.primerApellido);
+            this.Controls.Add(this.segundoApellido);
+            this.Controls.Add(this.txtNombre);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "Registro";
             this.Text = "resgistro";
@@ -241,13 +262,13 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.TextBox segundoApellido;
+        private System.Windows.Forms.TextBox primerApellido;
+        private System.Windows.Forms.TextBox correo;
+        private System.Windows.Forms.TextBox nick;
+        private System.Windows.Forms.TextBox contrasenaOK;
+        private System.Windows.Forms.TextBox contrasena;
         private System.Windows.Forms.Button btnAcceso;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
