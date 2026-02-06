@@ -62,3 +62,19 @@ C:\Users\Carlos Italiani\Desktop\TFG_GIT\Proyecto_intermodular\entrega proyecto 
 C:\Users\Carlos Italiani\Desktop\TFG_GIT\Proyecto_intermodular\entrega proyecto enero 2026\pinguC#\pingu\pingu\obj\Debug\pingu.csproj.CoreCompileInputs.cache
 C:\Users\Carlos Italiani\Desktop\TFG_GIT\Proyecto_intermodular\entrega proyecto enero 2026\pinguC#\pingu\pingu\obj\Debug\pingu.exe
 C:\Users\Carlos Italiani\Desktop\TFG_GIT\Proyecto_intermodular\entrega proyecto enero 2026\pinguC#\pingu\pingu\obj\Debug\pingu.pdb
+C:\Users\acuar\Desktop\git\Proyecto_intermodular\entrega proyecto enero 2026\pinguC#\pingu\pingu\bin\Debug\pingu.exe.config
+C:\Users\acuar\Desktop\git\Proyecto_intermodular\entrega proyecto enero 2026\pinguC#\pingu\pingu\bin\Debug\pingu.exe
+C:\Users\acuar\Desktop\git\Proyecto_intermodular\entrega proyecto enero 2026\pinguC#\pingu\pingu\bin\Debug\pingu.pdb
+C:\Users\acuar\Desktop\git\Proyecto_intermodular\entrega proyecto enero 2026\pinguC#\pingu\pingu\obj\Debug\pingu.csproj.AssemblyReference.cache
+C:\Users\acuar\Desktop\git\Proyecto_intermodular\entrega proyecto enero 2026\pinguC#\pingu\pingu\obj\Debug\pingu.exe.config
+C:\Users\acuar\Desktop\git\Proyecto_intermodular\entrega proyecto enero 2026\pinguC#\pingu\pingu\obj\Debug\pingu.Perfil.resources
+C:\Users\acuar\Desktop\git\Proyecto_intermodular\entrega proyecto enero 2026\pinguC#\pingu\pingu\obj\Debug\pingu.Riddler.resources
+C:\Users\acuar\Desktop\git\Proyecto_intermodular\entrega proyecto enero 2026\pinguC#\pingu\pingu\obj\Debug\pingu.Log_in.resources
+C:\Users\acuar\Desktop\git\Proyecto_intermodular\entrega proyecto enero 2026\pinguC#\pingu\pingu\obj\Debug\pingu.Recuperar_password.resources
+C:\Users\acuar\Desktop\git\Proyecto_intermodular\entrega proyecto enero 2026\pinguC#\pingu\pingu\obj\Debug\pingu.Registro.resources
+C:\Users\acuar\Desktop\git\Proyecto_intermodular\entrega proyecto enero 2026\pinguC#\pingu\pingu\obj\Debug\pingu.Principal.resources
+C:\Users\acuar\Desktop\git\Proyecto_intermodular\entrega proyecto enero 2026\pinguC#\pingu\pingu\obj\Debug\pingu.Properties.Resources.resources
+C:\Users\acuar\Desktop\git\Proyecto_intermodular\entrega proyecto enero 2026\pinguC#\pingu\pingu\obj\Debug\pingu.csproj.GenerateResource.cache
+C:\Users\acuar\Desktop\git\Proyecto_intermodular\entrega proyecto enero 2026\pinguC#\pingu\pingu\obj\Debug\pingu.csproj.CoreCompileInputs.cache
+C:\Users\acuar\Desktop\git\Proyecto_intermodular\entrega proyecto enero 2026\pinguC#\pingu\pingu\obj\Debug\pingu.exe
+C:\Users\acuar\Desktop\git\Proyecto_intermodular\entrega proyecto enero 2026\pinguC#\pingu\pingu\obj\Debug\pingu.pdb

@@ -1,26 +1,34 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Carlos Italiani\\Desktop\\TFG_GIT\\Proyecto_intermodular\\entrega proyecto enero 2026\\pinguC#\\pingu\\",
+  "WorkspaceRootPath": "C:\\Users\\acuar\\Desktop\\git\\Proyecto_intermodular\\entrega proyecto enero 2026\\pinguC#\\pingu\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{21578E07-0B8B-4F5D-A724-36C9F85DCE16}|pingu\\pingu.csproj|c:\\users\\carlos italiani\\desktop\\tfg_git\\proyecto_intermodular\\entrega proyecto enero 2026\\pinguc#\\pingu\\pingu\\log_in.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{21578E07-0B8B-4F5D-A724-36C9F85DCE16}|pingu\\pingu.csproj|solutionrelative:pingu\\log_in.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{21578E07-0B8B-4F5D-A724-36C9F85DCE16}|pingu\\pingu.csproj|c:\\users\\acuar\\desktop\\git\\proyecto_intermodular\\entrega proyecto enero 2026\\pinguc#\\pingu\\pingu\\registro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{21578E07-0B8B-4F5D-A724-36C9F85DCE16}|pingu\\pingu.csproj|solutionrelative:pingu\\registro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{21578E07-0B8B-4F5D-A724-36C9F85DCE16}|pingu\\pingu.csproj|c:\\users\\carlos italiani\\desktop\\tfg_git\\proyecto_intermodular\\entrega proyecto enero 2026\\pinguc#\\pingu\\pingu\\log_in.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{21578E07-0B8B-4F5D-A724-36C9F85DCE16}|pingu\\pingu.csproj|c:\\users\\acuar\\desktop\\git\\proyecto_intermodular\\entrega proyecto enero 2026\\pinguc#\\pingu\\pingu\\log_in.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{21578E07-0B8B-4F5D-A724-36C9F85DCE16}|pingu\\pingu.csproj|solutionrelative:pingu\\log_in.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{21578E07-0B8B-4F5D-A724-36C9F85DCE16}|pingu\\pingu.csproj|c:\\users\\carlos italiani\\desktop\\tfg_git\\proyecto_intermodular\\entrega proyecto enero 2026\\pinguc#\\pingu\\pingu\\principal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{21578E07-0B8B-4F5D-A724-36C9F85DCE16}|pingu\\pingu.csproj|solutionrelative:pingu\\principal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{21578E07-0B8B-4F5D-A724-36C9F85DCE16}|pingu\\pingu.csproj|c:\\users\\acuar\\desktop\\git\\proyecto_intermodular\\entrega proyecto enero 2026\\pinguc#\\pingu\\pingu\\log_in.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{21578E07-0B8B-4F5D-A724-36C9F85DCE16}|pingu\\pingu.csproj|solutionrelative:pingu\\log_in.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{21578E07-0B8B-4F5D-A724-36C9F85DCE16}|pingu\\pingu.csproj|c:\\users\\carlos italiani\\desktop\\tfg_git\\proyecto_intermodular\\entrega proyecto enero 2026\\pinguc#\\pingu\\pingu\\riddler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{21578E07-0B8B-4F5D-A724-36C9F85DCE16}|pingu\\pingu.csproj|solutionrelative:pingu\\riddler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{21578E07-0B8B-4F5D-A724-36C9F85DCE16}|pingu\\pingu.csproj|c:\\users\\acuar\\desktop\\git\\proyecto_intermodular\\entrega proyecto enero 2026\\pinguc#\\pingu\\pingu\\registro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{21578E07-0B8B-4F5D-A724-36C9F85DCE16}|pingu\\pingu.csproj|solutionrelative:pingu\\registro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{21578E07-0B8B-4F5D-A724-36C9F85DCE16}|pingu\\pingu.csproj|c:\\users\\carlos italiani\\desktop\\tfg_git\\proyecto_intermodular\\entrega proyecto enero 2026\\pinguc#\\pingu\\pingu\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{21578E07-0B8B-4F5D-A724-36C9F85DCE16}|pingu\\pingu.csproj|solutionrelative:pingu\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{21578E07-0B8B-4F5D-A724-36C9F85DCE16}|pingu\\pingu.csproj|c:\\users\\acuar\\desktop\\git\\proyecto_intermodular\\entrega proyecto enero 2026\\pinguc#\\pingu\\pingu\\registro.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{21578E07-0B8B-4F5D-A724-36C9F85DCE16}|pingu\\pingu.csproj|solutionrelative:pingu\\registro.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{21578E07-0B8B-4F5D-A724-36C9F85DCE16}|pingu\\pingu.csproj|c:\\users\\acuar\\desktop\\git\\proyecto_intermodular\\entrega proyecto enero 2026\\pinguc#\\pingu\\pingu\\perfil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{21578E07-0B8B-4F5D-A724-36C9F85DCE16}|pingu\\pingu.csproj|solutionrelative:pingu\\perfil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{21578E07-0B8B-4F5D-A724-36C9F85DCE16}|pingu\\pingu.csproj|C:\\Users\\acuar\\Desktop\\git\\Proyecto_intermodular\\entrega proyecto enero 2026\\pinguC#\\pingu\\pingu\\perfil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{21578E07-0B8B-4F5D-A724-36C9F85DCE16}|pingu\\pingu.csproj|solutionrelative:pingu\\perfil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,8 +38,22 @@
       "DocumentGroups": [
         {
           "DockedWidth": 262,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 9,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Perfil.cs",
+              "DocumentMoniker": "C:\\Users\\acuar\\Desktop\\git\\Proyecto_intermodular\\entrega proyecto enero 2026\\pinguC#\\pingu\\pingu\\Perfil.cs",
+              "RelativeDocumentMoniker": "pingu\\Perfil.cs",
+              "ToolTip": "C:\\Users\\acuar\\Desktop\\git\\Proyecto_intermodular\\entrega proyecto enero 2026\\pinguC#\\pingu\\pingu\\Perfil.cs",
+              "RelativeToolTip": "pingu\\Perfil.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAA3wCoAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T17:23:05.537Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
@@ -50,64 +72,77 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Riddler.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\Carlos Italiani\\Desktop\\TFG_GIT\\Proyecto_intermodular\\entrega proyecto enero 2026\\pinguC#\\pingu\\pingu\\Riddler.cs",
-              "RelativeDocumentMoniker": "pingu\\Riddler.cs",
-              "ToolTip": "C:\\Users\\Carlos Italiani\\Desktop\\TFG_GIT\\Proyecto_intermodular\\entrega proyecto enero 2026\\pinguC#\\pingu\\pingu\\Riddler.cs [Dise\u00F1o]",
-              "RelativeToolTip": "pingu\\Riddler.cs [Dise\u00F1o]",
+              "DocumentIndex": 4,
+              "Title": "Registro.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\acuar\\Desktop\\git\\Proyecto_intermodular\\entrega proyecto enero 2026\\pinguC#\\pingu\\pingu\\Registro.Designer.cs",
+              "RelativeDocumentMoniker": "pingu\\Registro.Designer.cs",
+              "ToolTip": "C:\\Users\\acuar\\Desktop\\git\\Proyecto_intermodular\\entrega proyecto enero 2026\\pinguC#\\pingu\\pingu\\Registro.Designer.cs",
+              "RelativeToolTip": "pingu\\Registro.Designer.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAcwGUAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-06T12:52:21.615Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2026-02-06T20:12:58.097Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Carlos Italiani\\Desktop\\TFG_GIT\\Proyecto_intermodular\\entrega proyecto enero 2026\\pinguC#\\pingu\\pingu\\Program.cs",
-              "RelativeDocumentMoniker": "pingu\\Program.cs",
-              "ToolTip": "C:\\Users\\Carlos Italiani\\Desktop\\TFG_GIT\\Proyecto_intermodular\\entrega proyecto enero 2026\\pinguC#\\pingu\\pingu\\Program.cs",
-              "RelativeToolTip": "pingu\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "Registro.cs",
+              "DocumentMoniker": "C:\\Users\\acuar\\Desktop\\git\\Proyecto_intermodular\\entrega proyecto enero 2026\\pinguC#\\pingu\\pingu\\Registro.cs",
+              "RelativeDocumentMoniker": "pingu\\Registro.cs",
+              "ToolTip": "C:\\Users\\acuar\\Desktop\\git\\Proyecto_intermodular\\entrega proyecto enero 2026\\pinguC#\\pingu\\pingu\\Registro.cs",
+              "RelativeToolTip": "pingu\\Registro.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAABsAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-06T12:52:09.447Z",
+              "WhenOpened": "2026-02-06T19:35:40.645Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Principal.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\Carlos Italiani\\Desktop\\TFG_GIT\\Proyecto_intermodular\\entrega proyecto enero 2026\\pinguC#\\pingu\\pingu\\Principal.cs",
-              "RelativeDocumentMoniker": "pingu\\Principal.cs",
-              "ToolTip": "C:\\Users\\Carlos Italiani\\Desktop\\TFG_GIT\\Proyecto_intermodular\\entrega proyecto enero 2026\\pinguC#\\pingu\\pingu\\Principal.cs [Dise\u00F1o]",
-              "RelativeToolTip": "pingu\\Principal.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-06T12:51:55.561Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "Log_in.cs",
-              "DocumentMoniker": "C:\\Users\\Carlos Italiani\\Desktop\\TFG_GIT\\Proyecto_intermodular\\entrega proyecto enero 2026\\pinguC#\\pingu\\pingu\\Log_in.cs",
+              "DocumentMoniker": "C:\\Users\\acuar\\Desktop\\git\\Proyecto_intermodular\\entrega proyecto enero 2026\\pinguC#\\pingu\\pingu\\Log_in.cs",
               "RelativeDocumentMoniker": "pingu\\Log_in.cs",
-              "ToolTip": "C:\\Users\\Carlos Italiani\\Desktop\\TFG_GIT\\Proyecto_intermodular\\entrega proyecto enero 2026\\pinguC#\\pingu\\pingu\\Log_in.cs",
+              "ToolTip": "C:\\Users\\acuar\\Desktop\\git\\Proyecto_intermodular\\entrega proyecto enero 2026\\pinguC#\\pingu\\pingu\\Log_in.cs",
               "RelativeToolTip": "pingu\\Log_in.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAPIAAAAAAAAAAAAuwP0AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-06T12:49:57.064Z",
+              "WhenOpened": "2026-02-06T19:22:42.583Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Log_in.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\Carlos Italiani\\Desktop\\TFG_GIT\\Proyecto_intermodular\\entrega proyecto enero 2026\\pinguC#\\pingu\\pingu\\Log_in.cs",
+              "DocumentMoniker": "C:\\Users\\acuar\\Desktop\\git\\Proyecto_intermodular\\entrega proyecto enero 2026\\pinguC#\\pingu\\pingu\\Log_in.cs",
               "RelativeDocumentMoniker": "pingu\\Log_in.cs",
-              "ToolTip": "C:\\Users\\Carlos Italiani\\Desktop\\TFG_GIT\\Proyecto_intermodular\\entrega proyecto enero 2026\\pinguC#\\pingu\\pingu\\Log_in.cs [Dise\u00F1o]",
+              "ToolTip": "C:\\Users\\acuar\\Desktop\\git\\Proyecto_intermodular\\entrega proyecto enero 2026\\pinguC#\\pingu\\pingu\\Log_in.cs [Dise\u00F1o]",
               "RelativeToolTip": "pingu\\Log_in.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-06T12:49:17.866Z",
+              "WhenOpened": "2026-02-06T19:22:13.178Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Registro.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\acuar\\Desktop\\git\\Proyecto_intermodular\\entrega proyecto enero 2026\\pinguC#\\pingu\\pingu\\Registro.cs",
+              "RelativeDocumentMoniker": "pingu\\Registro.cs",
+              "ToolTip": "C:\\Users\\acuar\\Desktop\\git\\Proyecto_intermodular\\entrega proyecto enero 2026\\pinguC#\\pingu\\pingu\\Registro.cs [Dise\u00F1o]",
+              "RelativeToolTip": "pingu\\Registro.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T19:21:40.022Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Perfil.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\acuar\\Desktop\\git\\Proyecto_intermodular\\entrega proyecto enero 2026\\pinguC#\\pingu\\pingu\\Perfil.cs",
+              "RelativeDocumentMoniker": "pingu\\Perfil.cs",
+              "ToolTip": "C:\\Users\\acuar\\Desktop\\git\\Proyecto_intermodular\\entrega proyecto enero 2026\\pinguC#\\pingu\\pingu\\Perfil.cs [Dise\u00F1o]",
+              "RelativeToolTip": "pingu\\Perfil.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T17:23:03.089Z",
               "EditorCaption": " [Dise\u00F1o]"
             }
           ]

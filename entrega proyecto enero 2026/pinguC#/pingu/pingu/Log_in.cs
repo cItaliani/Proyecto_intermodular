@@ -80,7 +80,24 @@ namespace pingu
             }
             else if (respuesta == DialogResult.OK)
             {
-                // enviar la contraseña al correo electronico 
+                if (string.IsNullOrEmpty(formulario_password.txtUsuario.Text.Trim()) || string.IsNullOrEmpty(formulario_password.txtCorreo.Text.Trim()))
+                {
+                    this.Show();
+                }
+                else{
+                    Registro r = new Registro();
+                    bool comprobacion = r.comprobarCorreoElectronico(formulario_password.txtCorreo.Text.Trim());
+                    if (comprobacion)
+                    {
+                        // enviar la contraseña al correo electronico 
+                        this.Show();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("el correo electronico no es valido. revisalo por favor", "error de validacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
 
@@ -104,7 +121,7 @@ namespace pingu
 
         }
 
-  
+
 
 
 
@@ -127,8 +144,8 @@ namespace pingu
             {
                 isCredenciales = true;
                 chkUsuario.Checked = false;
-                
-                
+
+
             }
             else
             {
@@ -163,7 +180,7 @@ namespace pingu
 
         private void chkUsuario_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+
             if (e.KeyChar == (char)Keys.Enter)
             {
                 if (chkUsuario.Checked)
@@ -172,7 +189,7 @@ namespace pingu
                 }
                 else
                 {
-                    chkUsuario.Checked = true;  
+                    chkUsuario.Checked = true;
                 }
             }
         }
@@ -204,7 +221,7 @@ namespace pingu
                 {
                     chkCredenciales.Checked = true;
                     chkUsuario.Checked = false;
-             
+
                 }
             }
         }
@@ -217,6 +234,24 @@ namespace pingu
         private void Log_in_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnLoging_MouseEnter(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtUsuario.Text.Trim()) || string.IsNullOrEmpty(txtpass.Text.Trim()))
+            {
+                btnLoging.BackColor = Color.Red;
+            }
+            else
+            {
+                btnLoging.BackColor = Color.Green;
+
+            }
+        }
+
+        private void btnLoging_MouseLeave(object sender, EventArgs e)
+        {
+            btnLoging.BackColor = Color.FromArgb(97, 81, 155);
         }
     }
 }
