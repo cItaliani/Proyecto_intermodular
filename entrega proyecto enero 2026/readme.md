@@ -29,6 +29,11 @@ PingU by Riddler Company
 | 28/01/2026  | subida del proyecto android completo hasta la fecha                                            |
 | 31/01/2026  | inicio de escritura de API                                                                     |
 | 02/02/2026  | actualizacion de la escritura de API                                                           |
+| 03/02/2026  | actualizacion del cliente Andorid                                                              |
+| 05/02/2026  | API a punto de terminarse, pte de corrección                                                   |
+| 06/02/2026  | actualizacion del cliente escritorio                                                           |
+| 09/02/2026  | actualizacion del cliente Andorid                                                              |
+| 09/02/2026  | finalizacion de API y corrección de la misma                                                   |
 
 
 ## Autor

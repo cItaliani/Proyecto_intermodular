@@ -1,4 +1,5 @@
 package ejem1;
+
 public class User {
     // respuesta.getString("alias");
     // respuesta.getString("nombre_visible");
@@ -65,6 +66,9 @@ public class User {
         return fotografia;
     }
     // endregion
+
+    public User() {
+    }
 
     public User(String alias, String nombre_visible, String correo_electronico, String contrasena, String biografia,
             String fotografia) {

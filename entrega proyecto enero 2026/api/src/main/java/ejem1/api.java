@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.regex.Pattern;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -21,9 +22,9 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 @Path("/PingU")
-public class api {
+public class API {
 
-    String url = "http://sql.freedb.tech:3306/freedb_PingU_db";
+    String url = "jdbc:mariadb://sql.freedb.tech:3306/freedb_PingU_db";
     String usuario = "freedb_Atlas";
     String password = "xzwcW#V28cK#j*x";
 
@@ -86,7 +87,7 @@ public class api {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             try (Connection conexion = DriverManager.getConnection(url, usuario, password)) {
-                String query = "SELECT alias, nombre_visible, correo_electronico, biografía, fotografia FROM usuarios WHERE id = ?";
+                String query = "SELECT id, alias, nombre_visible, correo_electronico, biografía, fotografia FROM usuarios WHERE id = ?";
                 try (PreparedStatement ps = conexion.prepareStatement(query)) {
                     ps.setString(1, idConsulta);
                     ResultSet respuesta = ps.executeQuery();
@@ -129,7 +130,9 @@ public class api {
                 ps.setString(4, biografiaParam);
                 ps.setString(5, contrasenaParam);
                 ps.setString(6, fotografiaParam);
-                ps.executeUpdate();
+                int filas = ps.executeUpdate();
+                if (filas == 0)
+                    return Response.status(Response.Status.NOT_FOUND).build();
                 return Response.ok("usuario actualizado correctamente").build();
             } catch (Exception e) {
                 return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("error").build();
@@ -148,7 +151,9 @@ public class api {
             try (Connection conexion = DriverManager.getConnection(url, usuario, password)) {
                 PreparedStatement ps = conexion
                         .prepareStatement(String.format("delete from usuario where id=?", idConsulta));
-                ps.executeQuery();
+                int filas = ps.executeUpdate();
+                if (filas == 0)
+                    return Response.status(Response.Status.NOT_FOUND).build();
                 return Response.ok("usuario eliminado correctamente").build();
             } catch (Exception e) {
                 return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
@@ -164,7 +169,9 @@ public class api {
     @POST
     @Path("/posts/{post-id}/like")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response likeAPost(@PathParam("post-id") String idPost, String idUsuario, Date fecha) {
+    public Response likeAPost(@PathParam("post-id") String idPost, String idUsuario) {
+        LocalDate fecha_local = LocalDate.now();
+        Date fecha = Date.valueOf(fecha_local);
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             try (Connection conexion = DriverManager.getConnection(url, usuario,
@@ -174,7 +181,9 @@ public class api {
                 ps.setString(1, idUsuario);
                 ps.setString(2, idPost);
                 ps.setDate(3, fecha);
-                ps.executeUpdate();
+                int filas = ps.executeUpdate();
+                if (filas == 0)
+                    return Response.status(Response.Status.NOT_FOUND).build();
                 return Response.ok("has dado like").build();
             } catch (Exception e) {
                 return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("error").build();
@@ -235,47 +244,71 @@ public class api {
     // endregion
     // region SOCIAL GRAPH
     @GET
-    @Path("/users/{user-seguidor}/followers")
+    @Path("/users/{user-id}/followers")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listaSeguidores(@PathParam("user-seguidor") String usuarioSeguidor, String usuarioSeguido,
-            Date fechaFollow) {
+    public Response listaSeguidores(@PathParam("user-id") int idUsuario) {
+
+        ArrayList<Seguidor> listaSeguidores = new ArrayList<Seguidor>();
+
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             try (Connection conexion = DriverManager.getConnection(url, usuario, password)) {
-                PreparedStatement ps = conexion
-                        .prepareStatement("select * from seguir where %s=? and %s=? and %s=?");
-                ps.setString(1, usuarioSeguidor);
-                ps.setString(2, usuarioSeguido);
-                ps.setDate(3, fechaFollow);
-                ps.executeQuery();
-                return Response.ok().build();
+
+                PreparedStatement ps = conexion.prepareStatement(
+                        "SELECT id_seguidor, id_seguido, fecha FROM seguir WHERE id_seguido = ?");
+
+                ps.setInt(1, idUsuario);
+
+                ResultSet respuesta = ps.executeQuery();
+
+                while (respuesta.next()) {
+                    Seguidor nuevoSeguidor = new Seguidor(
+                            respuesta.getInt("id_seguidor"),
+                            respuesta.getInt("id_seguido"),
+                            respuesta.getDate("fecha"));
+
+                    listaSeguidores.add(nuevoSeguidor);
+                }
+
+                return Response.ok(listaSeguidores).build();
+
             } catch (Exception e) {
-                return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("error").build();
+                return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                        .entity("error").build();
             }
         } catch (Exception e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("no reconoce el driver").build();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("no reconoce el driver").build();
         }
     }
 
     @GET
-    @Path("/users/{user-seguido}/followed")
+    @Path("/users/{user-id}/followed")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listaSeguidos(@PathParam("user-seguido") String usuarioSeguido, String usuarioSeguidor,
-            Date fechaFollowed) {
+    public Response listaSeguidos(@PathParam("user-id") int idUsuario) {
+        ArrayList<Seguidor> listaSeguidos = new ArrayList<Seguidor>();
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             try (Connection conexion = DriverManager.getConnection(url, usuario, password)) {
-                PreparedStatement ps = conexion.prepareStatement("select * from seguir where %s=? and %s=? and %s=?");
-                ps.setString(1, usuarioSeguido);
-                ps.setString(2, usuarioSeguidor);
-                ps.setDate(3, fechaFollowed);
-                ps.executeQuery();
-                return Response.ok().build();
+                PreparedStatement ps = conexion.prepareStatement(
+                        "SELECT id_seguidor, id_seguido, fecha FROM seguir WHERE id_seguidor = ?");
+                ps.setInt(1, idUsuario);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    Seguidor seguido = new Seguidor(
+                            rs.getInt("id_seguidor"),
+                            rs.getInt("id_seguido"),
+                            rs.getDate("fecha"));
+                    listaSeguidos.add(seguido);
+                }
+                return Response.ok(listaSeguidos).build();
             } catch (Exception e) {
-                return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("error").build();
+                return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                        .entity("error").build();
             }
         } catch (Exception e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("no reconoce el driver").build();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("no reconoce el driver").build();
         }
     }
 
@@ -327,7 +360,7 @@ public class api {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             try (Connection conexion = DriverManager.getConnection(url, usuario, password)) {
-                PreparedStatement ps = conexion.prepareStatement("delete from seguir where %s=?");
+                PreparedStatement ps = conexion.prepareStatement("delete from seguir where id=?");
                 ps.setString(1, idUser);
                 ps.executeUpdate();
                 return Response.ok().build();
@@ -340,8 +373,8 @@ public class api {
     }
 
     // endregion
+    // region POSTS
 
-    // regiones en construccion
     @POST
     @Path("/posts")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -349,7 +382,8 @@ public class api {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             try (Connection conexion = DriverManager.getConnection(url, usuario, password)) {
-                PreparedStatement ps = conexion.prepareStatement("insert into post values(?,?,?)");
+                PreparedStatement ps = conexion
+                        .prepareStatement("INSERT INTO post(contenido,url_multimedia,id_post_padre) VALUES (?,?,?)");
                 ps.setString(1, contenido);
                 ps.setString(2, url_multimedia);
                 ps.setInt(3, IdPostPadre);
@@ -363,12 +397,29 @@ public class api {
         }
     }
 
-    // @GET
-    // @Path("/posts")
-    // @Produces(MediaType.APPLICATION_JSON)
-    // public Response recuperarPosts(){
+    @GET
+    @Path("/posts")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response recuperarPosts() {
+        ArrayList<String> listadoPosts = new ArrayList<String>();
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            try (Connection conexion = DriverManager.getConnection(url, usuario, password)) {
+                PreparedStatement ps = conexion
+                        .prepareStatement("SELECT contenido FROM post WHERE id_post_padre IS NULL LIMIT 10");
+                ResultSet respuesta = ps.executeQuery();
+                while (respuesta.next()) {
+                    listadoPosts.add(respuesta.getString("contenido"));
+                }
+                return Response.ok(listadoPosts).build();
+            } catch (Exception e) {
+                return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("error").build();
+            }
 
-    // }
+        } catch (Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("noreconoce el driver").build();
+        }
+    }
 
     @GET
     @Path("/posts/{post-id}")
@@ -395,7 +446,7 @@ public class api {
             Class.forName("org.mariadb.jdbc.Driver");
             try (Connection conexion = DriverManager.getConnection(url, usuario, password)) {
                 PreparedStatement ps = conexion.prepareStatement("delete from posts where id =%d", idPostBorrado);
-                ps.executeQuery();
+                ps.executeUpdate();
                 return Response.ok().build();
             } catch (Exception e) {
                 return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("error").build();
@@ -406,15 +457,20 @@ public class api {
     }
 
     @GET
-    @Path("/posts/{post-id}/relies")
+    @Path("/posts/{post-id}/replies")
     @Produces(MediaType.APPLICATION_JSON)
     public Response replies(@PathParam("post-id") int idPostComentado) {
-        ArrayList<Post> comentariosSobrePostComentado = new ArrayList<Post>();
+        ArrayList<String> comentariosSobrePostComentado = new ArrayList<String>();
         try {
             Class.forName("org.mariadb.jdbc.Driver");
-            try (Connection conexion = DriverManager.getConnection(url,usuario,password)) {
-                PreparedStatement ps = conexion.prepareStatement("select contenido from post where "); // pente desde aqui 
-                return Response.ok().build();
+            try (Connection conexion = DriverManager.getConnection(url, usuario, password)) {
+                PreparedStatement ps = conexion.prepareStatement("select contenido from post where id_post_padre = %s",
+                        idPostComentado);
+                ResultSet respuesta = ps.executeQuery();
+                while (respuesta.next()) {
+                    comentariosSobrePostComentado.add(respuesta.getString("contenido"));
+                }
+                return Response.ok(comentariosSobrePostComentado).build();
             } catch (Exception e) {
                 return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("error").build();
             }
@@ -422,6 +478,6 @@ public class api {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("no reconoce el driver").build();
         }
     }
-    // region POSTS
+
     // endregion
 }
