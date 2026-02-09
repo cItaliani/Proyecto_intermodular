@@ -363,11 +363,64 @@ public class api {
         }
     }
 
+    // @GET
+    // @Path("/posts")
+    // @Produces(MediaType.APPLICATION_JSON)
+    // public Response recuperarPosts(){
+
+    // }
+
     @GET
-    @Path("/posts")
+    @Path("/posts/{post-id}")
+    public Response readPost(@PathParam("post-id") int idPostLeido) {
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            try (Connection conexion = DriverManager.getConnection(url, usuario, password)) {
+                PreparedStatement ps = conexion.prepareStatement("select contenido from post where id=%d ",
+                        idPostLeido);
+                ps.executeQuery();
+                return Response.ok().build();
+            } catch (Exception e) {
+                return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("error").build();
+            }
+        } catch (Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("no reconoce el driver").build();
+        }
+    }
+
+    @DELETE
+    @Path("/posts/{post-id}")
+    public Response deletePost(@PathParam("post-id") int idPostBorrado) {
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            try (Connection conexion = DriverManager.getConnection(url, usuario, password)) {
+                PreparedStatement ps = conexion.prepareStatement("delete from posts where id =%d", idPostBorrado);
+                ps.executeQuery();
+                return Response.ok().build();
+            } catch (Exception e) {
+                return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("error").build();
+            }
+        } catch (Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("no reconoce el driver").build();
+        }
+    }
+
+    @GET
+    @Path("/posts/{post-id}/relies")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response recuperarPosts(){
-        
+    public Response replies(@PathParam("post-id") int idPostComentado) {
+        ArrayList<Post> comentariosSobrePostComentado = new ArrayList<Post>();
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            try (Connection conexion = DriverManager.getConnection(url,usuario,password)) {
+                PreparedStatement ps = conexion.prepareStatement("select contenido from post where "); // pente desde aqui 
+                return Response.ok().build();
+            } catch (Exception e) {
+                return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("error").build();
+            }
+        } catch (Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("no reconoce el driver").build();
+        }
     }
     // region POSTS
     // endregion

@@ -67,51 +67,51 @@ public class MainActivity4registro extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (ettNombre4.getText().toString().trim().isEmpty()) {
-                    Toast.makeText(MainActivity4registro.this, "Debes introducir tú nombre", Toast.LENGTH_SHORT).show();
-                }
-
-                else if (ett1ap4.getText().toString().trim().isEmpty()) {
+                    Toast.makeText(MainActivity4registro.this, "Debes introducir tu nombre", Toast.LENGTH_SHORT).show();
+                } else if (ett1ap4.getText().toString().trim().isEmpty()) {
                     Toast.makeText(MainActivity4registro.this, "Debes introducir tu primer apellido", Toast.LENGTH_SHORT).show();
-                }
-                else if (ett2ap4.getText().toString().trim().isEmpty()) {
+                } else if (ett2ap4.getText().toString().trim().isEmpty()) {
                     Toast.makeText(MainActivity4registro.this, "Debes introducir tu segundo apellido", Toast.LENGTH_SHORT).show();
-                }
-                else if (ettalias.getText().toString().trim().isEmpty()) {
+                } else if (ettalias.getText().toString().trim().isEmpty()) {
                     Toast.makeText(MainActivity4registro.this, "Debes introducir tu nombre de usuario", Toast.LENGTH_SHORT).show();
-                }
-                else if (ettCorreo4.getText().toString().trim().isEmpty()) {
+                } else if (ettCorreo4.getText().toString().trim().isEmpty()) {
                     Toast.makeText(MainActivity4registro.this, "Debes introducir tu correo electrónico", Toast.LENGTH_SHORT).show();
-                }
-                else if (ettcontrasena4.getText().toString().trim().isEmpty()) {
+                } else if (!validarEmail(ettCorreo4.getText().toString())) {
+                    Toast.makeText(MainActivity4registro.this, "El correo electrónico no es válido", Toast.LENGTH_SHORT).show();
+                } else if (ettcontrasena4.getText().toString().trim().isEmpty()) {
                     Toast.makeText(MainActivity4registro.this, "Debes introducir una contraseña", Toast.LENGTH_SHORT).show();
-                }else if (ettcontrasenaOk4.getText().toString().trim().isEmpty()) {
+                } else if (ettcontrasenaOk4.getText().toString().trim().isEmpty()) {
                     Toast.makeText(MainActivity4registro.this, "Debes introducir la contraseña otra vez", Toast.LENGTH_SHORT).show();
-                } else{
-                    if (ettcontrasena4.getText().toString().equals(ettcontrasenaOk4.getText().toString())){
-                        Toast.makeText(MainActivity4registro.this, "ok", Toast.LENGTH_SHORT).show();
+                } else if (!ettcontrasena4.getText().toString().equals(ettcontrasenaOk4.getText().toString())) {
+                    Toast.makeText(MainActivity4registro.this, "Las contraseñas tienen que ser iguales", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Todo validado correctamente
+                    Toast.makeText(MainActivity4registro.this, "Registro exitoso🎉", Toast.LENGTH_SHORT).show();
 
-                        Intent intent = new Intent(MainActivity4registro.this, MainActivity2perfil.class);
-                        //falta el enviar datos para que pueda acceder
-                        startActivity(intent);
-                    }else{
-                        Log.i("ERROR",ettcontrasenaOk4.getText().toString());
-                        Log.i("ERROR",ettcontrasena4.getText().toString());
-                        Toast.makeText(MainActivity4registro.this, "Las contraseñas tienen que ser iguales", Toast.LENGTH_SHORT).show();
-                    }
+                    Intent intent = new Intent(MainActivity4registro.this, MainActivity.class);
 
+                    intent.putExtra("nombre", ettNombre4.getText().toString());
+                    intent.putExtra("alias", ettalias.getText().toString());
+                    startActivity(intent);
                 }
-        }
-    });
+            }
+        });
 
-}
-
-@Override
-public boolean onOptionsItemSelected(MenuItem item) {
-    switch (item.getItemId()) {
-        case android.R.id.home:
-            onBackPressed();
-            return true;
     }
-    return super.onOptionsItemSelected(item);
-}
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    public static boolean validarEmail(String email) {
+        String patron = "^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+        return email.matches(patron);
+    }
 }
