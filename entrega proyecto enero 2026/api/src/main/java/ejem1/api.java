@@ -21,8 +21,8 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
-@Path("/PingU")
-public class API {
+@Path("/pingu")
+public class api {
 
     String url = "jdbc:mariadb://sql.freedb.tech:3306/freedb_PingU_db";
     String usuario = "freedb_Atlas";
@@ -44,35 +44,34 @@ public class API {
 
     // regiones terminadas
     // region USERS
-    @POST
+    @POST // revisar 
     @Path("/users")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createUser(String alias, String nombre_visible, String correo_electronico, String contrasena,
-            String biografia, String foto_url) throws ClassNotFoundException {
-        if (alias == null || alias.trim().isEmpty()) {
+    public Response createUser(User usuarioParam) throws ClassNotFoundException {
+        if (usuarioParam.getAlias()== null || usuarioParam.getAlias().trim().isEmpty()) {
             return Response.status(Response.Status.BAD_REQUEST).entity("datos invalidos").build();
         }
-        if (correo_electronico == null || correo_electronico.trim().isEmpty()) {
+        if (usuarioParam.getCorreo_electronico()== null || usuarioParam.getCorreo_electronico().trim().isEmpty()) {
             return Response.status(Response.Status.BAD_REQUEST).entity("datos invalidos").build();
         } else {
-            boolean isMail = comprobarCorreo(correo_electronico);
+            boolean isMail = comprobarCorreo(usuarioParam.getCorreo_electronico());
             if (!isMail) {
                 return Response.status(Response.Status.BAD_REQUEST).entity("datos invalidos").build();
             }
         }
-        if (contrasena == null || contrasena.trim().isEmpty() || contrasena.length() < 6) {
+        if (usuarioParam.getContrasena()== null || usuarioParam.getContrasena().trim().isEmpty() || usuarioParam.getContrasena().length() < 6) {
             return Response.status(Response.Status.BAD_REQUEST).entity("datos invalidos").build();
         }
         Class.forName("org.mariadb.jdbc.Driver");
         try (Connection conexion = DriverManager.getConnection(url, usuario, password)) {
             PreparedStatement ps = conexion.prepareStatement(
                     "insert into usuarios(alias,nombre_visible,correo_electronico,contrasena,biografia,Foto_url) values (?,?,?,?,?,?)");
-            ps.setString(1, alias);
-            ps.setString(2, nombre_visible);
-            ps.setString(3, correo_electronico);
-            ps.setString(4, contrasena);
-            ps.setString(5, biografia);
-            ps.setString(6, foto_url);
+            ps.setString(1, usuarioParam.getAlias());
+            ps.setString(2, usuarioParam.getNombre_visible());
+            ps.setString(3, usuarioParam.getCorreo_electronico());
+            ps.setString(4, usuarioParam.getContrasena());
+            ps.setString(5, usuarioParam.getBiografia());
+            ps.setString(6, usuarioParam.getFotografia());
             ps.executeUpdate();
             return Response.ok("registro creado satisfactoriamente").build();
         } catch (Exception e) {
