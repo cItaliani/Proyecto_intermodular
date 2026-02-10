@@ -21,6 +21,10 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
+//ruta consulta peticiones
+//https://proyecto-intermodular.onrender.com/rest/{lo que proceda}
+
+
 @Path("/pingu")
 public class api {
 
