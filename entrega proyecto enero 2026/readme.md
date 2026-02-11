@@ -34,7 +34,8 @@ PingU by Riddler Company
 | 06/02/2026  | actualizacion del cliente escritorio                                                           |
 | 09/02/2026  | actualizacion del cliente Andorid                                                              |
 | 09/02/2026  | finalizacion de API y corrección de la misma                                                   |
-
+| 10/02/2026  | se han detectado fallos en API (pte de revisión)                                               |
+| 11/02/2026  | avance importante en movil actuvuty de publicacion de posts                                    |
 
 ## Autor
 - Carlos Alberto Piñeiro Italiani
