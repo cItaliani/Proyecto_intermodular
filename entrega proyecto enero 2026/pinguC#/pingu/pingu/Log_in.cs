@@ -33,6 +33,10 @@ namespace pingu
             {
                 MessageBox.Show("es requerido intorducir una contraseña", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            else if (txtpass.Text.Length < 6)
+            {
+                MessageBox.Show("contraseña demasiado corta","error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             else
             {
                 usuario = txtUsuario.Text;
@@ -84,7 +88,8 @@ namespace pingu
                 {
                     this.Show();
                 }
-                else{
+                else
+                {
                     Registro r = new Registro();
                     bool comprobacion = r.comprobarCorreoElectronico(formulario_password.txtCorreo.Text.Trim());
                     if (comprobacion)
@@ -238,7 +243,7 @@ namespace pingu
 
         private void btnLoging_MouseEnter(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtUsuario.Text.Trim()) || string.IsNullOrEmpty(txtpass.Text.Trim()))
+            if (string.IsNullOrEmpty(txtUsuario.Text.Trim()) || string.IsNullOrEmpty(txtpass.Text.Trim()) || txtpass.Text.Length<6)
             {
                 btnLoging.BackColor = Color.Red;
             }
