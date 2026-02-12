@@ -23,13 +23,13 @@ public class MainActivity9formulario_post extends AppCompatActivity {
     ImageView iv6;
     EditText ett4;
     Toolbar tb9;
-    boolean isImagen=false;
+    boolean isImagen = false;
     private ActivityResultLauncher<String> seleccionarImagen = registerForActivityResult(
             new ActivityResultContracts.GetContent(),
             uri -> {
                 if (uri != null) {
                     imageView8.setImageURI(uri);
-                    isImagen=true;
+                    isImagen = true;
                 }
             }
     );
@@ -45,8 +45,8 @@ public class MainActivity9formulario_post extends AppCompatActivity {
         iv6 = findViewById(R.id.iv6);
         ett4 = findViewById(R.id.ett4);
 
-        iv6.setOnClickListener(v->{
-            if (!ett4.getText().toString().equals("")){
+        iv6.setOnClickListener(v -> {
+            if (!ett4.getText().toString().equals("")) {
                 ett4.setText("");
                 ett4.setHint("Tranquilo, aquí no almacenamos secretos ni hacemos colección de mensajes " +
                         "Lo que se borra, se va directo al iceberg del olvido ❄\uD83D\uDC27");  // ese codigo es el emoji pingüino
@@ -55,6 +55,7 @@ public class MainActivity9formulario_post extends AppCompatActivity {
 
         iv7.setOnClickListener(v -> {
             imageView8.setImageResource(R.drawable.pulsa_imagen);
+            isImagen=false;
 
         });
 
@@ -93,15 +94,18 @@ public class MainActivity9formulario_post extends AppCompatActivity {
             finish();
             return true;
         } else if (id == R.id.publicar) {
-            if (!ett4.getText().toString().isEmpty() || isImagen){
+            String texto = ett4.getText().toString().trim();
+            if (texto.isEmpty()&&!isImagen){
+                Toast.makeText(MainActivity9formulario_post.this, "Nada que publicar aún \uD83D\uDC27❄\n" +
+                        "Añade un mensaje y/o imagen. ", Toast.LENGTH_SHORT).show();
+                return  true;
+            }
             Toast.makeText(MainActivity9formulario_post.this, "\uD83D\uDCE2 ¡Listo! Tu publicación llegó al iceberg de PingU \uD83D\uDC27", Toast.LENGTH_SHORT).show();
             finish();
             return true;
-            }else{
-                Toast.makeText(MainActivity9formulario_post.this, "Nada que publicar aún \uD83D\uDC27❄\n" +
-                        "Añade un mensaje y/o imagen. ", Toast.LENGTH_SHORT).show();
-            }
-        };
+
+        }
+        ;
         return super.onOptionsItemSelected(item);
     }
 }
