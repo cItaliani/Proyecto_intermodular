@@ -74,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Debes introducir tu usuario", Toast.LENGTH_SHORT).show();
                 } else if (ettContrasena.getText().toString().trim().isEmpty()) {
                     Toast.makeText(MainActivity.this, "Debes introducir tu contraseña", Toast.LENGTH_SHORT).show();
+                } else if (ettContrasena.getText().toString().trim().length() < 6) {
+                    Toast.makeText(MainActivity.this, "\uD83D\uDEE1\uFE0F En PingU cuidamos lo tuyo. Esa contraseña necesita crecer", Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(MainActivity.this, MainActivity5muro.class);
                     guardarPreferencias();
@@ -159,8 +161,6 @@ public class MainActivity extends AppCompatActivity {
         }
         editor.apply();
     }
-
-
 
 
 }
