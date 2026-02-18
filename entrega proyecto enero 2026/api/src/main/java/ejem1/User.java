@@ -1,19 +1,13 @@
 package ejem1;
 
 public class User {
-    // respuesta.getString("alias");
-    // respuesta.getString("nombre_visible");
-    // respuesta.getString("correo_electronico");
-    // respuesta.getString("contrasena");
-    // respuesta.getString("biografia");
-    // respuesta.getString("fotografia");
-
     private String alias;
     private String nombre_visible;
     private String correo_electronico;
     private String contrasena;
     private String biografia;
     private String fotografia;
+    private String user_id;
 
     // region de setters
     public void setAlias(String alias) {
@@ -38,6 +32,10 @@ public class User {
 
     public void setFotografia(String fotografia) {
         this.fotografia = fotografia;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
     // endregion
@@ -65,17 +63,19 @@ public class User {
     public String getFotografia() {
         return fotografia;
     }
+
+    public String getUser_id() {
+        return user_id;
+    }
     // endregion
 
-    public User() {
-    }
-
-    public User(String alias, String nombre_visible, String correo_electronico, String contrasena, String biografia,
-            String fotografia) {
+    public User(){};
+    
+    public User(String user_id, String alias, String nombre_visible, String correo_electronico,String biografia, String fotografia) {
+        this.user_id = user_id;
         this.alias = alias;
         this.nombre_visible = nombre_visible;
         this.correo_electronico = correo_electronico;
-        this.contrasena = contrasena;
         this.biografia = biografia;
         this.fotografia = fotografia;
     }

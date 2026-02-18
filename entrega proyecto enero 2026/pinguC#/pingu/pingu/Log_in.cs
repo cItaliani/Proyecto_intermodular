@@ -17,6 +17,8 @@ namespace pingu
         private bool isCredenciales = false;
         private string usuario = "";
         private string pass = "";
+        private Random random = new Random();
+
         public Log_in()
         {
             InitializeComponent();
@@ -27,15 +29,56 @@ namespace pingu
         {
             if (string.IsNullOrEmpty(txtUsuario.Text))
             {
-                MessageBox.Show("es requerido intorducir un usuario", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Array de frases aleatorias para usuario vacío
+                string[] frasesUsuario = {
+                    "⚠️ Sin usuario no entras, colega 🚫",
+                    "Ehhh, ¿el usuario? 🤨 No te lo saltes",
+                    "¿Usuario invisible? No funciona así 👻",
+                    "Pon tu usuario aquí, porfa 😅",
+                    "⚠️ Campo obligatorio, campeón",
+                    "Tío, el usuario... ¿dónde está? 🤷‍♂️",
+                    "No seas tímido, pon tu usuario 😏",
+                    "Adivina: necesitas un usuario 🎯",
+                    "El usuario no es opcional, crack 🎪",
+                    "¿Olvidaste algo? Sí, el usuario 🧠"
+                };
+
+                string fraseAleatoria = frasesUsuario[random.Next(frasesUsuario.Length)];
+                MessageBox.Show(fraseAleatoria, "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (string.IsNullOrEmpty(txtpass.Text))
             {
-                MessageBox.Show("es requerido intorducir una contraseña", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Array de frases aleatorias para contraseña vacía
+                string[] frasesPassword = {
+                    "Ehhh, ¿y la contraseña? 🤔",
+                    "La contraseña no se pone sola 🙃",
+                    "¿Contraseña? ¿Hola? 👋",
+                    "Sin contraseña no hay login, sorry 🚷",
+                    "Falta algo importante... la contraseña 🔑",
+                    "¿Te olvidaste de la contraseña? 😬",
+                    "Contraseña obligatoria, amigo 🎯",
+                    "Pon la contraseña, no seas vago 😅"
+                };
+
+                string fraseAleatoria = frasesPassword[random.Next(frasesPassword.Length)];
+                MessageBox.Show(fraseAleatoria, "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (txtpass.Text.Length < 6)
             {
-                MessageBox.Show("contraseña demasiado corta","error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Array de frases aleatorias para contraseña corta
+                string[] frasesPasswordCorta = {
+                    "⚠️ ¿En serio? Mínimo 6, no seas rata 😂",
+                    "Muy corta, mínimo 6 caracteres 📏",
+                    "¿6 caracteres es mucho pedir? 🤨",
+                    "Esa contraseña es más corta que... 6+ porfa 🙏",
+                    "Mínimo 6, que no es tan difícil 💪",
+                    "6 caracteres o más, venga 🎯",
+                    "Corta contraseña = insegura. Mín. 6 🔒",
+                    "Dale más caña, mínimo 6 caracteres 🚀"
+                };
+
+                string fraseAleatoria = frasesPasswordCorta[random.Next(frasesPasswordCorta.Length)];
+                MessageBox.Show(fraseAleatoria, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -55,16 +98,11 @@ namespace pingu
                         txtUsuario.Text = usuario;
                     }
 
-
                     if (isCredenciales)
                     {
                         txtUsuario.Text = usuario;
                         txtpass.Text = pass;
                     }
-
-
-
-
                 }
                 if (respuesta == DialogResult.Cancel)
                 {
@@ -96,7 +134,6 @@ namespace pingu
                     {
                         // enviar la contraseña al correo electronico 
                         this.Show();
-
                     }
                     else
                     {
@@ -115,20 +152,13 @@ namespace pingu
             {
                 this.Visible = true;
             }
-
-
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
             Riddler f10 = new Riddler();
             f10.Show();
-
         }
-
-
-
-
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -149,15 +179,11 @@ namespace pingu
             {
                 isCredenciales = true;
                 chkUsuario.Checked = false;
-
-
             }
             else
             {
                 isCredenciales = false;
             }
-
-
         }
 
         private void txtUsuario_TextChanged(object sender, EventArgs e)
@@ -170,7 +196,6 @@ namespace pingu
             if (chkpass.Checked)
             {
                 txtpass.UseSystemPasswordChar = false;
-
             }
             else
             {
@@ -185,7 +210,6 @@ namespace pingu
 
         private void chkUsuario_KeyPress(object sender, KeyPressEventArgs e)
         {
-
             if (e.KeyChar == (char)Keys.Enter)
             {
                 if (chkUsuario.Checked)
@@ -226,7 +250,6 @@ namespace pingu
                 {
                     chkCredenciales.Checked = true;
                     chkUsuario.Checked = false;
-
                 }
             }
         }
@@ -243,14 +266,13 @@ namespace pingu
 
         private void btnLoging_MouseEnter(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtUsuario.Text.Trim()) || string.IsNullOrEmpty(txtpass.Text.Trim()) || txtpass.Text.Length<6)
+            if (string.IsNullOrEmpty(txtUsuario.Text.Trim()) || string.IsNullOrEmpty(txtpass.Text.Trim()) || txtpass.Text.Length < 6)
             {
                 btnLoging.BackColor = Color.Red;
             }
             else
             {
                 btnLoging.BackColor = Color.Green;
-
             }
         }
 

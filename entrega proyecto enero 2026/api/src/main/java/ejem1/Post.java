@@ -1,49 +1,78 @@
+// Post.java
 package ejem1;
 
-import java.time.LocalDate;
+import java.sql.Date;
+
 
 public class Post {
-    private String url_multimedia;
+    private String id;
+    private String id_autor;
     private String contenido;
-    private String fecha_creacion;
+    private String urlMultimedia;
+    private String idPostPadre;
+    private Date fecha_creacion;
 
-    // region de setters
-    public void setUrl_multimedia(String url_multimedia) {
-        this.url_multimedia = url_multimedia;
+    // Constructor vacío
+    public Post() {
     }
 
-    public void setContenido(String contenido) {
+    // Constructor completo
+    public Post(String id, String id_autor, String contenido, String urlMultimedia, String idPostPadre,
+            Date fecha_creacion) {
+        this.id = id;
+        this.id_autor = id_autor;
         this.contenido = contenido;
+        this.urlMultimedia = urlMultimedia;
+        this.idPostPadre = idPostPadre;
+        this.fecha_creacion = fecha_creacion;
     }
 
-    public void setFecha_creacion(String fecha_creacion) {
-        this.fecha_creacion = LocalDate.now().toString();
+    // Getters y Setters
+    public String getId() {
+        return id;
     }
 
-    // endregion
-    // region de getters
-    public String getUrl_multimedia() {
-        return url_multimedia;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId_autor() {
+        return id_autor;
+    }
+
+    public void setId_autor(String id_autor) {
+        this.id_autor = id_autor;
     }
 
     public String getContenido() {
         return contenido;
     }
 
-    public String getFecha_creacion() {
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
+    }
+
+    public String getUrlMultimedia() {
+        return urlMultimedia;
+    }
+
+    public void setUrlMultimedia(String urlMultimedia) {
+        this.urlMultimedia = urlMultimedia;
+    }
+
+    public String getIdPostPadre() {
+        return idPostPadre;
+    }
+
+    public void setIdPostPadre(String idPostPadre) {
+        this.idPostPadre = idPostPadre;
+    }
+
+    public Date getFecha_creacion() {
         return fecha_creacion;
     }
 
-    // endregion
-    public Post() {
-
-    }
-
-    public Post(String url_multimedia, String contenido, String fecha_creacion) {
-
-        this.url_multimedia = url_multimedia;
-        this.contenido = contenido;
+    public void setFecha_creacion(Date fecha_creacion) {
         this.fecha_creacion = fecha_creacion;
     }
-
 }

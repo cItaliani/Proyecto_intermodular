@@ -1,3 +1,4 @@
+// Seguidor.java
 package ejem1;
 
 import java.sql.Date;
@@ -7,36 +8,35 @@ public class Seguidor {
     private int idSeguido;
     private Date fecha;
 
-    public int getIdSeguidor() {
-        return idSeguidor;
+    // Constructor vacío
+    public Seguidor() {}
+
+    // Constructor completo
+    public Seguidor(int idSeguidor, int idSeguido, Date fecha) {
+        this.idSeguidor = idSeguidor;
+        this.idSeguido = idSeguido;
+        this.fecha = fecha;
     }
 
-    public int getIdSeguido() {
-        return idSeguido;
+    // Getters y Setters
+    public int getIdSeguidor() { 
+        return idSeguidor; 
+    }
+    public void setIdSeguidor(int idSeguidor) { 
+        this.idSeguidor = idSeguidor; 
     }
 
-    public Date getFecha(){
-        return fecha;
+    public int getIdSeguido() { 
+        return idSeguido; 
+    }
+    public void setIdSeguido(int idSeguido) { 
+        this.idSeguido = idSeguido; 
     }
 
-    public void setIdSeguidor(int idSeguidor){
-        this.idSeguidor=idSeguidor;
+    public Date getFecha() { 
+        return fecha; 
     }
-
-    public void setIdSeguido(int idSeguido){
-        this.idSeguido=idSeguido;
+    public void setFecha(Date fecha) { 
+        this.fecha = fecha; 
     }
-    public void setFecha(Date fecha){
-        this.fecha=fecha;
-    }
-
-    public Seguidor() {
-    }
-
-    public Seguidor(int idSeguidor, int idSeguido, Date fecha){
-        this.idSeguidor=idSeguidor;
-        this.idSeguido=idSeguido;
-        this.fecha=fecha;
-    }
-
 }

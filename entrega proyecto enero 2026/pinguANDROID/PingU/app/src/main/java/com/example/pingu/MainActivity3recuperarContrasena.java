@@ -21,6 +21,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Random;
+
 public class MainActivity3recuperarContrasena extends AppCompatActivity {
     Toolbar tb3;
     ImageView ivLogo3;
@@ -28,7 +30,7 @@ public class MainActivity3recuperarContrasena extends AppCompatActivity {
     EditText ettUsuario3;
     EditText ettCorreo3;
     Button btn3;
-
+    Random random = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +43,12 @@ public class MainActivity3recuperarContrasena extends AppCompatActivity {
             return insets;
         });
 
-        tb3=findViewById(R.id.tb3);
-        ivLogo3=findViewById(R.id.ivLogo3);
-        tv3=findViewById(R.id.tv3);
-        ettUsuario3=findViewById(R.id.ettUsuario3);
-        ettCorreo3=findViewById(R.id.ettCorreo3);
-        btn3=findViewById(R.id.btn3);
+        tb3 = findViewById(R.id.tb3);
+        ivLogo3 = findViewById(R.id.ivLogo3);
+        tv3 = findViewById(R.id.tv3);
+        ettUsuario3 = findViewById(R.id.ettUsuario3);
+        ettCorreo3 = findViewById(R.id.ettCorreo3);
+        btn3 = findViewById(R.id.btn3);
         setSupportActionBar(tb3);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -55,23 +57,69 @@ public class MainActivity3recuperarContrasena extends AppCompatActivity {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ettUsuario3.getText().toString().trim().isEmpty()){
-                    Toast.makeText(MainActivity3recuperarContrasena.this, "Debes introducir tu usuario", Toast.LENGTH_SHORT).show();
-                }else if (ettCorreo3.getText().toString().trim().isEmpty()){
-                    Toast.makeText(MainActivity3recuperarContrasena.this, "Debes introducir tu correo electrónico", Toast.LENGTH_SHORT).show();
-                }else{
-                    if (validarEmail(ettCorreo3.getText().toString())!=true)
-                    {
-                        Toast.makeText(MainActivity3recuperarContrasena.this, "El correo electronico no es válido ", Toast.LENGTH_SHORT).show();
-                    }else{
-                    Toast.makeText(MainActivity3recuperarContrasena.this, "revisa tu correo ✔", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(MainActivity3recuperarContrasena.this, MainActivity.class);
-                    startActivity(intent);
-                    }
+                // Validar usuario vacío
+                if (ettUsuario3.getText().toString().trim().isEmpty()) {
+                    String[] frasesUsuario = {
+                            "⚠️ Sin usuario no hay recuperación 🚫",
+                            "Ehhh, ¿el usuario? 🤨 Lo necesito",
+                            "¿Usuario invisible? No funciona así 👻",
+                            "Pon tu usuario, porfa 😅",
+                            "⚠️ Campo obligatorio, campeón",
+                            "Tío, el usuario... ¿dónde está? 🤷‍♂️",
+                            "No seas tímido, pon tu usuario 😏",
+                            "Necesito tu usuario para ayudarte 🎯",
+                            "El usuario no es opcional, crack 🎪",
+                            "¿Olvidaste algo? Sí, el usuario 🧠"
+                    };
+                    String fraseAleatoria = frasesUsuario[random.nextInt(frasesUsuario.length)];
+                    Toast.makeText(MainActivity3recuperarContrasena.this, fraseAleatoria, Toast.LENGTH_SHORT).show();
+                    return;
                 }
+
+                // Validar email vacío
+                if (ettCorreo3.getText().toString().trim().isEmpty()) {
+                    String[] frasesEmailVacio = {
+                            "Ehhh, ¿y el email? 🤔",
+                            "El correo no se pone solo 🙃",
+                            "¿Email? ¿Hola? 📧",
+                            "Sin email no puedo enviarte nada 🚷",
+                            "Falta algo importante... el email 📬",
+                            "¿Te olvidaste del correo? 😬",
+                            "Email obligatorio, amigo 🎯",
+                            "Pon el email, no seas vago 😅",
+                            "¿Dónde te envío la contraseña? 🤨",
+                            "Necesito tu email, campeón 💌"
+                    };
+                    String fraseAleatoria = frasesEmailVacio[random.nextInt(frasesEmailVacio.length)];
+                    Toast.makeText(MainActivity3recuperarContrasena.this, fraseAleatoria, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Validar formato de email
+                if (validarEmail(ettCorreo3.getText().toString()) != true) {
+                    String[] frasesEmailInvalido = {
+                            "⚠️ Ese email no pinta bien 🤔",
+                            "Email inválido, revísalo porfa 📧",
+                            "¿Seguro que ese es tu email? 🧐",
+                            "Formato de email incorrecto 🚫",
+                            "Eso no es un email válido, crack 😅",
+                            "Email mal escrito, inténtalo 📝",
+                            "Revisa el formato del email 🔍",
+                            "Ese email tiene pinta rara 🤨"
+                    };
+                    String fraseAleatoria = frasesEmailInvalido[random.nextInt(frasesEmailInvalido.length)];
+                    Toast.makeText(MainActivity3recuperarContrasena.this, fraseAleatoria, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Si todo está bien
+                Toast.makeText(MainActivity3recuperarContrasena.this, "✅ Revisa tu correo 📧", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity3recuperarContrasena.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -86,5 +134,4 @@ public class MainActivity3recuperarContrasena extends AppCompatActivity {
         String patron = "^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
         return email.matches(patron);
     }
-
 }

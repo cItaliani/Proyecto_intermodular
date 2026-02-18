@@ -17,35 +17,41 @@
         </div>
 
         <div class="derecha">
-            <div class="formulario">
-                <input type="text" id="usuario" placeholder="usuario">
-                <div class="checkbox">
-                    <label for="recordarUsuario">recordar usuario</label>
-                    <input type="checkbox" id="recordarUsuario">
-                </div>
-            </div>
-
-            <div class="formulario">
-                <input type="password" id="password" placeholder="contraseña">
-                <div class="options">
-                    <a href="RecuperarContrasena.html">¿Has olvidado tu contraseña?</a>
+            <form action="muro.html" method="post" id="loginForm">
+                <div class="formulario">
+                    <input type="text" id="usuario" placeholder="usuario">
                     <div class="checkbox">
-                        <label for="mostrar">mostrar contraseña</label>
-                        <input type="checkbox" id="mostrar">
-                    </div>
-
-                    <div class="checkbox">
-                        <label for="recordarCredenciales">recordar credenciales</label>
-                        <input type="checkbox" id="recordarCredenciales">
+                        <label for="recordarUsuario">recordar usuario</label>
+                        <input type="checkbox" id="recordarUsuario">
                     </div>
                 </div>
-            </div>
 
-            <div class="buttons">
-                <a href="muro.html"><button class="btnLogin">¿Ya eres de la casa?<br><span>Entra 🔑</span></button></a>
-                <a href="Registro.html"><button class="btnRegistro">¿Primera vez por aquí?<br><span>Súmate
-                            😎</span></button></a>
-            </div>
+                <div class="formulario">
+                    <input type="password" id="password" placeholder="contraseña">
+                    <div class="options">
+                        <a href="recuperarContrasena.html">¿Has olvidado tu contraseña?</a>
+                        <div class="checkbox">
+                            <label for="mostrar">mostrar contraseña</label>
+                            <input type="checkbox" id="mostrar">
+                        </div>
+
+                        <div class="checkbox">
+                            <label for="recordarCredenciales">recordar credenciales</label>
+                            <input type="checkbox" id="recordarCredenciales">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="buttons">
+
+                    <button type="button" class="btnRegistro" onclick="window.location.href='registro.html'">
+                        ¿Primera vez por aquí?<br><span>Súmate 😎</span>
+                    </button>
+                    <button type="submit" class="btnLogin">
+                        ¿Ya eres de la casa?<br><span>Entra 🔑</span>
+                    </button>
+                </div>
+            </form>
         </div>
 
     </div>
@@ -57,4 +63,5 @@
     </footer>
     <script src="Index.js"></script>
 </body>
+
 </html>

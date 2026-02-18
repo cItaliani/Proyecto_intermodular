@@ -19,20 +19,140 @@
     <div class="right">
         <h2>¿No recuerdas tu contraseña?</h2>
 
-        <div class="field">
-            <input type="text" placeholder="usuario">
-        </div>
+        <form id="recuperarForm">
+            <div class="field">
+                <input type="text" id="usuario" placeholder="usuario">
+            </div>
 
-        <div class="field">
-            <input type="email" placeholder="correo electronico">
-        </div>
+            <div class="field">
+                <input type="email" id="email" placeholder="correo electronico">
+            </div>
 
-        <button>Solicitar Contraseña</button>
+            <button type="submit">Solicitar Contraseña</button>
+        </form>
 
         <a href="Index.html" class="back">volver a la pantalla de log in</a>
     </div>
 
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("recuperarForm");
+    const usuario = document.getElementById("usuario");
+    const email = document.getElementById("email");
+
+    // Validación al enviar el formulario
+    form.addEventListener("submit", (e) => {
+        let error = false;
+        
+        const usuarioValue = usuario.value.trim();
+        const emailValue = email.value.trim();
+
+        // Validar usuario
+        if (usuarioValue === "") {
+            usuario.value = "";
+            
+            // Array de frases aleatorias para usuario vacío
+            const frasesUsuario = [
+                "⚠️ Sin usuario no hay recuperación 🚫",
+                "Ehhh, ¿el usuario? 🤨 Lo necesito",
+                "¿Usuario invisible? No funciona así 👻",
+                "Pon tu usuario aquí, porfa 😅",
+                "⚠️ Campo obligatorio, campeón",
+                "Tío, el usuario... ¿dónde está? 🤷‍♂️",
+                "No seas tímido, pon tu usuario 😏",
+                "Necesito tu usuario para ayudarte 🎯",
+                "El usuario no es opcional, crack 🎪",
+                "¿Olvidaste algo? Sí, el usuario 🧠"
+            ];
+            
+            // Seleccionar frase aleatoria
+            const fraseAleatoria = frasesUsuario[Math.floor(Math.random() * frasesUsuario.length)];
+            usuario.placeholder = fraseAleatoria;
+            
+            usuario.style.border = "2px solid #ff4d4d";
+            usuario.style.backgroundColor = "#fff0f0";
+            error = true;
+        }
+
+        // Validar email vacío
+        if (emailValue === "") {
+            email.value = "";
+            
+            // Array de frases aleatorias para email vacío
+            const frasesEmail = [
+                "Ehhh, ¿y el email? 🤔",
+                "El correo no se pone solo 🙃",
+                "¿Email? ¿Hola? 📧",
+                "Sin email no puedo enviarte nada 🚷",
+                "Falta algo importante... el email 📬",
+                "¿Te olvidaste del correo? 😬",
+                "Email obligatorio, amigo 🎯",
+                "Pon el email, no seas vago 😅",
+                "¿Dónde te envío la contraseña? 🤨",
+                "Necesito tu email, campeón 💌"
+            ];
+            
+            const fraseAleatoria = frasesEmail[Math.floor(Math.random() * frasesEmail.length)];
+            email.placeholder = fraseAleatoria;
+            
+            email.style.border = "2px solid #ff4d4d";
+            email.style.backgroundColor = "#fff0f0";
+            error = true;
+        } 
+        // Validar formato de email
+        else if (!validarEmail(emailValue)) {
+            email.value = "";
+            
+            // Array de frases aleatorias para email inválido
+            const frasesEmailInvalido = [
+                "⚠️ Ese email no pinta bien 🤔",
+                "Email inválido, revísalo porfa 📧",
+                "¿Seguro que ese es tu email? 🧐",
+                "Formato de email incorrecto 🚫",
+                "Eso no es un email válido, crack 😅",
+                "Email mal escrito, inténtalo de nuevo 📝",
+                "Revisa el formato del email 🔍",
+                "Ese email tiene pinta rara 🤨"
+            ];
+            
+            const fraseAleatoria = frasesEmailInvalido[Math.floor(Math.random() * frasesEmailInvalido.length)];
+            email.placeholder = fraseAleatoria;
+            
+            email.style.border = "2px solid #ff4d4d";
+            email.style.backgroundColor = "#fff0f0";
+            error = true;
+        }
+
+        // Si hay errores, prevenir el envío
+        if (error) {
+            e.preventDefault();
+            return;
+        }
+
+        // Si todo está bien, aquí iría la lógica de envío
+        // Por ahora solo mostramos un mensaje
+        alert("✅ Solicitud enviada! Revisa tu correo 📧");
+    });
+
+    // Función para validar formato de email
+    function validarEmail(email) {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+    }
+
+    // Limpiar estilo al escribir
+    function limpiar(input, placeholder) {
+        input.style.border = "";
+        input.style.backgroundColor = "";
+        input.placeholder = placeholder;
+    }
+
+    usuario.addEventListener("input", () => limpiar(usuario, "usuario"));
+    email.addEventListener("input", () => limpiar(email, "correo electronico"));
+});
+</script>
 
 </body>
 </html>

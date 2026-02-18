@@ -18,9 +18,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     CheckBox chkPass;
     CheckBox chkCredenciales;
     SharedPreferences preferencias;
+    Random random = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
-
         });
+
         imLogo = findViewById(R.id.imLogo);
         ettUsuario = findViewById(R.id.ettUsuario);
         ettContrasena = findViewById(R.id.ettContrasena);
@@ -59,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
         chkCredenciales = findViewById(R.id.chkCredenciales);
         preferencias = getSharedPreferences("login_preferencias", MODE_PRIVATE);
 
-
         tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,22 +68,67 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         btnDisfruta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Validar usuario vacío
                 if (ettUsuario.getText().toString().trim().isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Debes introducir tu usuario", Toast.LENGTH_SHORT).show();
-                } else if (ettContrasena.getText().toString().trim().isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Debes introducir tu contraseña", Toast.LENGTH_SHORT).show();
-                } else if (ettContrasena.getText().toString().trim().length() < 6) {
-                    Toast.makeText(MainActivity.this, "\uD83D\uDEE1\uFE0F En PingU cuidamos lo tuyo. Esa contraseña necesita crecer", Toast.LENGTH_SHORT).show();
-                } else {
-                    Intent intent = new Intent(MainActivity.this, MainActivity5muro.class);
-                    guardarPreferencias();
-                    //falta el enviar datos para que pueda acceder
-                    startActivity(intent);
+                    String[] frasesUsuario = {
+                            "⚠️ Sin usuario no entras, colega 🚫",
+                            "Ehhh, ¿el usuario? 🤨 No te lo saltes",
+                            "¿Usuario invisible? No funciona así 👻",
+                            "Pon tu usuario, porfa 😅",
+                            "⚠️ Campo obligatorio, campeón",
+                            "Tío, el usuario... ¿dónde está? 🤷‍♂️",
+                            "No seas tímido, pon tu usuario 😏",
+                            "Adivina: necesitas un usuario 🎯",
+                            "El usuario no es opcional, crack 🎪",
+                            "¿Olvidaste algo? Sí, el usuario 🧠"
+                    };
+                    String fraseAleatoria = frasesUsuario[random.nextInt(frasesUsuario.length)];
+                    Toast.makeText(MainActivity.this, fraseAleatoria, Toast.LENGTH_SHORT).show();
+                    return;
                 }
 
+                // Validar contraseña vacía
+                if (ettContrasena.getText().toString().trim().isEmpty()) {
+                    String[] frasesPassword = {
+                            "Ehhh, ¿y la contraseña? 🤔",
+                            "La contraseña no se pone sola 🙃",
+                            "¿Contraseña? ¿Hola? 👋",
+                            "Sin contraseña no hay login, sorry 🚷",
+                            "Falta algo importante... la contraseña 🔑",
+                            "¿Te olvidaste de la contraseña? 😬",
+                            "Contraseña obligatoria, amigo 🎯",
+                            "Pon la contraseña, no seas vago 😅"
+                    };
+                    String fraseAleatoria = frasesPassword[random.nextInt(frasesPassword.length)];
+                    Toast.makeText(MainActivity.this, fraseAleatoria, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Validar longitud de contraseña
+                if (ettContrasena.getText().toString().trim().length() < 6) {
+                    String[] frasesPasswordCorta = {
+                            "⚠️ ¿En serio? Mínimo 6, no seas rata 😂",
+                            "Muy corta, mínimo 6 caracteres 📏",
+                            "¿6 caracteres es mucho pedir? 🤨",
+                            "Esa contraseña es más corta que... 6+ porfa 🙏",
+                            "Mínimo 6, que no es tan difícil 💪",
+                            "6 caracteres o más, venga 🎯",
+                            "Corta contraseña = insegura. Mín. 6 🔒",
+                            "Dale más caña, mínimo 6 caracteres 🚀"
+                    };
+                    String fraseAleatoria = frasesPasswordCorta[random.nextInt(frasesPasswordCorta.length)];
+                    Toast.makeText(MainActivity.this, fraseAleatoria, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Si todo está bien
+                Intent intent = new Intent(MainActivity.this, MainActivity5muro.class);
+                guardarPreferencias();
+                startActivity(intent);
             }
         });
 
@@ -101,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         textView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         ettContrasena.setTransformationMethod(PasswordTransformationMethod.getInstance());
         chkPass.setChecked(false);
         chkCredenciales.setChecked(false);
@@ -119,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
             }
             ettContrasena.setSelection(ettContrasena.getText().length());
         }));
+
         cargarPreferencias();
     }
 
@@ -161,6 +210,4 @@ public class MainActivity extends AppCompatActivity {
         }
         editor.apply();
     }
-
-
 }
