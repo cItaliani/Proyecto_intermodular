@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Validar nombre
         if (nombre.value.trim() === "") {
             nombre.value = "";
-            
+
             const frasesNombre = [
                 "⚠️ El nombre es obligatorio, crack 🚫",
                 "Ehhh, ¿tu nombre? 🤨",
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "El nombre no es opcional, campeón 🎪",
                 "Necesito saber cómo te llamas 🧠"
             ];
-            
+
             nombre.placeholder = frasesNombre[Math.floor(Math.random() * frasesNombre.length)];
             nombre.style.border = "2px solid #ff4d4d";
             nombre.style.backgroundColor = "#fff0f0";
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Validar primer apellido
         if (apellido1.value.trim() === "") {
             apellido1.value = "";
-            
+
             const frasesApellido1 = [
                 "⚠️ Primer apellido obligatorio 🚫",
                 "¿Y el primer apellido? 🤨",
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "El primer apellido es necesario 🎪",
                 "Necesito tu primer apellido 📝"
             ];
-            
+
             apellido1.placeholder = frasesApellido1[Math.floor(Math.random() * frasesApellido1.length)];
             apellido1.style.border = "2px solid #ff4d4d";
             apellido1.style.backgroundColor = "#fff0f0";
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Validar segundo apellido
         if (apellido2.value.trim() === "") {
             apellido2.value = "";
-            
+
             const frasesApellido2 = [
                 "⚠️ Segundo apellido obligatorio 🚫",
                 "¿Y el segundo apellido? 🤨",
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "El segundo apellido también va 🎪",
                 "Necesito el segundo apellido 📝"
             ];
-            
+
             apellido2.placeholder = frasesApellido2[Math.floor(Math.random() * frasesApellido2.length)];
             apellido2.style.border = "2px solid #ff4d4d";
             apellido2.style.backgroundColor = "#fff0f0";
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Validar nombre de usuario
         if (usuario.value.trim() === "") {
             usuario.value = "";
-            
+
             const frasesUsuario = [
                 "⚠️ Necesitas un nombre de usuario 🚫",
                 "¿Tu nombre de usuario? 🤨",
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "El nombre de usuario es clave 🔑",
                 "Inventa un nombre de usuario 🎨"
             ];
-            
+
             usuario.placeholder = frasesUsuario[Math.floor(Math.random() * frasesUsuario.length)];
             usuario.style.border = "2px solid #ff4d4d";
             usuario.style.backgroundColor = "#fff0f0";
@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Validar email vacío
         if (email.value.trim() === "") {
             email.value = "";
-            
+
             const frasesEmailVacio = [
                 "Ehhh, ¿y el email? 🤔",
                 "El correo no se pone solo 🙃",
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Email obligatorio, amigo 🎯",
                 "Pon el email, no seas vago 😅"
             ];
-            
+
             email.placeholder = frasesEmailVacio[Math.floor(Math.random() * frasesEmailVacio.length)];
             email.style.border = "2px solid #ff4d4d";
             email.style.backgroundColor = "#fff0f0";
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Validar formato de email
         else if (!validarEmail(email.value.trim())) {
             email.value = "";
-            
+
             const frasesEmailInvalido = [
                 "⚠️ Ese email no pinta bien 🤔",
                 "Email inválido, revísalo porfa 📧",
@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Revisa el formato del email 🔍",
                 "Ese email tiene pinta rara 🤨"
             ];
-            
+
             email.placeholder = frasesEmailInvalido[Math.floor(Math.random() * frasesEmailInvalido.length)];
             email.style.border = "2px solid #ff4d4d";
             email.style.backgroundColor = "#fff0f0";
@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Validar contraseña vacía
         if (pass.value.trim() === "") {
             pass.value = "";
-            
+
             const frasesPassVacia = [
                 "Ehhh, ¿la contraseña? 🤔",
                 "La contraseña no se pone sola 🙃",
@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Contraseña obligatoria 🎯",
                 "Pon una contraseña segura 🛡️"
             ];
-            
+
             pass.placeholder = frasesPassVacia[Math.floor(Math.random() * frasesPassVacia.length)];
             pass.style.border = "2px solid #ff4d4d";
             pass.style.backgroundColor = "#fff0f0";
@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Validar longitud de contraseña
         else if (pass.value.trim().length < 6) {
             pass.value = "";
-            
+
             const frasesPassCorta = [
                 "⚠️ Mínimo 6 caracteres, no seas rata 😂",
                 "Muy corta, mínimo 6 caracteres 📏",
@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Contraseña corta = insegura. Mín. 6 🔒",
                 "Dale más caña, mínimo 6 🚀"
             ];
-            
+
             pass.placeholder = frasesPassCorta[Math.floor(Math.random() * frasesPassCorta.length)];
             pass.style.border = "2px solid #ff4d4d";
             pass.style.backgroundColor = "#fff0f0";
@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Validar repetición de contraseña vacía
         if (pass2.value.trim() === "") {
             pass2.value = "";
-            
+
             const frasesPass2Vacia = [
                 "Repite la contraseña aquí 🔁",
                 "¿Y la confirmación? 🤔",
@@ -192,7 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Confirma la contraseña porfa 🙏",
                 "Escribe la contraseña de nuevo 📝"
             ];
-            
+
             pass2.placeholder = frasesPass2Vacia[Math.floor(Math.random() * frasesPass2Vacia.length)];
             pass2.style.border = "2px solid #ff4d4d";
             pass2.style.backgroundColor = "#fff0f0";
@@ -201,7 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Validar que las contraseñas coincidan
         else if (pass.value !== pass2.value) {
             pass2.value = "";
-            
+
             const frasesPassNoCoinciden = [
                 "⚠️ Las contraseñas no coinciden 🚫",
                 "Ehhh, no son iguales 🤨",
@@ -212,7 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "No coinciden, inténtalo otra vez 🔄",
                 "Las contraseñas deben ser iguales 🎪"
             ];
-            
+
             pass2.placeholder = frasesPassNoCoinciden[Math.floor(Math.random() * frasesPassNoCoinciden.length)];
             pass2.style.border = "2px solid #ff4d4d";
             pass2.style.backgroundColor = "#fff0f0";
@@ -226,7 +226,44 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Si todo está bien
-        alert("✅ ¡Registro exitoso! Bienvenido a PingU 🐧");
+        e.preventDefault();
+
+        const nombreVisible = nombre.value.trim() + " " +
+            apellido1.value.trim() + " " +
+            apellido2.value.trim();
+
+        const userData = {
+            alias: usuario.value.trim(),
+            nombre_visible: nombreVisible,
+            correo_electronico: email.value.trim(),
+            contrasena: pass.value.trim(),
+            biografia: "",
+            fotografia: ""
+        };
+
+        fetch("http://localhost:8080/api/rest/pingu/users", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(userData)
+        })
+            .then(response => {
+                if (response.status === 201) {
+                    form.reset();
+                    window.location.href = "index.html";
+                }
+                else if (response.status === 409) {
+                    alert("⚠️ El alias o el email ya existen");
+                }
+                else {
+                    alert("❌ Error inesperado del servidor");
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("🚨 No se pudo conectar con el servidor");
+            });
     });
 
     // Función para validar formato de email

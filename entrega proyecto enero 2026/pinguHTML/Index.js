@@ -36,18 +36,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Luego cargar según lo que haya guardado
     if (usuarioGuardado && passwordGuardada) {
-        // Si hay usuario Y contraseña, recordar todo
         usuario.value = usuarioGuardado;
         password.value = passwordGuardada;
         chkRecordarTodo.checked = true;
     } else if (usuarioGuardado && !passwordGuardada) {
-        // Si solo hay usuario, recordar solo usuario
         usuario.value = usuarioGuardado;
         chkRecordar.checked = true;
     }
 
     // Validación al enviar el formulario
     form.addEventListener("submit", (e) => {
+        e.preventDefault();
         let error = false;
         
         const usuarioValue = usuario.value.trim();
@@ -57,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (usuarioValue === "") {
             usuario.value = "";
             
-            // Array de frases aleatorias para usuario vacío
             const frasesUsuario = [
                 "⚠️ Sin usuario no entras, colega 🚫",
                 "Ehhh, ¿el usuario? 🤨 No te lo saltes",
@@ -71,10 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "¿Olvidaste algo? Sí, el usuario 🧠"
             ];
             
-            // Seleccionar frase aleatoria
-            const fraseAleatoria = frasesUsuario[Math.floor(Math.random() * frasesUsuario.length)];
-            usuario.placeholder = fraseAleatoria;
-            
+            usuario.placeholder = frasesUsuario[Math.floor(Math.random() * frasesUsuario.length)];
             usuario.style.border = "2px solid #ff4d4d";
             usuario.style.backgroundColor = "#fff0f0";
             error = true;
@@ -84,7 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (passwordValue === "") {
             password.value = "";
             
-            // Array de frases aleatorias para contraseña vacía
             const frasesPassword = [
                 "Ehhh, ¿y la contraseña? 🤔",
                 "La contraseña no se pone sola 🙃",
@@ -96,9 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Pon la contraseña, no seas vago 😅"
             ];
             
-            const fraseAleatoria = frasesPassword[Math.floor(Math.random() * frasesPassword.length)];
-            password.placeholder = fraseAleatoria;
-            
+            password.placeholder = frasesPassword[Math.floor(Math.random() * frasesPassword.length)];
             password.style.border = "2px solid #ff4d4d";
             password.style.backgroundColor = "#fff0f0";
             error = true;
@@ -107,7 +99,6 @@ document.addEventListener("DOMContentLoaded", () => {
         else if (passwordValue.length < 6) {
             password.value = "";
             
-            // Array de frases aleatorias para contraseña corta
             const frasesPasswordCorta = [
                 "⚠️ ¿En serio? Mínimo 6, no seas rata 😂",
                 "Muy corta, mínimo 6 caracteres 📏",
@@ -119,36 +110,56 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Dale más caña, mínimo 6 caracteres 🚀"
             ];
             
-            const fraseAleatoria = frasesPasswordCorta[Math.floor(Math.random() * frasesPasswordCorta.length)];
-            password.placeholder = fraseAleatoria;
-            
+            password.placeholder = frasesPasswordCorta[Math.floor(Math.random() * frasesPasswordCorta.length)];
             password.style.border = "2px solid #ff4d4d";
             password.style.backgroundColor = "#fff0f0";
             error = true;
         }
 
-        // Si hay errores, prevenir el envío
-        if (error) {
-            e.preventDefault();
-            return;
-        }
+        // Si hay errores, no seguimos
+        if (error) return;
 
-        // Si no hay errores, guardar credenciales según la opción elegida
+        // Guardar credenciales según la opción elegida
         if (chkRecordarTodo.checked) {
-            // Guardar ambos
             localStorage.setItem("usuario", usuarioValue);
             localStorage.setItem("password", passwordValue);
         } else if (chkRecordar.checked) {
-            // Guardar solo usuario
             localStorage.setItem("usuario", usuarioValue);
             localStorage.removeItem("password");
         } else {
-            // No guardar nada
             localStorage.removeItem("usuario");
             localStorage.removeItem("password");
         }
 
-        // Permitir el envío del formulario
+        // Llamada a la API de login
+        const loginData = {
+            alias: usuarioValue,
+            contrasena: passwordValue
+        };
+
+        fetch("http://localhost:8080/api/rest/pingu/auth/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(loginData)
+        })
+        .then(response => {
+            if (response.status === 200) {
+                return response.json().then(data => {
+                    localStorage.setItem("id_usuario", data.id);
+                    window.location.href = "muro.html";
+                });
+            } else if (response.status === 401) {
+                alert("⚠️ Credenciales incorrectas");
+            } else {
+                alert("❌ Error inesperado del servidor");
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("🚨 No se pudo conectar con el servidor");
+        });
     });
 
     // Limpiar estilo al escribir
@@ -166,12 +177,11 @@ document.addEventListener("DOMContentLoaded", () => {
         btnLogout.addEventListener("click", () => {
             localStorage.removeItem("usuario");
             localStorage.removeItem("password");
+            localStorage.removeItem("id_usuario");
             usuario.value = "";
             password.value = "";
             chkRecordar.checked = false;
             chkRecordarTodo.checked = false;
-
-            // Redirigir al login
             window.location.href = "index.html";
         });
     }

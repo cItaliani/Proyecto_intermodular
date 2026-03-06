@@ -1,5 +1,6 @@
 package ejem1;
 
+import java.net.URI;
 import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.Date;
@@ -28,6 +29,10 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.mindrot.jbcrypt.BCrypt;
+import com.mailersend.sdk.MailerSend;
+import com.mailersend.sdk.MailerSendResponse;
+import com.mailersend.sdk.exceptions.MailerSendException;
+import com.mailersend.sdk.emails.Email;
 
 @Path("/pingu")
 public class api {
@@ -41,6 +46,7 @@ public class api {
     // String contrasena = "xzwcW#V28cK#j*x";
 
     // nuevo server (beta) @gmail
+    // web: https://panel.filess.io/shared/09490efe-3c3c-46ca-abf2-23494a5cde3b
     String servidor = "3i6ibg.h.filess.io";
     String puerto = "61000";
     String base_datos = "pingu_whichslept";
@@ -675,80 +681,84 @@ public class api {
 
     public static void enviarEmail(String destinatario, String nuevaPass) throws Exception {
 
-        String remitente = "riddlercompany.pingu@gmail.com";
-        String passwordApp = "xfgz sxnb lkxw vlmz";
+        Email email = new Email();
 
-        Properties props = new Properties();
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");
+        // ⚠️ Debe ser un dominio verificado en MailerSend
+        email.setFrom("Pingu Support", "contrasena@test-y7zpl98d9n345vx6.mlsender.net");
 
-        Session session = Session.getInstance(props,
-                new Authenticator() {
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(remitente, passwordApp);
-                    }
-                });
+        // Destinatario dinámico
+        email.addRecipient("Usuario", destinatario);
 
-        Message message = new MimeMessage(session);
-        message.setFrom(new InternetAddress(remitente));
-        message.setRecipients(Message.RecipientType.TO,
-                InternetAddress.parse(destinatario));
-        message.setSubject("Recuperación de contraseña");
+        email.setSubject("Recuperación de contraseña");
 
-        message.setText("Tu nueva contraseña temporal es: " + nuevaPass);
+        email.setPlain("Tu nueva contraseña temporal es: " + nuevaPass);
 
-        Transport.send(message);
+        email.setHtml(
+                "<h2>Recuperación de contraseña</h2>"
+                        + "<p>Tu nueva contraseña temporal es:</p>"
+                        + "<h3>" + nuevaPass + "</h3>"
+                        + "<p>Te recomendamos cambiarla después de iniciar sesión.</p>");
+
+        MailerSend ms = new MailerSend();
+
+        // ⚠️ NUNCA hardcodear en producción
+        ms.setToken("mlsn.cc749b8612ba777f1efeae6deb1472f0f852ae32c20376acca823b671a48bb89");
+
+        try {
+            MailerSendResponse response = ms.emails().send(email);;
+            System.out.println("Email enviado. ID: " + response.messageId);
+
+        } catch (MailerSendException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Error enviando email: " + e.getMessage());
+        }
     }
 
-@POST
-@Path("/auth/pass-remember")
-@Consumes(MediaType.APPLICATION_JSON)
-@Produces(MediaType.APPLICATION_JSON)
-public Response rememberPassword(RememberRequest request) {
+    @POST
+    @Path("/auth/pass-remember")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response rememberPassword(RememberRequest request) {
 
-    try {
-        Class.forName("org.mariadb.jdbc.Driver");
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
 
-        try (Connection conexion = DriverManager.getConnection(url, usuario, contrasena)) {
+            try (Connection conexion = DriverManager.getConnection(url, usuario, contrasena)) {
 
-            PreparedStatement ps = conexion.prepareStatement(
-                "SELECT id_usuario FROM USUARIO WHERE correo_electronico = ?"
-            );
+                PreparedStatement ps = conexion.prepareStatement(
+                        "SELECT id_usuario FROM USUARIO WHERE correo_electronico = ?");
 
-            ps.setString(1, request.getCorreo_electronico());
-            ResultSet rs = ps.executeQuery();
+                ps.setString(1, request.getCorreo_electronico());
+                ResultSet rs = ps.executeQuery();
 
-            if (!rs.next()) {
-                return Response.status(Response.Status.NOT_FOUND)
-                        .entity("{\"error\":\"Correo no encontrado\"}")
+                if (!rs.next()) {
+                    return Response.status(Response.Status.NOT_FOUND)
+                            .entity("{\"error\":\"Correo no encontrado\"}")
+                            .build();
+                }
+
+                String nuevaPass = generarPasswordTemporal();
+                String hash = BCrypt.hashpw(nuevaPass, BCrypt.gensalt());
+
+                PreparedStatement update = conexion.prepareStatement(
+                        "UPDATE USUARIO SET contrasena = ? WHERE correo_electronico = ?");
+
+                update.setString(1, hash);
+                update.setString(2, request.getCorreo_electronico());
+                update.executeUpdate();
+
+                enviarEmail(request.getCorreo_electronico(), nuevaPass);
+
+                return Response.ok("{\"message\":\"Se ha enviado una nueva contraseña al email\"}")
                         .build();
             }
 
-            String nuevaPass = generarPasswordTemporal();
-            String hash = BCrypt.hashpw(nuevaPass, BCrypt.gensalt());
-
-            PreparedStatement update = conexion.prepareStatement(
-                "UPDATE USUARIO SET contrasena = ? WHERE correo_electronico = ?"
-            );
-
-            update.setString(1, hash);
-            update.setString(2, request.getCorreo_electronico());
-            update.executeUpdate();
-
-            enviarEmail(request.getCorreo_electronico(), nuevaPass);
-
-            return Response.ok("{\"message\":\"Se ha enviado una nueva contraseña al email\"}")
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("{\"error\":\"" + e.getMessage() + "\"}")
                     .build();
         }
-
-    } catch (Exception e) {
-        e.printStackTrace();
-        return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                .entity("{\"error\":\"" + e.getMessage() + "\"}")
-                .build();
     }
-}
     // endregion
 }
