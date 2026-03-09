@@ -23,6 +23,8 @@ import android.text.method.PasswordTransformationMethod;
 
 import java.util.Random;
 
+import retrofit2.Call;
+
 public class MainActivity extends AppCompatActivity {
 
     ImageView imLogo;
@@ -125,10 +127,48 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                // Si todo está bien
-                Intent intent = new Intent(MainActivity.this, MainActivity5muro.class);
-                guardarPreferencias();
-                startActivity(intent);
+                // Si todo está bien hacemos la llamada a la API
+                String usuario = ettUsuario.getText().toString();
+                String pass = ettContrasena.getText().toString();
+
+                ApiService apiService = ApiClient.getClient().create(ApiService.class);
+
+                LoginRequest request = new LoginRequest(usuario, pass);
+
+                apiService.login(request).enqueue(new retrofit2.Callback<LoginResponse>() {
+
+                    @Override
+                    public void onResponse(Call<LoginResponse> call, retrofit2.Response<LoginResponse> response) {
+
+                        if (response.isSuccessful() && response.body() != null) {
+
+                            Toast.makeText(MainActivity.this,
+                                    "Login correcto",
+                                    Toast.LENGTH_SHORT).show();
+
+                            guardarPreferencias();
+
+                            Intent intent = new Intent(MainActivity.this, MainActivity5muro.class);
+                            startActivity(intent);
+
+                        } else {
+
+                            Toast.makeText(MainActivity.this,
+                                    "Credenciales incorrectas",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<LoginResponse> call, Throwable t) {
+
+                        Toast.makeText(MainActivity.this,
+                                "Error conexión API",
+                                Toast.LENGTH_LONG).show();
+
+                        t.printStackTrace();
+                    }
+                });
             }
         });
 

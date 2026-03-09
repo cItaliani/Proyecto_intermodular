@@ -1,7 +1,5 @@
 package ejem1;
 
-import java.net.URI;
-import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -9,15 +7,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.regex.Pattern;
 import java.util.ArrayList;
-import java.util.Properties;
+
 import java.util.Random;
 import java.util.regex.Matcher;
-import jakarta.mail.*;
-import jakarta.mail.internet.*;
-import java.util.Properties;
 
-import jakarta.mail.internet.InternetAddress;
-import jakarta.mail.internet.MimeMessage;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -34,6 +27,18 @@ import com.mailersend.sdk.MailerSendResponse;
 import com.mailersend.sdk.exceptions.MailerSendException;
 import com.mailersend.sdk.emails.Email;
 
+/**
+ * REST API for PingU social network.
+ * 
+ * This API manages:
+ * - users
+ * - posts
+ * - likes
+ * - followers
+ * - login and password recovery
+ * 
+ * The API uses JSON and connects to a MariaDB database.
+ */
 @Path("/pingu")
 public class api {
     // server funcionando pero limitacion de conexiones por hora
@@ -54,6 +59,14 @@ public class api {
     String usuario = "pingu_whichslept";
     String contrasena = "fb49efd066e70bdef2f1ed47d24180aa3be99214";
 
+    /**
+     * Checks if the given email is valid.
+     * 
+     * This method uses a regular expression to validate the email format.
+     * 
+     * @param correo The email address to be checked.
+     * @return true if the email is valid, if retunrs false is invalid.
+     */
     public static boolean comprobarCorreo(String correo) {
         String regex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
         Pattern pattern = Pattern.compile(regex);
@@ -62,6 +75,19 @@ public class api {
     }
 
     // region USERS
+    /**
+     * Create a new user in the system.
+     * 
+     * Endpoint: POST /pingu/users
+     * 
+     * The method receives user data in JSON.
+     * It checks if alias or email already exist.
+     * The password is encrypted with BCrypt.
+     * Then the user is saved in the database.
+     * 
+     * @param usuarioParam user information
+     * @return HTTP response with result message
+     */
     @POST
     @Path("/users")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -126,6 +152,17 @@ public class api {
         }
     }
 
+    /**
+     * Get information of one user.
+     * 
+     * Endpoint: GET /pingu/users/{user-id}
+     * 
+     * The method searches a user by ID.
+     * If the user exists, it returns the user data.
+     * 
+     * @param idConsulta id of the user
+     * @return HTTP response with user data or error
+     */
     @GET
     @Path("/users/{user-id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -161,6 +198,21 @@ public class api {
         }
     }
 
+    /**
+     * Update user information.
+     * 
+     * Endpoint: PUT /pingu/users/{user-id}
+     * 
+     * The method updates:
+     * - visible name
+     * - biography
+     * - password
+     * - profile photo
+     * 
+     * @param idConsulta   id of the user
+     * @param usuarioParam new user data
+     * @return HTTP response with update result
+     */
     @PUT
     @Path("/users/{user-id}")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -195,6 +247,16 @@ public class api {
         }
     }
 
+    /**
+     * Delete a user from the system.
+     * 
+     * Endpoint: DELETE /pingu/users/{user-id}
+     * 
+     * The method removes the user from database.
+     * 
+     * @param idConsulta id of the user
+     * @return HTTP response with result message
+     */
     @DELETE
     @Path("/users/{user-id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -223,6 +285,19 @@ public class api {
     // endregion
 
     // region REACTIONS
+
+    /**
+     * Add a like to a post.
+     * 
+     * Endpoint: POST /pingu/posts/{post-id}/like
+     * 
+     * A user can like a post.
+     * The like is saved in the database.
+     * 
+     * @param idPost   id of the post
+     * @param reaccion user reaction information
+     * @return HTTP response with result message
+     */
     @POST
     @Path("/posts/{post-id}/like")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -254,6 +329,17 @@ public class api {
         }
     }
 
+    /**
+     * Remove a like from a post.
+     * 
+     * Endpoint: POST /pingu/posts/{post-id}/dislike
+     * 
+     * The method deletes the like from database.
+     * 
+     * @param idPost   id of the post
+     * @param reaccion user reaction information
+     * @return HTTP response with result
+     */
     @POST
     @Path("/posts/{post-id}/dislike")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -283,6 +369,16 @@ public class api {
         }
     }
 
+    /**
+     * Get the list of likes of a post.
+     * 
+     * Endpoint: GET /pingu/posts/{post-id}/likes
+     * 
+     * The method returns all users that liked the post.
+     * 
+     * @param idPost id of the post
+     * @return list of reactions
+     */
     @GET
     @Path("/posts/{post-id}/likes")
     @Produces(MediaType.APPLICATION_JSON)
@@ -314,6 +410,17 @@ public class api {
     // endregion
 
     // region SOCIAL GRAPH
+
+    /**
+     * Get the list of followers of a user.
+     * 
+     * Endpoint: GET /pingu/users/{user-id}/followers
+     * 
+     * The method returns users that follow this user.
+     * 
+     * @param idUsuario id of the user
+     * @return list of followers
+     */
     @GET
     @Path("/users/{user-id}/followers")
     @Produces(MediaType.APPLICATION_JSON)
@@ -346,6 +453,16 @@ public class api {
         }
     }
 
+    /**
+     * Get the list of users followed by a user.
+     * 
+     * Endpoint: GET /pingu/users/{user-id}/followed
+     * 
+     * The method returns users that this user follows.
+     * 
+     * @param idUsuario id of the user
+     * @return list of followed users
+     */
     @GET
     @Path("/users/{user-id}/followed")
     @Produces(MediaType.APPLICATION_JSON)
@@ -378,6 +495,18 @@ public class api {
         }
     }
 
+    /**
+     * Follow another user.
+     * 
+     * Endpoint: POST /pingu/users/{user-id}/follow
+     * 
+     * A user starts following another user.
+     * The relation is saved in the database.
+     * 
+     * @param idUserSeguido user to follow
+     * @param followRequest follower information
+     * @return HTTP response with result
+     */
     @POST
     @Path("/users/{user-id}/follow")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -417,6 +546,17 @@ public class api {
         }
     }
 
+    /**
+     * Stop following a user.
+     * 
+     * Endpoint: POST /pingu/users/{user-id}/unfollow
+     * 
+     * The follow relation is deleted from database.
+     * 
+     * @param idUserSeguido user to unfollow
+     * @param followRequest follower information
+     * @return HTTP response with result
+     */
     @POST
     @Path("/users/{user-id}/unfollow")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -448,6 +588,18 @@ public class api {
     // endregion
 
     // region POSTS
+
+    /**
+     * Create a new post.
+     * 
+     * Endpoint: POST /pingu/posts
+     * 
+     * The user can create a post or a reply.
+     * The post is saved in the database.
+     * 
+     * @param post post information
+     * @return HTTP response with created post id
+     */
     @POST
     @Path("/posts")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -491,6 +643,15 @@ public class api {
         }
     }
 
+    /**
+     * Get recent posts.
+     * 
+     * Endpoint: GET /pingu/posts
+     * 
+     * The method returns the last 10 posts.
+     * 
+     * @return list of posts
+     */
     @GET
     @Path("/posts")
     @Produces(MediaType.APPLICATION_JSON)
@@ -524,6 +685,14 @@ public class api {
         }
     }
 
+    /**
+     * Get a single post by ID.
+     * 
+     * Endpoint: GET /pingu/posts/{post-id}
+     * 
+     * @param idPostLeido id of the post to read
+     * @return HTTP response with post data or error
+     */
     @GET
     @Path("/posts/{post-id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -558,6 +727,16 @@ public class api {
         }
     }
 
+    /**
+     * Delete a post.
+     * 
+     * Endpoint: DELETE /pingu/posts/{post-id}
+     * 
+     * The post is removed from the database.
+     * 
+     * @param idPostBorrado id of the post
+     * @return HTTP response with result
+     */
     @DELETE
     @Path("/posts/{post-id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -584,6 +763,16 @@ public class api {
         }
     }
 
+    /**
+     * Get replies of a post.
+     * 
+     * Endpoint: GET /pingu/posts/{post-id}/replies
+     * 
+     * The method returns comments of a post.
+     * 
+     * @param idPostComentado id of the post
+     * @return list of replies
+     */
     @GET
     @Path("/posts/{post-id}/replies")
     @Produces(MediaType.APPLICATION_JSON)
@@ -621,6 +810,18 @@ public class api {
     // endregion
 
     // region LOGIN-PASSWORD
+
+    /**
+     * User login.
+     * 
+     * Endpoint: POST /pingu/auth/login
+     * 
+     * The method checks alias and password.
+     * If correct, the login is successful.
+     * 
+     * @param loginData login information
+     * @return HTTP response with login result
+     */
     @POST
     @Path("/auth/login")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -667,6 +868,14 @@ public class api {
         }
     }
 
+    /**
+     * Generate a temporary password.
+     * 
+     * The password has random letters and numbers.
+     * It is used for password recovery.
+     * 
+     * @return temporary password
+     */
     public static String generarPasswordTemporal() {
         String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         Random random = new Random();
@@ -679,6 +888,15 @@ public class api {
         return sb.toString();
     }
 
+    /**
+     * Send a recovery email to the user.
+     * 
+     * The email contains a temporary password.
+     * The message is sent using Gmail SMTP.
+     * 
+     * @param destinatario user email
+     * @param nuevaPass    temporary password
+     */
     public static void enviarEmail(String destinatario, String nuevaPass) throws Exception {
 
         Email email = new Email();
@@ -697,7 +915,8 @@ public class api {
                 "<h2>Recuperación de contraseña</h2>"
                         + "<p>Tu nueva contraseña temporal es:</p>"
                         + "<h3>" + nuevaPass + "</h3>"
-                        + "<p>Te recomendamos cambiarla después de iniciar sesión.</p>");
+                        + "<p>Te recomendamos cambiarla después de iniciar sesión.</p>"
+                        + "<p style='color:red; font-size:12px;'><b>¿No has solicitado esto? Ignora este mensaje</b></p>");
 
         MailerSend ms = new MailerSend();
 
@@ -705,7 +924,8 @@ public class api {
         ms.setToken("mlsn.cc749b8612ba777f1efeae6deb1472f0f852ae32c20376acca823b671a48bb89");
 
         try {
-            MailerSendResponse response = ms.emails().send(email);;
+            MailerSendResponse response = ms.emails().send(email);
+            ;
             System.out.println("Email enviado. ID: " + response.messageId);
 
         } catch (MailerSendException e) {
@@ -714,6 +934,17 @@ public class api {
         }
     }
 
+    /**
+     * Recover user password.
+     * 
+     * Endpoint: POST /pingu/auth/pass-remember
+     * 
+     * The system creates a temporary password.
+     * The password is saved in database and sent by email.
+     * 
+     * @param request user email request
+     * @return HTTP response with result message
+     */
     @POST
     @Path("/auth/pass-remember")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -761,4 +992,11 @@ public class api {
         }
     }
     // endregion
+
+    @GET
+    @Path("/test")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response holaMundo() {
+        return Response.ok("Hola mundo, la API funciona correctamente").build();
+    }
 }

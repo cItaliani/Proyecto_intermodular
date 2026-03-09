@@ -36,6 +36,10 @@ PingU by Riddler Company
 | 09/02/2026  | finalizacion de API y corrección de la misma                                                   |
 | 10/02/2026  | se han detectado fallos en API (pte de revisión)                                               |
 | 11/02/2026  | avance importante en movil actuvuty de publicacion de posts                                    |
+| 06/03/2026  | inicio de documentacion de API en inglés  (subida 09/03 por falta de conexion a internet)      |
+| 08/03/2026  | fin de documentacion de API en inglés     (subida 09/03 por falta de conexion a internet)      |
+| 09/03/2026  | inicio de llamadas del cleinte movil a la API                                                  |
+
 
 ## Autor
 - Carlos Alberto Piñeiro Italiani
