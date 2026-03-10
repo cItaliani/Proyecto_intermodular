@@ -9,6 +9,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import android.util.Log;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -18,7 +23,7 @@ import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity9formulario_post extends AppCompatActivity {
 
-    ImageView imageView8;
+    ImageView imageView9;
     ImageView iv7;
     ImageView iv6;
     EditText ett4;
@@ -28,7 +33,7 @@ public class MainActivity9formulario_post extends AppCompatActivity {
             new ActivityResultContracts.GetContent(),
             uri -> {
                 if (uri != null) {
-                    imageView8.setImageURI(uri);
+                    imageView9.setImageURI(uri);
                     isImagen = true;
                 }
             }
@@ -40,7 +45,7 @@ public class MainActivity9formulario_post extends AppCompatActivity {
         setContentView(R.layout.activity_main_activity9formulario_post);
         tb9 = findViewById(R.id.tb9);
         setSupportActionBar(tb9);
-        imageView8 = findViewById(R.id.imageView8);
+        imageView9 = findViewById(R.id.imageView9);
         iv7 = findViewById(R.id.iv7);
         iv6 = findViewById(R.id.iv6);
         ett4 = findViewById(R.id.ett4);
@@ -54,13 +59,17 @@ public class MainActivity9formulario_post extends AppCompatActivity {
         });
 
         iv7.setOnClickListener(v -> {
-            imageView8.setImageResource(R.drawable.pulsa_imagen);
+            imageView9.setImageResource(R.drawable.pulsa_imagen);
             isImagen=false;
 
         });
 
-        imageView8.setOnClickListener(v -> {
-            seleccionarImagen.launch("image/*");
+        imageView9.setOnClickListener(v -> {
+            Toast.makeText(
+                    MainActivity9formulario_post.this,
+                    "📸 Subir imágenes estará disponible en próximas versiones de PingU 🐧❄",
+                    Toast.LENGTH_SHORT
+            ).show();
         });
     }
 
@@ -93,18 +102,76 @@ public class MainActivity9formulario_post extends AppCompatActivity {
         } else if (id == R.id.cancelar) {
             finish();
             return true;
-        } else if (id == R.id.publicar) {
-            String texto = ett4.getText().toString().trim();
-            if (texto.isEmpty()&&!isImagen){
-                Toast.makeText(MainActivity9formulario_post.this, "Nada que publicar aún \uD83D\uDC27❄\n" +
-                        "Añade un mensaje y/o imagen. ", Toast.LENGTH_SHORT).show();
-                return  true;
-            }
-            Toast.makeText(MainActivity9formulario_post.this, "\uD83D\uDCE2 ¡Listo! Tu publicación llegó al iceberg de PingU \uD83D\uDC27", Toast.LENGTH_SHORT).show();
-            finish();
-            return true;
 
-        }
+         }else if (id == R.id.publicar) {
+            item.setEnabled(false);
+                String texto = ett4.getText().toString().trim();
+
+                if (texto.isEmpty() && !isImagen) {
+                    Toast.makeText(MainActivity9formulario_post.this,
+                            "Nada que publicar aún 🐧❄\nAñade un mensaje y/o imagen.",
+                            Toast.LENGTH_SHORT).show();
+                    item.setEnabled(true);
+                    return true;
+                }
+
+                String idAutor = getSharedPreferences("PinguPrefs", MODE_PRIVATE)
+                        .getString("id_usuario", null);
+
+                if (idAutor == null || idAutor.isEmpty()) {
+                    Toast.makeText(MainActivity9formulario_post.this,
+                            "⚠️ No se ha encontrado el usuario logado",
+                            Toast.LENGTH_LONG).show();
+                    return true;
+                }
+
+            String idPostPadre = getIntent().getStringExtra("id_post_padre");
+
+            CreatePostRequest request = new CreatePostRequest(
+                    texto,
+                    "",
+                    idAutor,
+                    idPostPadre
+            );
+
+                ApiService apiService = ApiClient.getClient().create(ApiService.class);
+
+                apiService.createPost(request).enqueue(new Callback<CreatePostResponse>() {
+                    @Override
+                    public void onResponse(Call<CreatePostResponse> call, Response<CreatePostResponse> response) {
+                        item.setEnabled(true);
+                        if (response.isSuccessful() && response.body() != null) {
+                            Toast.makeText(MainActivity9formulario_post.this,
+                                    "📢 ¡Publicación a la vista! Tu publicación llegó al iceberg de PingU 🐧",
+                                    Toast.LENGTH_SHORT).show();
+                            finish();
+                        } else {
+                            Toast.makeText(MainActivity9formulario_post.this,
+                                    "⚠️ No se pudo publicar el post",
+                                    Toast.LENGTH_LONG).show();
+
+                            try {
+                                if (response.errorBody() != null) {
+                                    Log.e("CREATE_POST", response.errorBody().string());
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<CreatePostResponse> call, Throwable t) {
+                        item.setEnabled(true);
+                        Toast.makeText(MainActivity9formulario_post.this,
+                                "❌ No se pudo conectar con el servidor",
+                                Toast.LENGTH_LONG).show();
+                        Log.e("CREATE_POST", "Error creando post", t);
+                    }
+                });
+
+                return true;
+            }
         ;
         return super.onOptionsItemSelected(item);
     }

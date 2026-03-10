@@ -20,7 +20,7 @@
     <item
         android:id="@+id/btnPosts"
         android:icon="@drawable/postsreverse"
-        android:title="Mis posts"
+        android:title="Mis publicaciones"
         app:showAsAction="never" />
     <item
         android:id="@+id/btnHome"

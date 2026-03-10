@@ -146,6 +146,10 @@ public class MainActivity extends AppCompatActivity {
                                     "Login correcto",
                                     Toast.LENGTH_SHORT).show();
 
+                            getSharedPreferences("PinguPrefs", MODE_PRIVATE)
+                                    .edit()
+                                    .putString("id_usuario", response.body().getId())
+                                    .apply();
                             guardarPreferencias();
 
                             Intent intent = new Intent(MainActivity.this, MainActivity5muro.class);
@@ -231,6 +235,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void guardarPreferencias() {
+
         SharedPreferences.Editor editor = preferencias.edit();
         editor.putBoolean("recordar_usuario", chkUsuario.isChecked());
         editor.putBoolean("mostrar_pass", chkPass.isChecked());

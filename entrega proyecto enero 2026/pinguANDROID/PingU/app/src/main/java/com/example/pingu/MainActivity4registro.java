@@ -11,6 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.ActionBar;
@@ -57,7 +60,7 @@ public class MainActivity4registro extends AppCompatActivity {
         ettCorreo4 = findViewById(R.id.ettCorreo4);
         btn4 = findViewById(R.id.btn4);
         ettcontrasena4 = findViewById(R.id.ettcontrasena4);
-        ettcontrasenaOk4 = findViewById(R.id.ettcontrasenaOk);
+        ettcontrasenaOk4 = findViewById(R.id.ettcontrasenaOk4);
 
         setSupportActionBar(tb4);
         ActionBar actionBar = getSupportActionBar();
@@ -238,12 +241,83 @@ public class MainActivity4registro extends AppCompatActivity {
                 }
 
                 // Todo validado correctamente
-                Toast.makeText(MainActivity4registro.this, "✅ ¡Registro exitoso! Bienvenido a PingU 🐧", Toast.LENGTH_SHORT).show();
+                String nombre = ettNombre4.getText().toString().trim();
+                String apellido1 = ett1ap4.getText().toString().trim();
+                String apellido2 = ett2ap4.getText().toString().trim();
+                String alias = ettalias.getText().toString().trim();
+                String correo = ettCorreo4.getText().toString().trim();
+                String contrasena = ettcontrasena4.getText().toString().trim();
 
-                Intent intent = new Intent(MainActivity4registro.this, MainActivity.class);
-                intent.putExtra("nombre", ettNombre4.getText().toString());
-                intent.putExtra("alias", ettalias.getText().toString());
-                startActivity(intent);
+                String nombreVisible = nombre + " " + apellido1 + " " + apellido2;
+
+// Como en tu pantalla no tienes todavía biografía ni foto:
+                String biografia = "";
+                String fotografia = "";
+
+                RegisterRequest request = new RegisterRequest(
+                        alias,
+                        nombreVisible,
+                        correo,
+                        contrasena,
+                        biografia,
+                        fotografia
+                );
+
+                ApiService apiService = ApiClient.getClient().create(ApiService.class);
+
+                btn4.setEnabled(false);
+
+                apiService.register(request).enqueue(new Callback<RegisterResponse>() {
+                    @Override
+                    public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
+                        btn4.setEnabled(true);
+
+                        if (response.isSuccessful() && response.body() != null) {
+                            Toast.makeText(MainActivity4registro.this,
+                                    "✅ " + response.body().getMessage(),
+                                    Toast.LENGTH_LONG).show();
+
+                            Intent intent = new Intent(MainActivity4registro.this, MainActivity.class);
+                            intent.putExtra("nombre", nombre);
+                            intent.putExtra("alias", alias);
+                            intent.putExtra("id", response.body().getId());
+                            startActivity(intent);
+                            finish();
+
+                        } else {
+                            String mensajeError = "No se pudo completar el registro";
+
+                            try {
+                                if (response.errorBody() != null) {
+                                    String errorJson = response.errorBody().string();
+
+                                    if (errorJson.contains("alias ya está en uso")) {
+                                        mensajeError = "Ese alias ya está en uso";
+                                    } else if (errorJson.contains("correo electrónico ya está registrado")) {
+                                        mensajeError = "Ese correo ya está registrado";
+                                    }
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                            Toast.makeText(MainActivity4registro.this,
+                                    "⚠️ " + mensajeError,
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<RegisterResponse> call, Throwable t) {
+                        btn4.setEnabled(true);
+
+                        Toast.makeText(MainActivity4registro.this,
+                                "❌ No se pudo conectar con el servidor",
+                                Toast.LENGTH_LONG).show();
+
+                        Log.e("REGISTER_ERROR", "Error en registro", t);
+                    }
+                });
             }
         });
     }

@@ -9,7 +9,7 @@
     tools:context=".MainActivity4registro">
 
     <EditText
-        android:id="@+id/ettcontrasenaOk"
+        android:id="@+id/ettcontrasenaOk4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -99,7 +99,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ettcontrasenaOk" />
+        app:layout_constraintTop_toBottomOf="@+id/ettcontrasenaOk4" />
 
     <EditText
         android:id="@+id/ettCorreo4"

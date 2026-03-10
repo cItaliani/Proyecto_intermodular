@@ -11,6 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.OnBackPressedCallback;
@@ -113,9 +116,52 @@ public class MainActivity3recuperarContrasena extends AppCompatActivity {
                 }
 
                 // Si todo está bien
-                Toast.makeText(MainActivity3recuperarContrasena.this, "✅ Revisa tu correo 📧", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(MainActivity3recuperarContrasena.this, MainActivity.class);
-                startActivity(intent);
+                String usuario = ettUsuario3.getText().toString().trim();
+                String correo = ettCorreo3.getText().toString().trim();
+
+                ApiService apiService = ApiClient.getClient().create(ApiService.class);
+                RememberRequest request = new RememberRequest(correo);
+
+                btn3.setEnabled(false);
+
+                apiService.rememberPassword(request).enqueue(new Callback<ApiResponse>() {
+                    @Override
+                    public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                        btn3.setEnabled(true);
+
+                        if (response.isSuccessful() && response.body() != null) {
+                            Toast.makeText(MainActivity3recuperarContrasena.this,
+                                    "✅ " + response.body().getMessage(),
+                                    Toast.LENGTH_LONG).show();
+
+                            Intent intent = new Intent(MainActivity3recuperarContrasena.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
+
+                        } else {
+                            String mensajeError = "Error al recuperar la contraseña";
+
+                            if (response.body() != null && response.body().getError() != null) {
+                                mensajeError = response.body().getError();
+                            }
+
+                            Toast.makeText(MainActivity3recuperarContrasena.this,
+                                    "⚠️ " + mensajeError,
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ApiResponse> call, Throwable t) {
+                        btn3.setEnabled(true);
+
+                        Toast.makeText(MainActivity3recuperarContrasena.this,
+                                "❌ No se pudo conectar con el servidor",
+                                Toast.LENGTH_LONG).show();
+
+                        t.printStackTrace();
+                    }
+                });
             }
         });
     }
