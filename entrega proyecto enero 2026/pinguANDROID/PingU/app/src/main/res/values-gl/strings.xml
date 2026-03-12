@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PingU</string>
+    <string name="usuario">usuario</string>
+    <string name="contraseña">contrasinal</string>
+    <string name="recordar_usuario">lembrar usuario</string>
+    <string name="mostar_contraseña">amosar contrasinal</string>
+    <string name="recordar_credenciales">lembar meus datos</string>
+    <string name="boton_login">¿Xa es da casa? Entra 🔑</string>
+    <string name="recondar_pass">¿non lembras a contrasinal? Click aqui</string>
+    <string name="boton_registro">¿Primera vez aqui? Únete😎</string>
+    <string name="txt_tb1">PingU -  escritorio</string>
+    <string name="like">Caralludo</string>
+    <string name="unlike">"Xa non me guta "</string>
+    <string name="eliminar">Borrar</string>
+    <string name="Responder">Resposta</string>
+    <string name="ver_respuestas">Ver respostas</string>
+    <string name="btn_publica">Publica!</string>
+    <string name="email">Correo electrónico</string>
+    <string name="btnSolicitarContrasena">Enviar Contrasinal</string>
+    <string name="txt_tb3">PingU - Recuperar Contrasinal</string>
+    <string name="titulo_central_activity3">Non lembras o teu contrasinal?</string>
+    <string name="prApellido">Primeiro apelido</string>
+    <string name="sgApellido">Segundo apelido</string>
+    <string name="nombre">Nome</string>
+    <string name="alias">Alias</string>
+    <string name="conf_pass">Confirmar contrasinal</string>
+    <string name="btn_desbloquearAcceso">Acceder 🔓</string>
+    <string name="eslogan_tb4">Prepárate...isto comeza contigo 😉</string>
+    <string name="txt_tb5">As miñas publicacións</string>
+    <string name="pubilcadoBy">O dixo...</string>
+    <string name="seguir">Seguir</string>
+    <string name="dejarSeguir">Deixar de seguir</string>
+    <string name="miPerfil">O meu perfil</string>
+    <string name="seguidores">Siareiros</string>
+    <string name="seguidos">Siarei</string>
+    <string name="usuarios">Usuarios</string>
+    <string name="autor">Autor</string>
+    <string name="perfilDeUsuario">Perfil do usuario</string>
+    <string name="miembro_desde">Menbro dende</string>
+    <string name="Actualizar_foto">Actualizar foto</string>
+    <string name="cerrarSesion">Pechar sesión</string>
+    <string name="biografia">Sobre min</string>
+    <string name="nContrasena">Nova contrasinal</string>
+    <string name="guardarCambios">Gardar cambios</string>
+    <string name="deleteCuenta">"Eliminar conta "</string>
+</resources>

@@ -41,6 +41,7 @@ import com.mailersend.sdk.emails.Email;
  */
 @Path("/pingu")
 public class api {
+    // region server_antiguo
     // server funcionando pero limitacion de conexiones por hora
     // String servidor = "sql.freedb.tech";
     // String puerto = "3306";
@@ -49,7 +50,7 @@ public class api {
     // base_datos);
     // String usuario = "freedb_Atlas";
     // String contrasena = "xzwcW#V28cK#j*x";
-
+    // endregion
     // nuevo server (beta) @gmail
     // web: https://panel.filess.io/shared/09490efe-3c3c-46ca-abf2-23494a5cde3b
     String servidor = "3i6ibg.h.filess.io";
@@ -153,6 +154,50 @@ public class api {
     }
 
     /**
+     * Get information of all users.
+     * 
+     * Endpoint: GET /pingu/users
+     * 
+     * The method searches all users
+     * It returns the users data.
+     * 
+     * @return HTTP response with users data or error
+     */
+    @GET
+    @Path("/users")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getUsers() {
+        ArrayList<User> usuarios = new ArrayList<>();
+
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            try (Connection conexion = DriverManager.getConnection(url, usuario, contrasena)) {
+                PreparedStatement ps = conexion.prepareStatement(
+                        "SELECT id_usuario, alias, nombre_visible, correo_electronico, biografia, fotografia_url FROM USUARIO");
+
+                ResultSet rs = ps.executeQuery();
+
+                while (rs.next()) {
+                    User user = new User(
+                            rs.getString("id_usuario"),
+                            rs.getString("alias"),
+                            rs.getString("nombre_visible"),
+                            rs.getString("correo_electronico"),
+                            rs.getString("biografia"),
+                            rs.getString("fotografia_url"));
+                    usuarios.add(user);
+                }
+
+                return Response.ok(usuarios).build();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("{\"error\": \"" + e.getMessage() + "\"}").build();
+        }
+    }
+
+    /**
      * Get information of one user.
      * 
      * Endpoint: GET /pingu/users/{user-id}
@@ -170,7 +215,7 @@ public class api {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             try (Connection conexion = DriverManager.getConnection(url, usuario, contrasena)) {
-                String query = "SELECT id_usuario, alias, nombre_visible, correo_electronico, biografia, fotografia_url FROM USUARIO WHERE id_usuario = ?";
+                String query = "SELECT id_usuario, alias, nombre_visible, correo_electronico, biografia, fotografia_url, fecha_alta FROM USUARIO WHERE id_usuario = ?";
                 try (PreparedStatement ps = conexion.prepareStatement(query)) {
                     ps.setString(1, idConsulta);
                     ResultSet respuesta = ps.executeQuery();
@@ -182,8 +227,9 @@ public class api {
                         String mail = respuesta.getString("correo_electronico");
                         String bio = respuesta.getString("biografia");
                         String foto = respuesta.getString("fotografia_url");
+                        Date fecha = respuesta.getDate("fecha_alta");
 
-                        User user = new User(id, alias, nombre, mail, bio, foto);
+                        User user = new User(id, alias, nombre, mail, bio, foto,fecha);
                         return Response.ok(user).build();
                     } else {
                         return Response.status(Response.Status.NOT_FOUND)
@@ -516,8 +562,8 @@ public class api {
             Class.forName("org.mariadb.jdbc.Driver");
             try (Connection conexion = DriverManager.getConnection(url, usuario, contrasena)) {
                 if (idUserSeguido.equals(followRequest.getId_seguidor())) {
-                    return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                            .entity("no te puedes seguir a ti mismo").build();
+                    return Response.status(Response.Status.BAD_REQUEST)
+                            .entity("{\"error\":\"No te puedes seguir a ti mismo\"}").build();
                 }
                 PreparedStatement ps = conexion.prepareStatement(
                         "SELECT id_usuario FROM USUARIO WHERE id_usuario = ?");
@@ -525,18 +571,28 @@ public class api {
                 ResultSet datos = ps.executeQuery();
 
                 if (datos.next()) {
+                    PreparedStatement check = conexion.prepareStatement(
+                            "SELECT 1 FROM SEGUIR WHERE id_seguidor = ? AND id_seguido = ?");
+                    check.setString(1, followRequest.getId_seguidor());
+                    check.setString(2, idUserSeguido);
+                    ResultSet rsCheck = check.executeQuery();
 
+                    if (rsCheck.next()) {
+                        return Response.status(Response.Status.CONFLICT)
+                                .entity("{\"error\":\"Ya sigues a este usuario\"}")
+                                .build();
+                    }
                     PreparedStatement psFollow = conexion.prepareStatement(
                             "INSERT INTO SEGUIR (id_seguidor, id_seguido, fecha_inicio_follow) VALUES (?, ?, ?)");
-                    psFollow.setString(1, idUserSeguido);
-                    psFollow.setString(2, followRequest.getId_seguidor());
+                    psFollow.setString(1, followRequest.getId_seguidor());
+                    psFollow.setString(2, idUserSeguido);
                     Date fecha = new Date(System.currentTimeMillis());
                     psFollow.setDate(3, fecha);
                     psFollow.executeUpdate();
-                    return Response.ok("desde ahora sigues a este usuario").build();
+                    return Response.ok("{\"message\":\"Desde ahora sigues a este usuario\"}").build();
                 } else {
                     return Response.status(Response.Status.NOT_FOUND)
-                            .entity("{\"error\": \"Usuario no encontrado\"}").build();
+                            .entity("{\"error\":\"Usuario no encontrado\"}").build();
                 }
             }
         } catch (Exception e) {
@@ -574,15 +630,15 @@ public class api {
 
                 if (filas == 0) {
                     return Response.status(Response.Status.NOT_FOUND)
-                            .entity("{\"error\": \"Relación de seguimiento no encontrada\"}").build();
+                            .entity("{\"error\":\"Relación de seguimiento no encontrada\"}").build();
                 }
 
-                return Response.ok("{\"message\": \"Dejaste de seguir al usuario\"}").build();
+                return Response.ok("{\"message\":\"Dejaste de seguir al usuario\"}").build();
             }
         } catch (Exception e) {
             e.printStackTrace();
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                    .entity("{\"error\": \"" + e.getMessage() + "\"}").build();
+                    .entity("{\"error\":\"" + e.getMessage() + "\"}").build();
         }
     }
     // endregion

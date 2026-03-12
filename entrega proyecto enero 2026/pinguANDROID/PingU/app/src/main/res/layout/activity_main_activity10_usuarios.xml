@@ -5,32 +5,28 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity8follows">
+    tools:context=".MainActivity10Usuarios">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tb8"
+        android:id="@+id/tbUsuarios"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:subtitle="0 seguidos"
-        app:subtitleTextColor="@color/white"
-        app:title="Usuarios que sigues"
-        app:titleTextColor="@color/white" />
+        app:title="Listado del resto de usuarios"
+        app:titleTextColor="@android:color/white" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvFollows"
+        android:id="@+id/rvUsuarios"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="8dp"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/tbUsuarios"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tb8"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:listitem="@layout/item_usuario" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

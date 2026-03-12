@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PingU</string>
+    <string name="usuario">user</string>
+    <string name="contraseña">password</string>
+    <string name="recordar_usuario">remember user</string>
+    <string name="mostar_contraseña">show password</string>
+    <string name="recordar_credenciales">"remember credentials "</string>
+    <string name="boton_login">Are you already a resident? Come in🔑</string>
+    <string name="recondar_pass">Forgot your password? Click here</string>
+    <string name="boton_registro">First time here? Join us!😎</string>
+    <string name="txt_tb1">PingU - home</string>
+    <string name="like">Like</string>
+    <string name="unlike">Dislike</string>
+    <string name="eliminar">Delete</string>
+    <string name="Responder">Replie</string>
+    <string name="ver_respuestas">Show replies</string>
+    <string name="btn_publica">Post!</string>
+    <string name="email">E-mail</string>
+    <string name="btnSolicitarContrasena">Send password</string>
+    <string name="txt_tb3">PingU - Recover Password</string>
+    <string name="titulo_central_activity3">Forgot your password?</string>
+    <string name="prApellido">First surname</string>
+    <string name="sgApellido">Second surname</string>
+    <string name="nombre">Name</string>
+    <string name="alias">Nickname</string>
+    <string name="conf_pass">Confirm password</string>
+    <string name="btn_desbloquearAcceso">Sign in 🔓</string>
+    <string name="eslogan_tb4">Get ready...this starts with you 😉</string>
+    <string name="txt_tb5">My feed</string>
+    <string name="pubilcadoBy">Posted by</string>
+    <string name="seguir">Follow</string>
+    <string name="dejarSeguir">Unfollow</string>
+    <string name="miPerfil">My profile</string>
+    <string name="seguidores">Followers</string>
+    <string name="seguidos">Follows</string>
+    <string name="usuarios">Users</string>
+    <string name="autor">Author</string>
+    <string name="perfilDeUsuario">User profile</string>
+    <string name="miembro_desde">Member sice</string>
+    <string name="Actualizar_foto">Update photo</string>
+    <string name="cerrarSesion">Sign out</string>
+    <string name="biografia">About me</string>
+    <string name="nContrasena">New password</string>
+    <string name="guardarCambios">Save changes</string>
+    <string name="deleteCuenta">Delete account</string>
+</resources>

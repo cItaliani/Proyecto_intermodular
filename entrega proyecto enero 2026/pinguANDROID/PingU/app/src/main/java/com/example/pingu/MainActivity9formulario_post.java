@@ -103,7 +103,10 @@ public class MainActivity9formulario_post extends AppCompatActivity {
             finish();
             return true;
 
-         }else if (id == R.id.publicar) {
+         }else if (id==R.id.btnUsuarios){
+            Intent intent = new Intent(MainActivity9formulario_post.this, MainActivity10Usuarios.class);
+            startActivity(intent);
+        }else if (id == R.id.publicar) {
             item.setEnabled(false);
                 String texto = ett4.getText().toString().trim();
 

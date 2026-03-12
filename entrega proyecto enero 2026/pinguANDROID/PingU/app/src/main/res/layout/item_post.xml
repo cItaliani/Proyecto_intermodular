@@ -47,20 +47,23 @@
                 android:id="@+id/btnLike"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Like" />
+                android:backgroundTint="#4CAF50"
+                android:text="@string/like" />
 
             <Button
                 android:id="@+id/btnDislike"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Quitar like" />
+                android:backgroundTint="#FB8C00"
+                android:text="@string/unlike"
+                android:textColor="#FFFFFF" />
 
             <Button
                 android:id="@+id/btnEliminar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#C62828"
-                android:text="Eliminar" />
+                android:text="@string/eliminar" />
         </LinearLayout>
 
         <LinearLayout
@@ -73,13 +76,15 @@
                 android:id="@+id/btnResponder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Responder" />
+                android:backgroundTint="#1976D2"
+                android:text="@string/Responder" />
 
             <Button
                 android:id="@+id/btnVerRespuestas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ver respuestas" />
+                android:backgroundTint="#0D47A1"
+                android:text="@string/ver_respuestas" />
 
         </LinearLayout>
 

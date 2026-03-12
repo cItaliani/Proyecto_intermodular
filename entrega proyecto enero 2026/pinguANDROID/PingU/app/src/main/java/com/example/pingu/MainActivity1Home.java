@@ -217,6 +217,9 @@ Button btn2;
         }else if (id==R.id.btnPosts){
             Intent intent = new Intent(MainActivity1Home.this, MainActivity5muro.class);
             startActivity(intent);
+        }else if (id==R.id.btnUsuarios){
+            Intent intent = new Intent(MainActivity1Home.this, MainActivity10Usuarios.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
                                     .apply();
                             guardarPreferencias();
 
-                            Intent intent = new Intent(MainActivity.this, MainActivity5muro.class);
+                            Intent intent = new Intent(MainActivity.this, MainActivity1Home.class);
                             startActivity(intent);
 
                         } else {

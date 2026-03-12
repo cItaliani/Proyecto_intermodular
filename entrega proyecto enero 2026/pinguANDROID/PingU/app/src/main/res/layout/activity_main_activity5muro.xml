@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="PingU - Mis Publicaciones"
+        app:title="@string/txt_tb5"
         app:titleTextColor="@color/white" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="36dp"
         android:layout_marginBottom="36dp"
-        android:text="¡publica!"
+        android:text="@string/btn_publica"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

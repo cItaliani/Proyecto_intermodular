@@ -1,5 +1,7 @@
 package ejem1;
 
+import java.sql.Date;
+
 public class User {
     private String alias;
     private String nombre_visible;
@@ -8,6 +10,7 @@ public class User {
     private String biografia;
     private String fotografia;
     private String user_id;
+    private Date fecha_alta;
 
     // region de setters
     public void setAlias(String alias) {
@@ -36,6 +39,9 @@ public class User {
 
     public void setUser_id(String user_id) {
         this.user_id = user_id;
+    }
+    public void setFecha_alta(Date fecha_alta){
+        this.fecha_alta=fecha_alta;
     }
 
     // endregion
@@ -67,6 +73,9 @@ public class User {
     public String getUser_id() {
         return user_id;
     }
+    public Date getFecha_alta(){
+        return fecha_alta;
+    }
     // endregion
 
     public User(){};
@@ -79,5 +88,13 @@ public class User {
         this.biografia = biografia;
         this.fotografia = fotografia;
     }
-
+    public User(String user_id, String alias, String nombre_visible, String correo_electronico,String biografia, String fotografia, Date fecha_alta ) {
+        this.user_id = user_id;
+        this.alias = alias;
+        this.nombre_visible = nombre_visible;
+        this.correo_electronico = correo_electronico;
+        this.biografia = biografia;
+        this.fotografia = fotografia;
+        this.fecha_alta=fecha_alta;
+    }
 }

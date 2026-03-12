@@ -14,8 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:ems="10"
+        android:hint="@string/usuario"
         android:inputType="text"
-        android:hint="Usuario"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv3" />
@@ -30,7 +30,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="PingU - Recuperar contraseña"
+        app:title="@string/txt_tb1"
         app:titleTextColor="@color/white" />
 
     <ImageView
@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:text="¿No recuerdas tu contraseña?"
+        android:text="@string/titulo_central_activity3"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,8 +59,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="@string/email"
         android:inputType="text"
-        android:hint="Correo electrónico"
         app:layout_constraintEnd_toEndOf="@+id/ettUsuario3"
         app:layout_constraintStart_toStartOf="@+id/ettUsuario3"
         app:layout_constraintTop_toBottomOf="@+id/ettUsuario3" />
@@ -69,7 +69,7 @@
         android:id="@+id/btn3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="solicitar contraseña"
+        android:text="@string/recondar_pass"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/ettCorreo3"
         app:layout_constraintHorizontal_bias="0.472"

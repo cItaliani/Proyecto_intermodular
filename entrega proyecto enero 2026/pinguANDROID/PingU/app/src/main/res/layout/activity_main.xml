@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layoutDirection="rtl"
-        android:text="recordar credenciales"
+        android:text="@string/recordar_credenciales"
         app:layout_constraintEnd_toEndOf="@+id/chkPass"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/ettContrasena"
@@ -34,9 +34,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="usuario"
+        android:hint="@string/usuario"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.597"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivLogo" />
 
@@ -46,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:ems="10"
-        android:hint="contraseña"
+        android:hint="@string/boton_registro"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="@+id/ettUsuario"
         app:layout_constraintHorizontal_bias="1.0"
@@ -58,7 +59,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="¿Ya eres de casa? Entra 🔑"
+        android:text="@string/boton_login"
         app:layout_constraintEnd_toEndOf="@+id/ettContrasena"
         app:layout_constraintTop_toBottomOf="@+id/chkCredenciales" />
 
@@ -67,7 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="¿Has olvidado tu contraseña? Click aqui"
+        android:text="@string/recondar_pass"
         android:textColor="#062AF6"
         app:layout_constraintEnd_toEndOf="@+id/ettContrasena"
         app:layout_constraintStart_toStartOf="@+id/ettContrasena"
@@ -97,7 +98,7 @@
         android:id="@+id/btnRegistro"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="¿Primera vez por aquí? Súmate😎​"
+        android:text="@string/boton_registro"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="@+id/textView2"
         app:layout_constraintHorizontal_bias="0.0"
@@ -108,7 +109,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layoutDirection="rtl"
-        android:text="recordar usuario"
+        android:text="@string/recordar_usuario"
         app:layout_constraintStart_toStartOf="@+id/ettContrasena"
         app:layout_constraintTop_toBottomOf="@+id/ettUsuario" />
 
@@ -117,7 +118,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layoutDirection="rtl"
-        android:text="mostrar contraseña"
+        android:text="@string/recondar_pass"
         app:layout_constraintStart_toStartOf="@+id/ettContrasena"
         app:layout_constraintTop_toBottomOf="@+id/ettContrasena" />
 

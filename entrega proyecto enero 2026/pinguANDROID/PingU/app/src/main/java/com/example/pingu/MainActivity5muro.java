@@ -236,6 +236,9 @@ public class MainActivity5muro extends AppCompatActivity implements PostActionLi
         } else if (id == R.id.btnHome) {
             Intent intent = new Intent(MainActivity5muro.this, MainActivity1Home.class);
             startActivity(intent);
+        }else if (id==R.id.btnUsuarios){
+            Intent intent = new Intent(MainActivity5muro.this, MainActivity10Usuarios.class);
+            startActivity(intent);
         }
         ;
 

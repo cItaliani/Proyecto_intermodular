@@ -4,7 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class UserResponse {
 
+    @SerializedName("user_id")
     private String id;
+
     private String alias;
 
     @SerializedName("nombre_visible")
@@ -15,8 +17,15 @@ public class UserResponse {
 
     private String biografia;
 
-    @SerializedName("fotografia_url")
-    private String fotografiaUrl;
+    @SerializedName("fotografia")
+    private String fotografia;
+
+    @SerializedName("fecha_alta")
+    private long fechaAlta;
+
+    public long getFechaAlta() {
+        return fechaAlta;
+    }
 
     public String getId() {
         return id;
@@ -38,7 +47,7 @@ public class UserResponse {
         return biografia;
     }
 
-    public String getFotografiaUrl() {
-        return fotografiaUrl;
+    public String getFotografia() {
+        return fotografia;
     }
 }

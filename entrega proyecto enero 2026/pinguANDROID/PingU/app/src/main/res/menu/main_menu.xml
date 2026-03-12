@@ -5,26 +5,29 @@
     <item
         android:id="@+id/btnPerfil"
         android:icon="@drawable/profilereverse"
-        android:title="Mi perfil"
+        android:title="@string/miPerfil"
         app:showAsAction="never" />
     <item
         android:id="@+id/btnFollowers"
         android:icon="@drawable/followersreverse"
-        android:title="Seguidores"
+        android:title="@string/seguidores"
         app:showAsAction="never" />
     <item
         android:id="@+id/btnFollow"
         android:icon="@drawable/followreverse"
-        android:title="Seguidos"
+        android:title="@string/seguidos"
         app:showAsAction="never" />
     <item
         android:id="@+id/btnPosts"
         android:icon="@drawable/postsreverse"
-        android:title="Mis publicaciones"
+        android:title="@string/txt_tb5"
         app:showAsAction="never" />
     <item
         android:id="@+id/btnHome"
         android:icon="@drawable/homesf"
         android:title="Home"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/btnUsuarios"
+        android:title="@string/usuarios" />
 </menu>
