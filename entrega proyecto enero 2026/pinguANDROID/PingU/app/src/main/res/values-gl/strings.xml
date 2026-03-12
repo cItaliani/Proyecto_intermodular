@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">PingU</string>
     <string name="usuario">usuario</string>
-    <string name="contraseña">contrasinal</string>
+    <string name="contrasena">contrasinal</string>
     <string name="recordar_usuario">lembrar usuario</string>
     <string name="mostar_contraseña">amosar contrasinal</string>
     <string name="recordar_credenciales">lembar meus datos</string>

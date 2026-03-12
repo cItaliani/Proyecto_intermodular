@@ -31,26 +31,27 @@
 
     <EditText
         android:id="@+id/ettUsuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="277dp"
+        android:layout_height="44dp"
         android:ems="10"
         android:hint="@string/usuario"
         android:inputType="text"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.597"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivLogo" />
 
     <EditText
         android:id="@+id/ettContrasena"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_width="277dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="@string/boton_registro"
+        android:hint="@string/contrasena"
         android:inputType="textPassword"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/ettUsuario"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/ettUsuario"
         app:layout_constraintTop_toBottomOf="@+id/chkUsuario" />
 
