@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PingU · Nuevo Post</title>
+<link rel="shortcut icon" href="PingUsf.ico">
+<link rel="stylesheet" href="nuevoPost.css">
+</head>
+
+<body>
+
+<header class="topbar">
+    <div class="topbar-left">
+        <h1>Crear publicación</h1>
+    </div>
+
+    <div class="topbar-right">
+        <button onclick="desconexion()" class="logoutButton">Desconexión ⏻</button>
+    </div>
+</header>
+
+<div class="main-container">
+
+    <div class="post-card">
+
+        <h2>¿Qué estás pensando?</h2>
+
+        <textarea 
+            id="contenidoPost" 
+            placeholder="Escribe aquí tu publicación..."
+        ></textarea>
+
+        <div class="post-actions">
+
+            <button onclick="cancelarPost()" class="cancel-btn">
+                Cancelar
+            </button>
+
+            <button onclick="publicarPost()" class="publish-btn">
+                Publicar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="nuevoPost.js"></script>
+
+</body>
+</html>

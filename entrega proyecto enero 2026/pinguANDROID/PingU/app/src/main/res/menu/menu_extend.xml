@@ -24,7 +24,7 @@
         app:showAsAction="never" />
     <item
         android:id="@+id/publicar"
-        android:icon="@drawable/publ"
+        android:icon="@drawable/publish"
         android:title="publicar"
         app:showAsAction="always" />
     <item

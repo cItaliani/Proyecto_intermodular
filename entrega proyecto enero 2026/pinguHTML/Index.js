@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (response.status === 200) {
                 return response.json().then(data => {
                     localStorage.setItem("id_usuario", data.id);
-                    window.location.href = "muro.html";
+                    window.location.href = "misPost.html";
                 });
             } else if (response.status === 401) {
                 alert("⚠️ Credenciales incorrectas");

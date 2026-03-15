@@ -1,27 +1,50 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PingU · Board Mind</title>
-    <link rel="shortcut icon" href="PingUsf.ico" type="image/x-icon">
-    <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        .topbar {
+            height: 70px;
+            background: #2d6cdf;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 25px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .topbar-left h1 {
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .topbar-right button {
+            background: #ff4d4d;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .topbar-right button:hover {
+            background: #e03e3e;
+        }
+
+        /* espacio para que el contenido no quede debajo de la barra */
+
         body {
             font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #00ff88 0%, #00dd88 100%);
-            height: 100vh;
+            min-height: 100vh;
             overflow: hidden;
         }
 
         .container {
             display: flex;
-            height: 100vh;
+            height: calc(100vh - 70px);
         }
 
         /* Sidebar */
@@ -33,6 +56,25 @@
             padding: 20px 10px;
             gap: 10px;
             box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar-logo {
+            margin-top: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 10px;
+        }
+
+        .sidebar-logo img {
+            width: 120px;
+            opacity: 0.9;
+            transition: 0.3s;
+        }
+
+        .sidebar-logo img:hover {
+            opacity: 1;
+            transform: scale(1.05);
         }
 
         .button {
@@ -52,6 +94,20 @@
         .button:hover {
             background: #7c3aed;
             transform: translateX(5px);
+        }
+
+        .post-actions button {
+            background: #9333ea;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .post-actions button:hover {
+            background: #7c3aed;
         }
 
         .logout {
@@ -112,6 +168,7 @@
                 opacity: 0;
                 transform: translateY(10px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -373,7 +430,12 @@
                 padding: 20px 5px;
             }
 
-            .button, .logoutButton {
+            .sidebar-logo img {
+                width: 45px;
+            }
+
+            .button,
+            .logoutButton {
                 font-size: 0;
                 padding: 12px;
                 text-align: center;
@@ -382,4 +444,28 @@
             .user-list {
                 grid-template-columns: 1fr;
             }
+        }
+
+        .floating-post-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            background: #9333ea;
+            color: white;
+            font-size: 36px;
+            text-decoration: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .floating-post-btn:hover {
+            background: #7c3aed;
+            transform: scale(1.1);
         }

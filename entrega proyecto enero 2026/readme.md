@@ -42,7 +42,15 @@ PingU by Riddler Company
 | 10/03/2026 | Llamadas a la API relacionadas con posts y likes                                                |
 | 12/03/2026 | Pequeños arreglos en la API                                                                     |
 | 12/03/2026 | Finalizar la parte de cliente móvil (todo traducido en strings)                                 |
-| 12/03/2026 | Principio de revisión para cliente web                                                          |
+| 12/03/2026 | Revisión para cliente web                                                                       |
+| 13/03/2026 | Gestión de usuarios y post de cliente web                                                       |
+| 14/03/2026 | Finalizar parte de cliente web  (pte de darle orden a los archivos)                             |
+| 15/03/2026 | Depuración de errores HTML CSS JS                                                               |
+
+
+
+
+
 
 
 ## Autor

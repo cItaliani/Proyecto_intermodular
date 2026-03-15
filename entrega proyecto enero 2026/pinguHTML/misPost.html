@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PingU · Board Mind</title>
+    <link rel="shortcut icon" href="PingUsf.ico" type="image/x-icon">
+    <link rel="stylesheet" href="misPost.css">
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="topbar-left">
+            <h1 id="tituloSeccion">Mi perfil</h1>
+        </div>
+
+        <div class="topbar-right">
+            <button onclick="desconexion()" class="logoutButton">Desconexión ⏻</button>
+        </div>
+    </header>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <a href="home.html"><button class="button">Inicio</button></a>
+            <a href="perfil.html"><button class="button">Mi perfil</button></a>
+            <a href="usuarios.html"><button class="button">Usuarios</button></a>
+            <a href="followers.html"><button class="button">Seguidores</button></a>
+            <a href="follows.html"><button class="button">Seguidos</button></a>
+            <a href="misPost.html"><button class="button">Mis post</button></a>
+            <div class="sidebar-logo">
+                <img src="PingUsf.png" alt="PingU">
+            </div>
+        </div>
+        <!-- Main content -->
+        <div class="main">
+            <div id="perfil" class="content-box">Contenido de Mi perfil</div>
+            <div id="seguido" class="content-box">Contenido de usuarios seguidos</div>
+            <div id="seguidores" class="content-box">Contenido de mis seguidores</div>
+            <div id="posts" class="content-box">Contenido de mis posts</div>
+        </div>
+    </div>
+
+    <a href="nuevoPost.html" class="floating-post-btn">+</a>
+    <script src="misPost.js"></script>
+</body>
+
+</html>
