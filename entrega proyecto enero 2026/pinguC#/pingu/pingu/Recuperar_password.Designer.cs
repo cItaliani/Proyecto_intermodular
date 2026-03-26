@@ -97,7 +97,6 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(81)))), ((int)(((byte)(155)))));
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(533, 306);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

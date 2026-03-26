@@ -22,56 +22,63 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnPerfil = new System.Windows.Forms.Button();
+            this.btnSeguidores = new System.Windows.Forms.Button();
+            this.btnPublicaciones = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnSeguidos = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
+            this.btnInicio = new System.Windows.Forms.Button();
+            this.btnUsers = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // btnPerfil
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(81)))), ((int)(((byte)(155)))));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(12, 15);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(183, 45);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Mi perfil";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(81)))), ((int)(((byte)(155)))));
+            this.btnPerfil.ForeColor = System.Drawing.Color.White;
+            this.btnPerfil.Location = new System.Drawing.Point(12, 63);
+            this.btnPerfil.Name = "btnPerfil";
+            this.btnPerfil.Size = new System.Drawing.Size(183, 45);
+            this.btnPerfil.TabIndex = 1;
+            this.btnPerfil.Text = "Mi perfil";
+            this.btnPerfil.UseVisualStyleBackColor = false;
+            this.btnPerfil.Click += new System.EventHandler(this.btnPerfil_Click);
+            this.btnPerfil.MouseLeave += new System.EventHandler(this.button4_MouseLeave);
+            this.btnPerfil.MouseHover += new System.EventHandler(this.button_MouseHover);
             // 
-            // button3
+            // btnSeguidores
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(81)))), ((int)(((byte)(155)))));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(12, 117);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(183, 45);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "mis seguidores";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnSeguidores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(81)))), ((int)(((byte)(155)))));
+            this.btnSeguidores.ForeColor = System.Drawing.Color.White;
+            this.btnSeguidores.Location = new System.Drawing.Point(12, 165);
+            this.btnSeguidores.Name = "btnSeguidores";
+            this.btnSeguidores.Size = new System.Drawing.Size(183, 45);
+            this.btnSeguidores.TabIndex = 3;
+            this.btnSeguidores.Text = "Seguidores";
+            this.btnSeguidores.UseVisualStyleBackColor = false;
+            this.btnSeguidores.Click += new System.EventHandler(this.btnSeguidores_Click);
+            this.btnSeguidores.MouseLeave += new System.EventHandler(this.button4_MouseLeave);
+            this.btnSeguidores.MouseHover += new System.EventHandler(this.button_MouseHover);
             // 
-            // button4
+            // btnPublicaciones
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(81)))), ((int)(((byte)(155)))));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(12, 168);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(183, 45);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Mis post";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnPublicaciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(81)))), ((int)(((byte)(155)))));
+            this.btnPublicaciones.ForeColor = System.Drawing.Color.White;
+            this.btnPublicaciones.Location = new System.Drawing.Point(12, 267);
+            this.btnPublicaciones.Name = "btnPublicaciones";
+            this.btnPublicaciones.Size = new System.Drawing.Size(183, 45);
+            this.btnPublicaciones.TabIndex = 5;
+            this.btnPublicaciones.Text = "Mis post";
+            this.btnPublicaciones.UseVisualStyleBackColor = false;
+            this.btnPublicaciones.Click += new System.EventHandler(this.btnPublicaciones_Click);
+            this.btnPublicaciones.MouseLeave += new System.EventHandler(this.button4_MouseLeave);
+            this.btnPublicaciones.MouseHover += new System.EventHandler(this.button_MouseHover);
             // 
             // btnSalir
             // 
@@ -81,31 +88,33 @@
             this.btnSalir.Location = new System.Drawing.Point(12, 519);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(183, 45);
-            this.btnSalir.TabIndex = 4;
+            this.btnSalir.TabIndex = 6;
             this.btnSalir.Text = "Desconexión ⏻";
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.MouseEnter += new System.EventHandler(this.btnSalir_MouseEnter);
             this.btnSalir.MouseLeave += new System.EventHandler(this.btnSalir_MouseLeave);
             // 
-            // button2
+            // btnSeguidos
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(81)))), ((int)(((byte)(155)))));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(12, 66);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(183, 45);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "usuario seguidos";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnSeguidos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(81)))), ((int)(((byte)(155)))));
+            this.btnSeguidos.ForeColor = System.Drawing.Color.White;
+            this.btnSeguidos.Location = new System.Drawing.Point(12, 216);
+            this.btnSeguidos.Name = "btnSeguidos";
+            this.btnSeguidos.Size = new System.Drawing.Size(183, 45);
+            this.btnSeguidos.TabIndex = 4;
+            this.btnSeguidos.Text = "Seguidos";
+            this.btnSeguidos.UseVisualStyleBackColor = false;
+            this.btnSeguidos.Click += new System.EventHandler(this.btnSeguidos_Click);
+            this.btnSeguidos.MouseLeave += new System.EventHandler(this.button4_MouseLeave);
+            this.btnSeguidos.MouseHover += new System.EventHandler(this.button_MouseHover);
             // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Location = new System.Drawing.Point(201, 12);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(890, 552);
-            this.panel2.TabIndex = 2;
+            this.panel2.Size = new System.Drawing.Size(1156, 574);
+            this.panel2.TabIndex = 7;
             // 
             // button5
             // 
@@ -113,43 +122,87 @@
             this.button5.Location = new System.Drawing.Point(-1, -1);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(10, 10);
-            this.button5.TabIndex = 5;
+            this.button5.TabIndex = 8;
             this.button5.Text = "button5";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click_1);
+            // 
+            // btnInicio
+            // 
+            this.btnInicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(81)))), ((int)(((byte)(155)))));
+            this.btnInicio.ForeColor = System.Drawing.Color.White;
+            this.btnInicio.Location = new System.Drawing.Point(12, 12);
+            this.btnInicio.Name = "btnInicio";
+            this.btnInicio.Size = new System.Drawing.Size(183, 45);
+            this.btnInicio.TabIndex = 0;
+            this.btnInicio.Text = "Inicio";
+            this.btnInicio.UseVisualStyleBackColor = false;
+            this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
+            this.btnInicio.MouseLeave += new System.EventHandler(this.button4_MouseLeave);
+            this.btnInicio.MouseHover += new System.EventHandler(this.button_MouseHover);
+            // 
+            // btnUsers
+            // 
+            this.btnUsers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(81)))), ((int)(((byte)(155)))));
+            this.btnUsers.ForeColor = System.Drawing.Color.White;
+            this.btnUsers.Location = new System.Drawing.Point(12, 114);
+            this.btnUsers.Name = "btnUsers";
+            this.btnUsers.Size = new System.Drawing.Size(183, 45);
+            this.btnUsers.TabIndex = 2;
+            this.btnUsers.Text = "Usuarios";
+            this.btnUsers.UseVisualStyleBackColor = false;
+            this.btnUsers.Click += new System.EventHandler(this.btnUsers_Click);
+            this.btnUsers.MouseLeave += new System.EventHandler(this.button4_MouseLeave);
+            this.btnUsers.MouseHover += new System.EventHandler(this.button_MouseHover);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(55, 350);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(96, 132);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
             // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(228)))), ((int)(((byte)(140)))));
-            this.ClientSize = new System.Drawing.Size(1110, 579);
+            this.ClientSize = new System.Drawing.Size(1369, 598);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.btnInicio);
+            this.Controls.Add(this.btnUsers);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnPublicaciones);
+            this.Controls.Add(this.btnPerfil);
+            this.Controls.Add(this.btnSeguidos);
+            this.Controls.Add(this.btnSeguidores);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Mind_Board";
+            this.Text = "Home";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Principal_FormClosed);
             this.Load += new System.EventHandler(this.Form3_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnPublicaciones;
+        private System.Windows.Forms.Button btnSeguidores;
+        private System.Windows.Forms.Button btnPerfil;
+        private System.Windows.Forms.Button btnSeguidos;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnInicio;
+        private System.Windows.Forms.Button btnUsers;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

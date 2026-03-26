@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net.Http;
+using System.Text;
+using System.Text.Json;
 
 namespace pingu
 {
@@ -18,6 +21,7 @@ namespace pingu
         private string usuario = "";
         private string pass = "";
         private Random random = new Random();
+        public static string idUsuarioLogado = "";
 
         public Log_in()
         {
@@ -25,88 +29,133 @@ namespace pingu
             linkLabel1.TabStop = false;
         }
 
-        private void btnLoging_Click(object sender, EventArgs e)
+        public class LoginRequest
+        {
+            public string alias { get; set; }
+            public string contrasena { get; set; }
+        }
+
+        public class LoginResponse
+        {
+            public string message { get; set; }
+            public string id { get; set; }
+            public string error { get; set; }
+        }
+
+        private async void btnLoging_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtUsuario.Text))
             {
-                // Array de frases aleatorias para usuario vacío
                 string[] frasesUsuario = {
-                    "⚠️ Sin usuario no entras, colega 🚫",
-                    "Ehhh, ¿el usuario? 🤨 No te lo saltes",
-                    "¿Usuario invisible? No funciona así 👻",
-                    "Pon tu usuario aquí, porfa 😅",
-                    "⚠️ Campo obligatorio, campeón",
-                    "Tío, el usuario... ¿dónde está? 🤷‍♂️",
-                    "No seas tímido, pon tu usuario 😏",
-                    "Adivina: necesitas un usuario 🎯",
-                    "El usuario no es opcional, crack 🎪",
-                    "¿Olvidaste algo? Sí, el usuario 🧠"
-                };
+            "⚠️ Sin usuario no entras, colega 🚫",
+            "Ehhh, ¿el usuario? 🤨 No te lo saltes",
+            "¿Usuario invisible? No funciona así 👻",
+            "Pon tu usuario aquí, porfa 😅",
+            "⚠️ Campo obligatorio, campeón",
+            "Tío, el usuario... ¿dónde está? 🤷‍♂️",
+            "No seas tímido, pon tu usuario 😏",
+            "Adivina: necesitas un usuario 🎯",
+            "El usuario no es opcional, crack 🎪",
+            "¿Olvidaste algo? Sí, el usuario 🧠"
+        };
 
                 string fraseAleatoria = frasesUsuario[random.Next(frasesUsuario.Length)];
                 MessageBox.Show(fraseAleatoria, "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (string.IsNullOrEmpty(txtpass.Text))
             {
-                // Array de frases aleatorias para contraseña vacía
                 string[] frasesPassword = {
-                    "Ehhh, ¿y la contraseña? 🤔",
-                    "La contraseña no se pone sola 🙃",
-                    "¿Contraseña? ¿Hola? 👋",
-                    "Sin contraseña no hay login, sorry 🚷",
-                    "Falta algo importante... la contraseña 🔑",
-                    "¿Te olvidaste de la contraseña? 😬",
-                    "Contraseña obligatoria, amigo 🎯",
-                    "Pon la contraseña, no seas vago 😅"
-                };
+            "Ehhh, ¿y la contraseña? 🤔",
+            "La contraseña no se pone sola 🙃",
+            "¿Contraseña? ¿Hola? 👋",
+            "Sin contraseña no hay login, sorry 🚷",
+            "Falta algo importante... la contraseña 🔑",
+            "¿Te olvidaste de la contraseña? 😬",
+            "Contraseña obligatoria, amigo 🎯",
+            "Pon la contraseña, no seas vago 😅"
+        };
 
                 string fraseAleatoria = frasesPassword[random.Next(frasesPassword.Length)];
                 MessageBox.Show(fraseAleatoria, "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (txtpass.Text.Length < 6)
             {
-                // Array de frases aleatorias para contraseña corta
                 string[] frasesPasswordCorta = {
-                    "⚠️ ¿En serio? Mínimo 6, no seas rata 😂",
-                    "Muy corta, mínimo 6 caracteres 📏",
-                    "¿6 caracteres es mucho pedir? 🤨",
-                    "Esa contraseña es más corta que... 6+ porfa 🙏",
-                    "Mínimo 6, que no es tan difícil 💪",
-                    "6 caracteres o más, venga 🎯",
-                    "Corta contraseña = insegura. Mín. 6 🔒",
-                    "Dale más caña, mínimo 6 caracteres 🚀"
-                };
+            "⚠️ ¿En serio? Mínimo 6, no seas rata 😂",
+            "Muy corta, mínimo 6 caracteres 📏",
+            "¿6 caracteres es mucho pedir? 🤨",
+            "Esa contraseña es más corta que... 6+ porfa 🙏",
+            "Mínimo 6, que no es tan difícil 💪",
+            "6 caracteres o más, venga 🎯",
+            "Corta contraseña = insegura. Mín. 6 🔒",
+            "Dale más caña, mínimo 6 caracteres 🚀"
+        };
 
                 string fraseAleatoria = frasesPasswordCorta[random.Next(frasesPasswordCorta.Length)];
                 MessageBox.Show(fraseAleatoria, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                usuario = txtUsuario.Text;
-                pass = txtpass.Text;
-
-                Principal formulario_principal = new Principal();
-                this.Hide();
-                DialogResult respuesta = formulario_principal.ShowDialog();
-                if (respuesta == DialogResult.Abort)
+                try
                 {
-                    this.Show();
-                    txtUsuario.Text = "";
-                    txtpass.Text = "";
-                    if (isUsuario)
-                    {
-                        txtUsuario.Text = usuario;
-                    }
+                    btnLoging.Enabled = false;
+                    usuario = txtUsuario.Text.Trim();
+                    pass = txtpass.Text.Trim();
 
-                    if (isCredenciales)
+                    LoginResponse resultado = await HacerLoginAsync(usuario, pass);
+
+                    if (!string.IsNullOrEmpty(resultado.id))
                     {
-                        txtUsuario.Text = usuario;
-                        txtpass.Text = pass;
+                        idUsuarioLogado = resultado.id;
+
+                        Principal formulario_principal = new Principal();
+                        this.Hide();
+                        DialogResult respuesta = formulario_principal.ShowDialog();
+
+                        if (respuesta == DialogResult.Abort)
+                        {
+                            this.Show();
+                            txtUsuario.Text = "";
+                            txtpass.Text = "";
+
+                            if (isUsuario)
+                            {
+                                txtUsuario.Text = usuario;
+                            }
+
+                            if (isCredenciales)
+                            {
+                                txtUsuario.Text = usuario;
+                                txtpass.Text = pass;
+                            }
+                        }
+                        else if (respuesta == DialogResult.Cancel)
+                        {
+                            this.Close();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(
+                            string.IsNullOrEmpty(resultado.error) ? "Credenciales incorrectas" : resultado.error,
+                            "Error de login",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
                     }
                 }
-                if (respuesta == DialogResult.Cancel)
+                catch (Exception ex)
                 {
-                    this.Close();
+                    MessageBox.Show(
+                        "No se pudo conectar con la API.\n\n" + ex.Message,
+                        "Error de conexión",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
+                }
+                finally
+                {
+                    btnLoging.Enabled = true;
                 }
             }
         }
@@ -148,9 +197,11 @@ namespace pingu
             Registro formulario_registro = new Registro();
             this.Visible = false;
             DialogResult respuesta = formulario_registro.ShowDialog();
-            if (respuesta == DialogResult.Cancel)
+            this.Visible = true;
+
+            if (respuesta == DialogResult.OK)
             {
-                this.Visible = true;
+                MessageBox.Show("Ya puedes iniciar sesión con tu nueva cuenta 🐧", "Registro correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -280,5 +331,37 @@ namespace pingu
         {
             btnLoging.BackColor = Color.FromArgb(97, 81, 155);
         }
+
+
+        private async Task<LoginResponse> HacerLoginAsync(string alias, string contrasena)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:8080/api/rest/");
+
+                LoginRequest datos = new LoginRequest
+                {
+                    alias = alias,
+                    contrasena = contrasena
+                };
+
+                string json = JsonSerializer.Serialize(datos);
+                StringContent contenido = new StringContent(json, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await client.PostAsync("pingu/auth/login", contenido);
+
+                string respuestaJson = await response.Content.ReadAsStringAsync();
+
+                LoginResponse resultado = JsonSerializer.Deserialize<LoginResponse>(
+                    respuestaJson,
+                    new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
+                );
+
+                return resultado;
+            }
+        }
+
+
+
     }
 }

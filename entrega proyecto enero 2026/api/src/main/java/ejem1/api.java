@@ -972,7 +972,7 @@ public class api {
                         + "<p>Tu nueva contraseña temporal es:</p>"
                         + "<h3>" + nuevaPass + "</h3>"
                         + "<p>Te recomendamos cambiarla después de iniciar sesión.</p>"
-                        + "<p style='color:red; font-size:12px;'><b>¿No has solicitado esto? Ignora este mensaje</b></p>");
+                        + "<p style='color:red; font-size:12px;'><b>tu contraseña ha sido modificada temporalmente</b></p>");
 
         MailerSend ms = new MailerSend();
 
