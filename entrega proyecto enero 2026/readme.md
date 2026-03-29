@@ -49,6 +49,12 @@ PingU by Riddler Company
 | 21/03/2026 | Readme.md translation to English                                                  |
 | 25/03/2026 | Post creation and display in the form                                             |
 | 26/03/2026 | Home page and left side menu creation                                             |
+| 27/03/2026 | Continue desktop application                                                      | 
+| 27/03/2026 | Continue PDF report                                                               |
+| 28/03/2026 | Finish desktop application and test how it works                                  |
+| 28/03/2026 | Continue PDF report                                                               |
+| 29/03/2026 | Finish PDF report                                                                 |
+
 
 ## Author
 - Carlos Alberto Piñeiro Italiani

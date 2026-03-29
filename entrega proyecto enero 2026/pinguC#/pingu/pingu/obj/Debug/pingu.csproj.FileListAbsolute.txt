@@ -97,3 +97,7 @@ C:\Users\acuar\Desktop\git\Proyecto_intermodular\entrega proyecto enero 2026\pin
 C:\Users\acuar\Desktop\git\Proyecto_intermodular\entrega proyecto enero 2026\pinguC#\pingu\pingu\bin\Debug\System.Text.Json.xml
 C:\Users\acuar\Desktop\git\Proyecto_intermodular\entrega proyecto enero 2026\pinguC#\pingu\pingu\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\acuar\Desktop\git\Proyecto_intermodular\entrega proyecto enero 2026\pinguC#\pingu\pingu\obj\Debug\pingu.csproj.Up2Date
+C:\Users\acuar\Desktop\git\Proyecto_intermodular\entrega proyecto enero 2026\pinguC#\pingu\pingu\obj\Debug\pingu.MisPost.resources
+C:\Users\acuar\Desktop\git\Proyecto_intermodular\entrega proyecto enero 2026\pinguC#\pingu\pingu\obj\Debug\pingu.Seguidores.resources
+C:\Users\acuar\Desktop\git\Proyecto_intermodular\entrega proyecto enero 2026\pinguC#\pingu\pingu\obj\Debug\pingu.Seguidos.resources
+C:\Users\acuar\Desktop\git\Proyecto_intermodular\entrega proyecto enero 2026\pinguC#\pingu\pingu\obj\Debug\pingu.Usuarios.resources

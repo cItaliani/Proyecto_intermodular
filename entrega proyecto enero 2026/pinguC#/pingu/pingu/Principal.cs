@@ -7,6 +7,8 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
+
 
 namespace pingu
 {
@@ -19,6 +21,7 @@ namespace pingu
             InitializeComponent();
             button5.Enabled = false;
             button5.Visible = false;
+            HacerBotonCircular(btnNuevoPost);
         }
 
         public class Post
@@ -59,6 +62,7 @@ namespace pingu
         private async void Form3_Load(object sender, EventArgs e)
         {
             InicializarPanelPosts();
+            btnNuevoPost.BringToFront();
             await CargarHomeAsync();
         }
 
@@ -72,7 +76,7 @@ namespace pingu
             panelPosts.WrapContents = false;
             panelPosts.AutoScroll = true;
             panelPosts.Padding = new Padding(10);
-            panelPosts.BackColor = Color.WhiteSmoke;
+            panelPosts.BackColor = Color.FromArgb(4, 228, 140);
 
             panel2.Controls.Add(panelPosts);
         }
@@ -281,29 +285,7 @@ namespace pingu
             }
         }
 
-        private async Task CargarMisPostsAsync()
-        {
-            try
-            {
-                if (panelPosts == null)
-                    InicializarPanelPosts();
-
-                panelPosts.Controls.Clear();
-
-                List<Post> posts = await ObtenerPostsAsync();
-                List<Post> misPosts = posts.Where(p => p.id_autor == Log_in.idUsuarioLogado).ToList();
-
-                foreach (Post post in misPosts)
-                {
-                    Panel card = await CrearTarjetaPostAsync(post);
-                    panelPosts.Controls.Add(card);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar mis posts.\n\n" + ex.Message);
-            }
-        }
+        
 
         private async Task<Panel> CrearTarjetaPostAsync(Post post)
         {
@@ -316,7 +298,7 @@ namespace pingu
             bool esMio = post.id_autor == Log_in.idUsuarioLogado;
 
             Panel card = new Panel();
-            card.Width = 820;
+            card.Width = 800;
             card.Height = 250;
             card.BackColor = Color.White;
             card.BorderStyle = BorderStyle.FixedSingle;
@@ -551,36 +533,97 @@ namespace pingu
 
         private void btnPerfil_Click(object sender, EventArgs e)
         {
-            Perfil f1 = new Perfil();
+            Perfil f = new Perfil();
             this.Hide();
-            DialogResult respuesta = f1.ShowDialog();
+            DialogResult respuesta = f.ShowDialog();
 
-            if (respuesta == DialogResult.Cancel || respuesta == DialogResult.OK)
+            if (respuesta == DialogResult.OK || respuesta == DialogResult.Abort)
+            {
                 this.Show();
+            }
+            else if (respuesta == DialogResult.Cancel)
+            {
+                this.Close();
+            }
+        }
+
+        private async void btnNuevoPost_Click(object sender, EventArgs e)
+        {
+            NuevoPost f = new NuevoPost();
+            this.Hide();
+            DialogResult respuesta = f.ShowDialog();
+
+            this.Show();
+
+            if (respuesta == DialogResult.OK)
+            {
+                await CargarHomeAsync();
+            }
         }
 
         private void btnUsers_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Pendiente de implementar pantalla de usuarios.");
+            Usuarios f = new Usuarios();
+            this.Hide();
+            DialogResult respuesta = f.ShowDialog();
+
+            if (respuesta == DialogResult.OK || respuesta == DialogResult.Abort)
+            {
+                this.Show();
+            }
+            else if (respuesta == DialogResult.Cancel)
+            {
+                this.Close();
+            }
         }
 
         private void btnSeguidores_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Pendiente de implementar pantalla de seguidores.");
+            Seguidores f = new Seguidores();
+            this.Hide();
+            DialogResult respuesta = f.ShowDialog();
+
+            if (respuesta == DialogResult.OK || respuesta == DialogResult.Abort)
+            {
+                this.Show();
+            }
+            else if (respuesta == DialogResult.Cancel)
+            {
+                this.Close();
+            }
         }
 
         private void btnSeguidos_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Pendiente de implementar pantalla de seguidos.");
+            Seguidos f = new Seguidos();
+            this.Hide();
+            DialogResult respuesta = f.ShowDialog();
+
+            if (respuesta == DialogResult.OK || respuesta == DialogResult.Abort)
+            {
+                this.Show();
+            }
+            else if (respuesta == DialogResult.Cancel)
+            {
+                this.Close();
+            }
         }
 
-        private async void btnPublicaciones_Click(object sender, EventArgs e)
+        private void btnPublicaciones_Click(object sender, EventArgs e)
         {
-            await CargarMisPostsAsync();
+            MisPost f = new MisPost();
+            this.Hide();
+            DialogResult respuesta = f.ShowDialog();
+
+            if (respuesta == DialogResult.OK || respuesta == DialogResult.Abort)
+            {
+                this.Show();
+            }
+            else if (respuesta == DialogResult.Cancel)
+            {
+                this.Close();
+            }
         }
-
-
-
 
 
         private void Principal_FormClosed(object sender, FormClosedEventArgs e)
@@ -589,7 +632,12 @@ namespace pingu
                 this.DialogResult = DialogResult.Abort;
         }
 
-
+        private void HacerBotonCircular(Button boton)
+        {
+            GraphicsPath path = new GraphicsPath();
+            path.AddEllipse(0, 0, boton.Width, boton.Height);
+            boton.Region = new Region(path);
+        }
 
         private void btnSalir_MouseEnter(object sender, EventArgs e)
         {

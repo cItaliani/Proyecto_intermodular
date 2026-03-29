@@ -34,6 +34,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.btnInicio = new System.Windows.Forms.Button();
             this.btnUsers = new System.Windows.Forms.Button();
+            this.btnNuevoPost = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -113,7 +114,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Location = new System.Drawing.Point(201, 12);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1156, 574);
+            this.panel2.Size = new System.Drawing.Size(1150, 574);
             this.panel2.TabIndex = 7;
             // 
             // button5
@@ -154,9 +155,24 @@
             this.btnUsers.MouseLeave += new System.EventHandler(this.button4_MouseLeave);
             this.btnUsers.MouseHover += new System.EventHandler(this.button_MouseHover);
             // 
+            // btnNuevoPost
+            // 
+            this.btnNuevoPost.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(51)))), ((int)(((byte)(234)))));
+            this.btnNuevoPost.FlatAppearance.BorderSize = 0;
+            this.btnNuevoPost.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevoPost.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
+            this.btnNuevoPost.ForeColor = System.Drawing.Color.White;
+            this.btnNuevoPost.Location = new System.Drawing.Point(1260, 515);
+            this.btnNuevoPost.Name = "btnNuevoPost";
+            this.btnNuevoPost.Size = new System.Drawing.Size(65, 65);
+            this.btnNuevoPost.TabIndex = 10;
+            this.btnNuevoPost.Text = "+";
+            this.btnNuevoPost.UseVisualStyleBackColor = false;
+            this.btnNuevoPost.Click += new System.EventHandler(this.btnNuevoPost_Click);
+            // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::pingu.Properties.Resources.pingUsf;
             this.pictureBox1.Location = new System.Drawing.Point(55, 350);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(96, 132);
@@ -180,6 +196,7 @@
             this.Controls.Add(this.btnPerfil);
             this.Controls.Add(this.btnSeguidos);
             this.Controls.Add(this.btnSeguidores);
+            this.Controls.Add(this.btnNuevoPost);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -199,6 +216,7 @@
         private System.Windows.Forms.Button btnSeguidores;
         private System.Windows.Forms.Button btnPerfil;
         private System.Windows.Forms.Button btnSeguidos;
+        private System.Windows.Forms.Button btnNuevoPost;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button btnInicio;

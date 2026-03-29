@@ -78,6 +78,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MisPost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MisPost.Designer.cs">
+      <DependentUpon>MisPost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NuevoPost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NuevoPost.Designer.cs">
+      <DependentUpon>NuevoPost.cs</DependentUpon>
+    </Compile>
     <Compile Include="Perfil.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +128,27 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Seguidores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seguidores.Designer.cs">
+      <DependentUpon>Seguidores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Seguidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seguidos.Designer.cs">
+      <DependentUpon>Seguidos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios.Designer.cs">
+      <DependentUpon>Usuarios.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="MisPost.resx">
+      <DependentUpon>MisPost.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Perfil.resx">
       <DependentUpon>Perfil.cs</DependentUpon>
     </EmbeddedResource>
@@ -144,6 +177,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Seguidores.resx">
+      <DependentUpon>Seguidores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Seguidos.resx">
+      <DependentUpon>Seguidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios.resx">
+      <DependentUpon>Usuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -157,6 +199,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pingUsf.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets" Condition="Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" />

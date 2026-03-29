@@ -112,7 +112,7 @@ namespace pingu
                         this.Hide();
                         DialogResult respuesta = formulario_principal.ShowDialog();
 
-                        if (respuesta == DialogResult.Abort)
+                        if (respuesta == DialogResult.Abort|| respuesta== DialogResult.Cancel)
                         {
                             this.Show();
                             txtUsuario.Text = "";
@@ -129,10 +129,7 @@ namespace pingu
                                 txtpass.Text = pass;
                             }
                         }
-                        else if (respuesta == DialogResult.Cancel)
-                        {
-                            this.Close();
-                        }
+
                     }
                     else
                     {
