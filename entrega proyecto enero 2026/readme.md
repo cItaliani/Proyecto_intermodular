@@ -54,7 +54,7 @@ PingU by Riddler Company
 | 28/03/2026 | Finish desktop application and test how it works                                  |
 | 28/03/2026 | Continue PDF report                                                               |
 | 29/03/2026 | Finish PDF report                                                                 |
-
-
+| 30/03/2026 | Small fixes in PinguC#                                                            |
+| 30/03/2026 | Upload of the video link in the program for the all clients                       |
 ## Author
 - Carlos Alberto Piñeiro Italiani
