@@ -95,6 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
             password.style.backgroundColor = "#fff0f0";
             error = true;
         } 
+        
         // Validar longitud de contraseña
         else if (passwordValue.length < 6) {
             password.value = "";

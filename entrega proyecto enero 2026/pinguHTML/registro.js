@@ -264,6 +264,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.error("Error:", error);
                 alert("🚨 No se pudo conectar con el servidor");
             });
+            
     });
 
     // Función para validar formato de email
